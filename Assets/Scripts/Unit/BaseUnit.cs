@@ -1,9 +1,20 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public abstract class BaseUnit : MonoBehaviour , IAttackable
 {
     [SerializeField]
     private int hitPoint = 1;
+
+    [SerializeField]
+    protected Transform attackTarget = null;
+
+    private Rigidbody _rigidbody;
+
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+    }
 
     public void Attacked()
     {

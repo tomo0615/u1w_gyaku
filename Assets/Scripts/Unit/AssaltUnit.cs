@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class AssaltUnit : BaseUnit
 {
+    private void Update()
+    {
+        Assalt();
+    }
     private void Assalt()
     {
-
+        
     }
 }
