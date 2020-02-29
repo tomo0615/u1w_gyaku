@@ -7,13 +7,22 @@ public abstract class BaseUnit : MonoBehaviour , IAttackable
     private int hitPoint = 1;
 
     [SerializeField]
-    protected Transform attackTarget = null;
+    private float moveSpeed = 10;
+
+    [SerializeField]
+    protected Transform attackTarget;
 
     private Rigidbody _rigidbody;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+    }
+
+    protected void MoveTartget()
+    {
+        transform.LookAt(attackTarget.position);
+        _rigidbody.velocity = transform.forward * moveSpeed;
     }
 
     public void Attacked()
