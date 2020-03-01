@@ -65,7 +65,6 @@ public abstract class BaseUnit : MonoBehaviour , IAttackable
             // TODO:撃破時Effect
 
             gameObject.SetActive(false);
-            return;
         }
     }
 

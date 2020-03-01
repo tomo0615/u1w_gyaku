@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 
-public class BaseBuilding : MonoBehaviour
+public class BaseBuilding : MonoBehaviour , IDamageable
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private int hitPoint = 20;
+
+    public void ApplyDamage()
     {
-        
+        hitPoint--;
+
+        if(hitPoint <= 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
