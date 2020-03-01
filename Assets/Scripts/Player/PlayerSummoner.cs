@@ -4,6 +4,9 @@ using System.Collections.Generic;
 public class PlayerSummoner : MonoBehaviour
 {
     [SerializeField]
+    private UnitManager _unitManager = null;
+
+    [SerializeField]
     private BaseUnit unit = null;
 
     [SerializeField]
@@ -30,7 +33,8 @@ public class PlayerSummoner : MonoBehaviour
     {
         foreach(Vector3 summonPosition in summonList)
         {
-            Instantiate(unit, summonPosition, Quaternion.identity);
+            var instanceUnit = Instantiate(unit, summonPosition, Quaternion.identity);
+            _unitManager.AddUnitList(instanceUnit);
         }
 
         summonList.Clear();

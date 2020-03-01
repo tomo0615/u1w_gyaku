@@ -108,7 +108,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoint: 1
   moveSpeed: 10
-  attackTarget: {fileID: 0}
 --- !u!54 &2946545150675038397
 Rigidbody:
   m_ObjectHideFlags: 0

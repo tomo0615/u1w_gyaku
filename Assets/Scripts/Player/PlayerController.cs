@@ -8,9 +8,11 @@ public class PlayerController : MonoBehaviour
 
     private PlayerSummoner _playerSummoner;
 
-    private PlayerUnitController _playerUnitController;
-
     private TrailRenderer trail;
+
+    [SerializeField]
+    private UnitManager _unitManager = null;
+
 
     private void Awake()
     {
@@ -21,8 +23,6 @@ public class PlayerController : MonoBehaviour
         _playerRayCaster = new PlayerRayCaster(camera, transform);
 
         _playerSummoner = GetComponent<PlayerSummoner>();
-
-        _playerUnitController = new PlayerUnitController();
 
         trail = GetComponent<TrailRenderer>();
     }
@@ -55,5 +55,17 @@ public class PlayerController : MonoBehaviour
         }
 
         //Unitへ命令
+        if (_playerInput.IsAllAttack)
+        {
+           Transform targetPosition 
+                = _playerRayCaster.GetRayHitObject(_playerInput.MouseDirection);
+
+            if (targetPosition == null)
+            {
+                return;
+            }
+
+            _unitManager.SetTargetToAllUnit(targetPosition);
+        }
     }
 }

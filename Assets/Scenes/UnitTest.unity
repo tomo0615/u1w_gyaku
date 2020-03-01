@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 17831480}
   - component: {fileID: 17831479}
   - component: {fileID: 17831478}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,6 +386,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
+--- !u!1 &257092823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 257092824}
+  - component: {fileID: 257092825}
+  m_Layer: 0
+  m_Name: UnitManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &257092824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257092823}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &257092825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257092823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618b68f3722db224baf88a5e6e4d42d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &514184357
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,7 +534,7 @@ GameObject:
   - component: {fileID: 1246208627}
   - component: {fileID: 1246208626}
   - component: {fileID: 1246208625}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -616,6 +659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d3ec8dbf643cff4c88378fbeac53626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _unitManager: {fileID: 257092825}
 --- !u!114 &1398873847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,6 +672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 268ed06c2b1f41b48ad518343823bf7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _unitManager: {fileID: 257092825}
   unit: {fileID: 2946545150675038398, guid: 537c9018b0f5aeb4d85be219682520b8, type: 3}
   summonInterval: 0.05
 --- !u!96 &1398873848
@@ -747,7 +792,7 @@ GameObject:
   - component: {fileID: 1437233550}
   - component: {fileID: 1437233549}
   - component: {fileID: 1437233548}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -839,7 +884,7 @@ GameObject:
   - component: {fileID: 1772533089}
   - component: {fileID: 1772533088}
   - component: {fileID: 1772533087}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

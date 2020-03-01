@@ -10,7 +10,7 @@ public abstract class BaseUnit : MonoBehaviour , IAttackable
     [SerializeField]
     private float moveSpeed = 10;
 
-    private Transform attackTarget;
+    private Vector3 attackTarget;
 
     private Rigidbody _rigidbody;
 
@@ -35,10 +35,20 @@ public abstract class BaseUnit : MonoBehaviour , IAttackable
             if (minDistance > distance)
             {
                 minDistance = distance;
-                attackTarget = target;
+
+                Vector3 moveDirection = (target.position - transform.position).normalized * 3;
+                attackTarget = target.position - moveDirection;
+
+                attackTarget.y = 0;
             }
         }
     }
+
+    public void SetTarget(Transform target)
+    {
+        attackTarget = target.position;
+    }
+
 
     protected void MoveTartget()
     {

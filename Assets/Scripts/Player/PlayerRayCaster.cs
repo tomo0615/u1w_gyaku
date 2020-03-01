@@ -28,4 +28,17 @@ public class PlayerRayCaster
 
         return _transform.position;//Plane外をクリックしても変化がないように
     }
+
+    public Transform GetRayHitObject(Vector3 mousePosition)
+    {
+        Ray ray = _camera.ScreenPointToRay(mousePosition);
+        RaycastHit hit;
+        int layerMask = 1 << LayerMask.NameToLayer("Building");
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+        {
+            return hit.transform;
+        }
+
+        return null;
+    }
 }
