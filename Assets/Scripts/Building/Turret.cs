@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Turret :　BaseBuilding
@@ -16,8 +15,14 @@ public class Turret :　BaseBuilding
     [SerializeField]
     private float attackRange = 3f;　//中心からの半径
 
-    private List<BaseUnit> unitList = new List<BaseUnit>();
+    private AttackRangeArea attackRangeArea;
 
+    private Vector3 targetPosition;
+
+    private void Awake()
+    {
+        attackRangeArea = GetComponentInChildren<AttackRangeArea>();
+    }
     private void Start()
     {
         StartCoroutine(ShotBullet());
@@ -25,21 +30,23 @@ public class Turret :　BaseBuilding
 
     private IEnumerator ShotBullet()
     {
-        //if (IsShotable())
-        //{
         while (true)
         {
             Bullet bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+            if (IsShotable())
+            {
+                targetPosition = attackRangeArea.GetCurrentTarget();
+                targetPosition.y = 0;
+            }
 
-            bullet.SetShotVelocity(transform.forward * bulletSpeed);
+            bullet.SetShotVelocity(targetPosition * bulletSpeed);
 
             yield return new WaitForSeconds(shotInterval);
         }
-      //  }
     }
 
     private bool IsShotable()
     {
-        return unitList.Count > 0;
+        return attackRangeArea.unitList.Count > 0;
     }
 }
