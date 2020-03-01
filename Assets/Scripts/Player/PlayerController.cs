@@ -26,16 +26,17 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //入力感知
-        _playerInput.Inputting();
-
         //召喚
-        if (_playerInput.IsSummon)
+        if (_playerInput.IsSummonSetting)
         {
-            Vector3 mousePotion 
+            Vector3 mousePotion
                 = _playerRayCaster.GetPositionByRay(_playerInput.MouseDirection);
 
-            _playerSummoner.SummonUnit(mousePotion);
+            _playerSummoner.SummonSetting(mousePotion);
+        }
+        else if (_playerInput.IsSummon)
+        {
+            _playerSummoner.SummonUnit();
         }
 
         //Unitへ命令

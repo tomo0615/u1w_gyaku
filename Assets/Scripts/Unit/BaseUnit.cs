@@ -21,7 +21,6 @@ public abstract class BaseUnit : MonoBehaviour , IAttackable
 
     protected void MoveTartget()
     {
-        transform.LookAt(attackTarget.position);
         _rigidbody.velocity = transform.forward * moveSpeed;
     }
 
