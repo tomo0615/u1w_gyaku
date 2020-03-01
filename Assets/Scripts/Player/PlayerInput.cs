@@ -5,6 +5,9 @@ public class PlayerInput : IPlayerInput
     private Vector3 touchStartPosition;
     private Vector3 touchEndPosition;
 
+    private KeyCode
+        summonKey = KeyCode.Mouse0;
+
 
     public void Inputting()
     {
@@ -18,6 +21,7 @@ public class PlayerInput : IPlayerInput
 
             GetSwipeOrTap();
         }
+        
     }
 
     private void GetSwipeOrTap()
@@ -36,5 +40,7 @@ public class PlayerInput : IPlayerInput
         }
     }
 
-    public Vector3
+    public Vector3 MouseDirection => Input.mousePosition;
+
+    public bool IsSummon => Input.GetKey(summonKey);
 }

@@ -10,20 +10,18 @@ public class PlayerController : MonoBehaviour
 
     private PlayerUnitController _playerUnitController;
 
+
     private void Awake()
     {
+        Camera camera = Camera.main;
+
         _playerInput = new PlayerInput();
 
-        _playerRayCaster = new PlayerRayCaster();
+        _playerRayCaster = new PlayerRayCaster(camera, transform);
 
         _playerSummoner = GetComponent<PlayerSummoner>();
 
         _playerUnitController = new PlayerUnitController();
-    }
-
-    private void Start()
-    {
-        
     }
 
     private void Update()
@@ -32,6 +30,13 @@ public class PlayerController : MonoBehaviour
         _playerInput.Inputting();
 
         //召喚
+        if (_playerInput.IsSummon)
+        {
+            Vector3 mousePotion 
+                = _playerRayCaster.GetPositionByRay(_playerInput.MouseDirection);
+
+            _playerSummoner.SummonUnit(mousePotion);
+        }
 
         //Unitへ命令
     }
