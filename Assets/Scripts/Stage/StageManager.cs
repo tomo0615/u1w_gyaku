@@ -4,7 +4,7 @@ using System.Linq;
 
 public class StageManager : SingletonMonoBehaviour<StageManager>
 {
-    private List<Transform> stageObjectList = new List<Transform>();
+    private List<Transform> buildingList;
 
     protected override void Awake()
     {
@@ -13,11 +13,13 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
 
     private void SetStageObjectPositions()
     {
-        stageObjectList = GetComponentsInChildren<Transform>().ToList();
+        buildingList = GetComponentsInChildren<Transform>().ToList();
+
+        buildingList.Remove(transform);
     }
 
-    public List<Transform> GetStageObjectList()
+    public List<Transform> GetBuildingList()
     {
-        return stageObjectList;
+        return buildingList;
     }
 }

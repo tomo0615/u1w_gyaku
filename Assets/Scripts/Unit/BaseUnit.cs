@@ -10,8 +10,7 @@ public abstract class BaseUnit : MonoBehaviour , IAttackable
     [SerializeField]
     private float moveSpeed = 10;
 
-    [SerializeField]
-    protected Transform attackTarget;
+    private Transform attackTarget;
 
     private Rigidbody _rigidbody;
 
@@ -25,11 +24,11 @@ public abstract class BaseUnit : MonoBehaviour , IAttackable
         SetTarget();
     }
 
-    public void SetTarget()
+    private void SetTarget()
     {
         float minDistance = 999f;
 
-        foreach (Transform target in StageManager.Instance.GetStageObjectList())
+        foreach (Transform target in StageManager.Instance.GetBuildingList())
         {
             float distance = Vector3.Distance(transform.position, target.position);
 
