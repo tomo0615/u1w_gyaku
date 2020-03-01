@@ -28,7 +28,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //入力
+        //入力感知
+        _playerInput.Inputting();
 
         //召喚
 
