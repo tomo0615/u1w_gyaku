@@ -25,6 +25,10 @@ public class PlayerController : MonoBehaviour
         _playerUnitController = new PlayerUnitController();
 
         trail = GetComponent<TrailRenderer>();
+    }
+
+    private void Start()
+    {
         trail.enabled = false;
     }
 

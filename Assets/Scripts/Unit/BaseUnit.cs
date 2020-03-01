@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Rigidbody))]
 public abstract class BaseUnit : MonoBehaviour , IAttackable
@@ -19,8 +20,30 @@ public abstract class BaseUnit : MonoBehaviour , IAttackable
         _rigidbody = GetComponent<Rigidbody>();
     }
 
+    private void Start()
+    {
+        SetTarget();
+    }
+
+    public void SetTarget()
+    {
+        float minDistance = 999f;
+
+        foreach (Transform target in StageManager.Instance.GetStageObjectList())
+        {
+            float distance = Vector3.Distance(transform.position, target.position);
+
+            if (minDistance > distance)
+            {
+                minDistance = distance;
+                attackTarget = target;
+            }
+        }
+    }
+
     protected void MoveTartget()
     {
+        transform.LookAt(attackTarget);
         _rigidbody.velocity = transform.forward * moveSpeed;
     }
 
