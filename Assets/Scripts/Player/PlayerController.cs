@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     private PlayerUnitController _playerUnitController;
 
+    private TrailRenderer trail;
 
     private void Awake()
     {
@@ -22,21 +23,31 @@ public class PlayerController : MonoBehaviour
         _playerSummoner = GetComponent<PlayerSummoner>();
 
         _playerUnitController = new PlayerUnitController();
+
+        trail = GetComponent<TrailRenderer>();
+        trail.enabled = false;
     }
 
     private void Update()
     {
+        Vector3 mousePotion
+            = _playerRayCaster.GetPositionByRay(_playerInput.MouseDirection);
+
+        transform.position = mousePotion;
+
         //召喚
         if (_playerInput.IsSummonSetting)
         {
-            Vector3 mousePotion
-                = _playerRayCaster.GetPositionByRay(_playerInput.MouseDirection);
-
             _playerSummoner.SummonSetting(mousePotion);
+
+            trail.enabled = true;
         }
         else if (_playerInput.IsSummon)
         {
             _playerSummoner.SummonUnit();
+
+            trail.Clear();
+            trail.enabled = false;
         }
 
         //Unitへ命令
