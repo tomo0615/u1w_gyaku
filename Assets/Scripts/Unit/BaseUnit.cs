@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 
 [RequireComponent(typeof(Rigidbody))]
 public abstract class BaseUnit : MonoBehaviour , IAttackable
@@ -48,7 +47,6 @@ public abstract class BaseUnit : MonoBehaviour , IAttackable
     {
         attackTarget = target.position;
     }
-
 
     protected void MoveTartget()
     {

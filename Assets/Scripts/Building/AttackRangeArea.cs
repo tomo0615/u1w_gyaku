@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackRangeArea : MonoBehaviour
 {
-    public  List<GameObject> unitList = new List<GameObject>();
+    private List<GameObject> unitList = new List<GameObject>();
 
 
     public Vector3 GetCurrentTarget()
