@@ -13,11 +13,11 @@ public class Turret :　BaseBuilding
     private float bulletSpeed = 10f;
 
     [SerializeField]
-    private float attackRange = 3f;　//中心からの半径
+    private int bulletPower = 2;
 
     private AttackRangeArea attackRangeArea;
 
-    private Vector3 targetPosition;
+    private Vector3 targetDirection;
 
     private void Awake()
     {
@@ -33,13 +33,14 @@ public class Turret :　BaseBuilding
         while (true)
         {
             Bullet bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+
             if (IsShotable())
             {
-                targetPosition = attackRangeArea.GetCurrentTarget();
-                targetPosition.y = 0;
+                targetDirection = attackRangeArea.GetCurrentTarget() - transform.position;
+                targetDirection.y = 0;
             }
 
-            bullet.SetShotVelocity(targetPosition.normalized * bulletSpeed);
+            bullet.SetShotVelocity(targetDirection.normalized * bulletSpeed, bulletPower);
 
             yield return new WaitForSeconds(shotInterval);
         }

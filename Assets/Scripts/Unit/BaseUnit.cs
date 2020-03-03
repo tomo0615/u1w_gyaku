@@ -56,9 +56,9 @@ public abstract class BaseUnit : MonoBehaviour , IAttackable
         _rigidbody.velocity = transform.forward * moveSpeed;
     }
 
-    public void Attacked()
+    public void Attacked(int damageValue)
     {
-        hitPoint--;
+        hitPoint -= damageValue;
 
         if (hitPoint <= 0)
         { 

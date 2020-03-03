@@ -1,5 +1,5 @@
 ﻿
 public interface IAttackable 
 {
-    void Attacked();
+    void Attacked(int damageValue);
 }

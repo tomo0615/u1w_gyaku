@@ -4,6 +4,8 @@ public class Bullet : MonoBehaviour
 {
     private Rigidbody _rigidbody;
 
+    private int bulletPower;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -13,8 +15,9 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, 2f);
     }
 
-    public void SetShotVelocity(Vector3 velocity)
+    public void SetShotVelocity(Vector3 velocity, int power)
     {
+        bulletPower = power;
         _rigidbody.velocity = velocity;
     }
 
@@ -24,7 +27,7 @@ public class Bullet : MonoBehaviour
 
         if(attakable != null)
         {
-            attakable.Attacked();
+            attakable.Attacked(bulletPower);
 
             Destroy(gameObject);
         }
