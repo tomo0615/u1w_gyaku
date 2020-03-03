@@ -531,9 +531,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1159583591}
-  - component: {fileID: 1159583592}
   - component: {fileID: 1159583593}
-  m_Layer: 0
+  - component: {fileID: 1159583592}
+  m_Layer: 2
   m_Name: AttackRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -640,7 +640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unitManager: {fileID: 257092825}
   unit: {fileID: 2946545150675038398, guid: 537c9018b0f5aeb4d85be219682520b8, type: 3}
-  summonInterval: 0.05
+  summonInterval: 0.1
 --- !u!96 &1398873848
 TrailRenderer:
   serializedVersion: 2
@@ -759,7 +759,7 @@ GameObject:
   - component: {fileID: 1675803174}
   - component: {fileID: 1675803173}
   - component: {fileID: 1675803177}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -833,8 +833,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1675803172}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 1, z: 3}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 3, y: 2, z: 3}
   m_Children:
   - {fileID: 1159583591}
   m_Father: {fileID: 1948647359}
@@ -856,7 +856,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 476940851333583506, guid: 416cebde00c19e743a7ba10415d1f4b5,
     type: 3}
   shotInterval: 1
-  bulletSpeed: 10
+  bulletSpeed: 5
   attackRange: 3
 --- !u!1 &1948647358
 GameObject:

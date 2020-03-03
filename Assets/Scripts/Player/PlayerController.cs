@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private UnitManager _unitManager = null;
 
+    private Vector3 mousePotion;
 
     private void Awake()
     {
@@ -34,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Vector3 mousePotion
+        mousePotion
             = _playerRayCaster.GetPositionByRay(_playerInput.MouseDirection);
 
         transform.position = mousePotion;

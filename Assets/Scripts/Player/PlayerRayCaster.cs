@@ -33,7 +33,8 @@ public class PlayerRayCaster
     {
         Ray ray = _camera.ScreenPointToRay(mousePosition);
         RaycastHit hit;
-        int layerMask = 1 << LayerMask.NameToLayer("Building");
+
+        int layerMask = 1 << LayerMask.NameToLayer("Building"); 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
             return hit.transform;
