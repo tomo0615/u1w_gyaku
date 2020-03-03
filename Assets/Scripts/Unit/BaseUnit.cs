@@ -35,22 +35,26 @@ public abstract class BaseUnit : MonoBehaviour , IAttackable
             {
                 minDistance = distance;
 
-                Vector3 moveDirection = (target.position - transform.position).normalized * 3;
+                Vector3 moveDirection = (target.position - transform.position).normalized;
                 attackTarget = target.position - moveDirection;
 
-                attackTarget.y = 0;
+                attackTarget.y = transform.position.y;
             }
         }
     }
 
     public void SetTarget(Transform target)
     {
-        attackTarget = target.position;
+        Vector3 moveDirection = (target.position - transform.position).normalized;
+        attackTarget = target.position - moveDirection;
+
+        attackTarget.y = transform.position.y;
     }
 
     protected void MoveTartget()
     {
         transform.LookAt(attackTarget);
+
         _rigidbody.velocity = transform.forward * moveSpeed;
     }
 
