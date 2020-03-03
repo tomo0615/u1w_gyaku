@@ -39,7 +39,7 @@ public class Turret :　BaseBuilding
                 targetPosition.y = 0;
             }
 
-            bullet.SetShotVelocity(targetPosition * bulletSpeed);
+            bullet.SetShotVelocity(targetPosition.normalized * bulletSpeed);
 
             yield return new WaitForSeconds(shotInterval);
         }

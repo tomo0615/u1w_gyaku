@@ -25,6 +25,8 @@ public class Bullet : MonoBehaviour
         if(attakable != null)
         {
             attakable.Attacked();
+
+            Destroy(gameObject);
         }
     }
 }
