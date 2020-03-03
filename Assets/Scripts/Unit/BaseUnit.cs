@@ -20,11 +20,7 @@ public abstract class BaseUnit : MonoBehaviour , IAttackable
 
     private void Start()
     {
-        SetTarget();
-    }
-
-    private void SetTarget()
-    {
+        //一番近い建物をTargetにする
         float minDistance = 999f;
 
         foreach (Transform target in StageManager.Instance.GetBuildingList())
@@ -35,10 +31,7 @@ public abstract class BaseUnit : MonoBehaviour , IAttackable
             {
                 minDistance = distance;
 
-                Vector3 moveDirection = (target.position - transform.position).normalized;
-                attackTarget = target.position - moveDirection;
-
-                attackTarget.y = transform.position.y;
+                SetTarget(target);
             }
         }
     }
@@ -69,7 +62,7 @@ public abstract class BaseUnit : MonoBehaviour , IAttackable
             gameObject.SetActive(false);
         }
     }
-
+    /*TODO:攻撃するObjectにつける
     private void OnTriggerEnter(Collider other)
     {
         var damageable = other.GetComponent<IDamageable>();
@@ -79,4 +72,5 @@ public abstract class BaseUnit : MonoBehaviour , IAttackable
             damageable.ApplyDamage();
         }
     }
+    */
 }
