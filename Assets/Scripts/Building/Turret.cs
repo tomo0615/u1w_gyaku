@@ -34,20 +34,15 @@ public class Turret :　BaseBuilding
         {
             Bullet bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
 
-            if (IsShotable())
+            if (attackRangeArea.IsAreaEmpty() == false)
             {
                 targetDirection = attackRangeArea.GetCurrentTarget() - transform.position;
                 targetDirection.y = 0;
-            }
 
-            bullet.SetShotVelocity(targetDirection.normalized * bulletSpeed, bulletPower);
+                bullet.SetShotVelocity(targetDirection.normalized * bulletSpeed, bulletPower);
+            }
 
             yield return new WaitForSeconds(shotInterval);
         }
-    }
-
-    private bool IsShotable()
-    {
-        return attackRangeArea.unitList.Count > 0;
     }
 }
