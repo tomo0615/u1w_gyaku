@@ -34,7 +34,7 @@ public class Turret :　BaseBuilding
         {
             Bullet bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
 
-            if (attackRangeArea.IsAreaEmpty() == false)
+            if (attackRangeArea.IsAttackable())
             {
                 targetDirection = attackRangeArea.GetCurrentTarget() - transform.position;
                 targetDirection.y = 0;

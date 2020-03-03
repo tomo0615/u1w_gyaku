@@ -5,6 +5,7 @@ public class AttackRangeArea : MonoBehaviour
 {
     private List<GameObject> unitList = new List<GameObject>();
 
+    public bool IsAttackable() => unitList.Count > 0 && GetCurrentTarget() != Vector3.zero;
 
     public Vector3 GetCurrentTarget()
     {
@@ -19,10 +20,6 @@ public class AttackRangeArea : MonoBehaviour
         return Vector3.zero;
     }
 
-    public bool IsAreaEmpty()
-    {
-        return unitList.Count == 0;
-    }
     private void OnTriggerEnter(Collider other)
     {
         var attackable = other.GetComponent<IAttackable>();
