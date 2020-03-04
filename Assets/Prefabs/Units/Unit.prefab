@@ -65,6 +65,7 @@ MonoBehaviour:
   attackPrefab: {fileID: 3254283864707958450, guid: d3a888b006c7b4047883ebc23b2384db,
     type: 3}
   attackInterval: 1.5
+  _animator: {fileID: 7055693801599153888}
 --- !u!54 &2946545150675038397
 Rigidbody:
   m_ObjectHideFlags: 0

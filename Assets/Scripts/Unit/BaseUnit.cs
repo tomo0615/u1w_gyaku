@@ -23,6 +23,9 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
     [SerializeField]
     private float attackInterval = 2f;
 
+    [SerializeField]
+    private Animator _animator = null;
+
     private float attackIntervalSave = 0f;
 
     private Vector3 attackTarget;
@@ -67,10 +70,12 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
         if(Vector3.Distance(transform.position, attackTarget) <= 2f)
         {
             currentState = UnitState.Attack;
+            _animator.Play("Attack");
         }
         else
         {
             currentState = UnitState.Move;
+            _animator.Play("Move");
         }
     }
 
