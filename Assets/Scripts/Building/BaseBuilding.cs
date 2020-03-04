@@ -14,5 +14,4 @@ public class BaseBuilding : MonoBehaviour , IDamageable
             gameObject.SetActive(false);
         }
     }
-
 }

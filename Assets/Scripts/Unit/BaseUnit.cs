@@ -1,13 +1,29 @@
 ﻿using UnityEngine;
+public enum UnitState
+{
+    Move,
+    Attack
+};
 
 [RequireComponent(typeof(Rigidbody))]
-public abstract class BaseUnit : MonoBehaviour , IAttackable
+public abstract class BaseUnit : MonoBehaviour, IAttackable
 {
     [SerializeField]
     private int hitPoint = 1;
 
     [SerializeField]
     private float moveSpeed = 10;
+
+    [SerializeField]
+    private UnitState currentState = UnitState.Move;
+
+    [SerializeField]
+    private AttackObject attackPrefab = null;
+
+    [SerializeField]
+    private float attackInterval = 2f;
+
+    private float attackIntervalSave = 0f;
 
     private Vector3 attackTarget;
 
@@ -35,6 +51,28 @@ public abstract class BaseUnit : MonoBehaviour , IAttackable
             }
         }
     }
+    private void Update()
+    {
+        if(currentState == UnitState.Move)
+        {
+            MoveTartget();
+        }
+        else if(currentState == UnitState.Attack)
+        {
+            _rigidbody.velocity *= 0;
+            AttackTarget();
+        }
+
+        //State変更
+        if(Vector3.Distance(transform.position, attackTarget) <= 2f)
+        {
+            currentState = UnitState.Attack;
+        }
+        else
+        {
+            currentState = UnitState.Move;
+        }
+    }
 
     public void SetTarget(Transform target)
     {
@@ -51,6 +89,18 @@ public abstract class BaseUnit : MonoBehaviour , IAttackable
         _rigidbody.velocity = transform.forward * moveSpeed;
     }
 
+    protected void AttackTarget()
+    {
+        attackIntervalSave += Time.deltaTime;
+
+        if(attackIntervalSave >= attackInterval)
+        {
+            Instantiate(attackPrefab, transform.position + transform.forward, Quaternion.identity);
+
+            attackIntervalSave = 0f;
+        }
+    }
+
     public void Attacked(int damageValue)
     {
         hitPoint -= damageValue;
@@ -62,15 +112,4 @@ public abstract class BaseUnit : MonoBehaviour , IAttackable
             gameObject.SetActive(false);
         }
     }
-    /*TODO:攻撃するObjectにつける
-    private void OnTriggerEnter(Collider other)
-    {
-        var damageable = other.GetComponent<IDamageable>();
-
-        if (damageable != null)
-        {
-            damageable.ApplyDamage();
-        }
-    }
-    */
 }
