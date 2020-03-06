@@ -17,6 +17,8 @@ public class Turret :　BaseBuilding
 
     private AttackRangeArea attackRangeArea;
 
+    private Vector3 attackTargetPosition;
+
     private Vector3 targetDirection;
 
     private void Awake()
@@ -28,8 +30,19 @@ public class Turret :　BaseBuilding
         StartCoroutine(ShotBullet());
     }
 
+    private void Update()
+    {
+        LookTargtDirection();
+    }
 
+    private void LookTargtDirection()
+    {
+        targetDirection = attackTargetPosition - transform.position;
+        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.1f);
+    }
 
+    //TODO：機能を分割する
     private IEnumerator ShotBullet()
     {
         while (true)
@@ -38,14 +51,10 @@ public class Turret :　BaseBuilding
 
             if (attackRangeArea.IsAttackable())
             {
-                Vector3 attackTargetPosition = attackRangeArea.GetCurrentTarget();
+                attackTargetPosition = attackRangeArea.GetCurrentTarget();
                 attackTargetPosition.y = transform.position.y;
 
-                targetDirection = attackTargetPosition - transform.position;
-
                 bullet.SetShotVelocity(targetDirection.normalized * bulletSpeed, bulletPower);
-
-                transform.LookAt(attackTargetPosition); //TODO:Slerpを使う
             }
 
             yield return new WaitForSeconds(shotInterval);
