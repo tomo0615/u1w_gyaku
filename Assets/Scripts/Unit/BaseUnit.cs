@@ -67,7 +67,7 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
         }
 
         //State変更
-        if(Vector3.Distance(transform.position, attackTarget) <= 2f)
+        if(Vector3.Distance(transform.position, attackTarget) <= 4f)
         {
             currentState = UnitState.Attack;
             _animator.Play("Attack");
@@ -99,7 +99,7 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
 
         if(attackIntervalSave >= attackInterval)
         {
-            Instantiate(attackPrefab, transform.position + transform.forward, Quaternion.identity);
+            Instantiate(attackPrefab, transform.position + transform.forward * 2, transform.rotation);
 
             attackIntervalSave = 0f;
         }

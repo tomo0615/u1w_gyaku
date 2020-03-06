@@ -28,6 +28,8 @@ public class Turret :　BaseBuilding
         StartCoroutine(ShotBullet());
     }
 
+
+
     private IEnumerator ShotBullet()
     {
         while (true)
@@ -43,7 +45,7 @@ public class Turret :　BaseBuilding
 
                 bullet.SetShotVelocity(targetDirection.normalized * bulletSpeed, bulletPower);
 
-                transform.LookAt(attackTargetPosition);
+                transform.LookAt(attackTargetPosition); //TODO:Slerpを使う
             }
 
             yield return new WaitForSeconds(shotInterval);
