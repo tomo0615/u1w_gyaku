@@ -36,10 +36,14 @@ public class Turret :　BaseBuilding
 
             if (attackRangeArea.IsAttackable())
             {
-                targetDirection = attackRangeArea.GetCurrentTarget() - transform.position;
-                targetDirection.y = 0;
+                Vector3 attackTargetPosition = attackRangeArea.GetCurrentTarget();
+                attackTargetPosition.y = transform.position.y;
+
+                targetDirection = attackTargetPosition - transform.position;
 
                 bullet.SetShotVelocity(targetDirection.normalized * bulletSpeed, bulletPower);
+
+                transform.LookAt(attackTargetPosition);
             }
 
             yield return new WaitForSeconds(shotInterval);

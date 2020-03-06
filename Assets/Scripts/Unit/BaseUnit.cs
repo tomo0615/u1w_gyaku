@@ -81,8 +81,7 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
 
     public void SetTarget(Transform target)
     {
-        Vector3 moveDirection = (target.position - transform.position).normalized;
-        attackTarget = target.position - moveDirection;
+        attackTarget = target.position;
 
         attackTarget.y = transform.position.y;
     }
