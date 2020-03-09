@@ -37,6 +37,11 @@ public class Turret :　BaseBuilding
 
     private void LookTargtDirection()
     {
+        if (attackTargetPosition == Vector3.zero)
+        {
+            return;
+        }
+
         targetDirection = attackTargetPosition - transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.3f);

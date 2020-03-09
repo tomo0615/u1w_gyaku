@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private UnitManager _unitManager = null;
 
-    private Vector3 mousePotion;
+    private Vector3 mousePosition;
 
     private void Awake()
     {
@@ -35,15 +35,15 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        mousePotion
+        mousePosition
             = _playerRayCaster.GetPositionByRay(_playerInput.MouseDirection);
 
-        transform.position = mousePotion;
+        transform.position = mousePosition;
 
         //召喚
         if (_playerInput.IsSummonSetting)
         {
-            _playerSummoner.SummonSetting(mousePotion);
+            _playerSummoner.SummonSetting(mousePosition);
 
             trail.enabled = true;
         }
