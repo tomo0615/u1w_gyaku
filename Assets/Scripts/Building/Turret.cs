@@ -39,7 +39,7 @@ public class Turret :　BaseBuilding
     {
         targetDirection = attackTargetPosition - transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.1f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.3f);
     }
 
     //TODO：機能を分割する
@@ -47,10 +47,10 @@ public class Turret :　BaseBuilding
     {
         while (true)
         {
-            Bullet bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-
             if (attackRangeArea.IsAttackable())
             {
+                Bullet bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+
                 attackTargetPosition = attackRangeArea.GetCurrentTarget();
                 attackTargetPosition.y = transform.position.y;
 
