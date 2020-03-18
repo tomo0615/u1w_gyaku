@@ -44,13 +44,13 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
 
     private void Update()
     {
-        if (attackTarget == null)
-        {
-            SetNearestTarget();
-        }
-
         if(currentState == UnitState.Move)
         {
+            if (attackTarget == null)
+            {
+                SetNearestTarget();
+            }
+
             MoveToTartget();
         }
         else if(currentState == UnitState.Attack)

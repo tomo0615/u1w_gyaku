@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (_unitManager.SummonableUnit() == false) return;
+
         mousePosition
             = _playerRayCaster.GetPositionByRay(_playerInput.MouseDirection);
 

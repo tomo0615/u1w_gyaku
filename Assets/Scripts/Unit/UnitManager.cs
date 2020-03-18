@@ -1,13 +1,47 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitManager : MonoBehaviour
 {
     private List<BaseUnit> unitList = new List<BaseUnit>();
 
+    public List<GameObject> unitWaitList = new List<GameObject>();
+
+    [SerializeField]
+    private int unitValue = 10;
+
+    [SerializeField]
+    private Transform okeTransform = null;
+
+    [SerializeField]
+    private GameObject unitPrefab = null;
+
+    private IEnumerator Start()
+    {
+        for(int i = 0; i < unitValue; i++)
+        {
+            float randomNum = Random.Range(-2f, 2f);
+
+            var unitObject = Instantiate(
+                unitPrefab,
+                okeTransform.position + Vector3.up * 5,
+                Quaternion.identity) as GameObject;
+
+            unitWaitList.Add(unitObject);
+
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
     public void AddUnitList(BaseUnit unit)
     {
         unitList.Add(unit);
+
+        if (unitWaitList.Count == 0) return;
+
+        Destroy(unitWaitList[0]);
+        unitWaitList.RemoveAt(0);
     }
 
     public void SetTargetToAllUnit(Transform target)
@@ -16,5 +50,10 @@ public class UnitManager : MonoBehaviour
         {
             unit.SetTarget(target);
         }
+    }
+
+    public bool SummonableUnit()
+    {
+        return unitWaitList.Count != 0; 
     }
 }
