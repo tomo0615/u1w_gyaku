@@ -28,7 +28,7 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
 
     private float attackIntervalSave = 0f;
 
-    private Vector3 attackTarget;
+    private Transform attackTarget;
 
     private Rigidbody _rigidbody;
 
@@ -41,8 +41,14 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
     {
         SetNearestTarget();
     }
+
     private void Update()
     {
+        if (attackTarget == null)
+        {
+            SetNearestTarget();
+        }
+
         if(currentState == UnitState.Move)
         {
             MoveToTartget();
@@ -55,7 +61,7 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
         }
 
         //State変更
-        if(Vector3.Distance(transform.position, attackTarget) <= 4f)
+        if(Vector3.Distance(transform.position, attackTarget.position) <= 4f)
         {
             currentState = UnitState.Attack;
             _animator.Play("Attack");
@@ -68,12 +74,14 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
     }
 
     private void SetNearestTarget()
-    {
-        //一番近い建物をTargetにする
+    {        
         float minDistance = 999f;
 
+        //近い建物を全検索する
         foreach (Transform target in StageManager.Instance.GetBuildingList())
         {
+            if (target == null) continue;
+
             float distance = Vector3.Distance(transform.position, target.position);
 
             if (minDistance > distance)
@@ -87,9 +95,7 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
 
     public void SetTarget(Transform target)
     {
-        attackTarget = target.position;
-
-        attackTarget.y = transform.position.y;
+        attackTarget = target;
     }
 
     protected void MoveToTartget()
