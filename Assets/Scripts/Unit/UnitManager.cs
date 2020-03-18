@@ -6,7 +6,7 @@ public class UnitManager : MonoBehaviour
 {
     private List<BaseUnit> unitList = new List<BaseUnit>();
 
-    public List<GameObject> unitWaitList = new List<GameObject>();
+    private List<GameObject> unitWaitList = new List<GameObject>();
 
     [SerializeField]
     private int unitValue = 10;
@@ -21,8 +21,6 @@ public class UnitManager : MonoBehaviour
     {
         for(int i = 0; i < unitValue; i++)
         {
-            float randomNum = Random.Range(-2f, 2f);
-
             var unitObject = Instantiate(
                 unitPrefab,
                 okeTransform.position + Vector3.up * 5,
@@ -37,8 +35,6 @@ public class UnitManager : MonoBehaviour
     public void AddUnitList(BaseUnit unit)
     {
         unitList.Add(unit);
-
-        if (unitWaitList.Count == 0) return;
 
         Destroy(unitWaitList[0]);
         unitWaitList.RemoveAt(0);
