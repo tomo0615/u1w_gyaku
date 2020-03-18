@@ -39,30 +39,18 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
 
     private void Start()
     {
-        //一番近い建物をTargetにする
-        float minDistance = 999f;
-
-        foreach (Transform target in StageManager.Instance.GetBuildingList())
-        {
-            float distance = Vector3.Distance(transform.position, target.position);
-
-            if (minDistance > distance)
-            {
-                minDistance = distance;
-
-                SetTarget(target);
-            }
-        }
+        SetNearestTarget();
     }
     private void Update()
     {
         if(currentState == UnitState.Move)
         {
-            MoveTartget();
+            MoveToTartget();
         }
         else if(currentState == UnitState.Attack)
         {
             _rigidbody.velocity *= 0;
+
             AttackTarget();
         }
 
@@ -79,6 +67,24 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
         }
     }
 
+    private void SetNearestTarget()
+    {
+        //一番近い建物をTargetにする
+        float minDistance = 999f;
+
+        foreach (Transform target in StageManager.Instance.GetBuildingList())
+        {
+            float distance = Vector3.Distance(transform.position, target.position);
+
+            if (minDistance > distance)
+            {
+                minDistance = distance;
+
+                SetTarget(target);
+            }
+        }
+    }
+
     public void SetTarget(Transform target)
     {
         attackTarget = target.position;
@@ -86,7 +92,7 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
         attackTarget.y = transform.position.y;
     }
 
-    protected void MoveTartget()
+    protected void MoveToTartget()
     {
         transform.LookAt(attackTarget);
 
