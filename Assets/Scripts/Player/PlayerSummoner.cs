@@ -7,6 +7,9 @@ public class PlayerSummoner : MonoBehaviour
     private UnitManager _unitManager = null;
 
     [SerializeField]
+    private GameObject FuroOkePrefab = null;
+
+    [SerializeField]
     private BaseUnit unit = null;
 
     [SerializeField]
@@ -16,6 +19,8 @@ public class PlayerSummoner : MonoBehaviour
 
     private List<Vector3> summonList = new List<Vector3>();
 
+    private List<GameObject> furoOkeList = new List<GameObject>();
+
 
     public void SummonSetting(Vector3 summonPosition)
     {
@@ -24,6 +29,13 @@ public class PlayerSummoner : MonoBehaviour
         if (summonIntervalSave >= summonInterval)
         {
             summonList.Add(summonPosition);
+
+            var furoOke 
+                = Instantiate(FuroOkePrefab,
+                summonPosition + Vector3.up,
+                Quaternion.identity) as GameObject;
+
+            furoOkeList.Add(furoOke);
 
             summonIntervalSave = 0f;
         }
@@ -37,6 +49,12 @@ public class PlayerSummoner : MonoBehaviour
             _unitManager.AddUnitList(instanceUnit);
         }
 
+        foreach(GameObject furoOke in furoOkeList)
+        {
+            Destroy(furoOke);
+        }
+
+        furoOkeList.Clear();
         summonList.Clear();
     }
 }
