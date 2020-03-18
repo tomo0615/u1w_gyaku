@@ -8,8 +8,6 @@ public class PlayerController : MonoBehaviour
 
     private PlayerSummoner _playerSummoner;
 
-    private TrailRenderer trail;
-
     [SerializeField]
     private UnitManager _unitManager = null;
 
@@ -24,13 +22,6 @@ public class PlayerController : MonoBehaviour
         _playerRayCaster = new PlayerRayCaster(camera, transform);
 
         _playerSummoner = GetComponent<PlayerSummoner>();
-
-        trail = GetComponent<TrailRenderer>();
-    }
-
-    private void Start()
-    {
-        trail.enabled = false;
     }
 
     private void Update()
@@ -44,15 +35,10 @@ public class PlayerController : MonoBehaviour
         if (_playerInput.IsSummonSetting)
         {
             _playerSummoner.SummonSetting(mousePosition);
-
-            trail.enabled = true;
         }
         else if (_playerInput.IsSummon)
         {
             _playerSummoner.SummonUnit();
-
-            trail.Clear();
-            trail.enabled = false;
         }
 
         //Unitへ命令
