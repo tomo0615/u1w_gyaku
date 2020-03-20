@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 128111d3d14a0754588593308e4c546e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoint: 3
+  hitPoint: 10
   moveSpeed: 10
   currentState: 0
   attackPrefab: {fileID: 3254283864707958450, guid: d3a888b006c7b4047883ebc23b2384db,

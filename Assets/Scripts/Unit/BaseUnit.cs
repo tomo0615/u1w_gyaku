@@ -2,7 +2,8 @@
 public enum UnitState
 {
     Move,
-    Attack
+    Attack,
+    Freeze,
 };
 
 [RequireComponent(typeof(Rigidbody))]
@@ -44,13 +45,13 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
 
     private void Update()
     {
-        if(currentState == UnitState.Move)
+        if (attackTarget == null)
         {
-            if (attackTarget == null)
-            {
-                SetNearestTarget();
-            }
+            SetNearestTarget();
+        }
 
+        if (currentState == UnitState.Move)
+        {
             MoveToTartget();
         }
         else if(currentState == UnitState.Attack)
@@ -58,6 +59,10 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
             _rigidbody.velocity *= 0;
 
             AttackTarget();
+        }
+        else
+        {
+            return;
         }
 
         //State変更
@@ -76,9 +81,12 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
     private void SetNearestTarget()
     {        
         float minDistance = 999f;
+        var buildingList = StageManager.Instance.GetBuildingList();
+
+        if(buildingList.Count == 0) currentState = UnitState.Freeze;
 
         //近い建物を全検索する
-        foreach (Transform target in StageManager.Instance.GetBuildingList())
+        foreach (Transform target in buildingList)
         {
             if (target == null) continue;
 
