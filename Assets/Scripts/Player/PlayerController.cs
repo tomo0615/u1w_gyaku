@@ -29,6 +29,16 @@ public class PlayerController : MonoBehaviour
 
         transform.position = mousePosition;
 
+        //召喚
+        if (_playerInput.IsSummonSetting)
+        {
+            _playerSummoner.SummonSetting(mousePosition);
+        }
+        else if (_playerInput.IsSummon)
+        {
+            _playerSummoner.SummonUnit();
+        }
+
         //Unitへ命令
         if (_playerInput.IsAllAttack)
         {
@@ -41,18 +51,6 @@ public class PlayerController : MonoBehaviour
             }
 
             _unitManager.SetTargetToAllUnit(targetPosition);
-        }
-
-        if (_unitManager.SummonableUnit() == false) return;
-
-        //召喚
-        if (_playerInput.IsSummonSetting)
-        {
-            _playerSummoner.SummonSetting(mousePosition);
-        }
-        else if (_playerInput.IsSummon)
-        {
-            _playerSummoner.SummonUnit();
         }
     }
 }

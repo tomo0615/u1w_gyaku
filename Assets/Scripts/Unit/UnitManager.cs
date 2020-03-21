@@ -6,17 +6,18 @@ public class UnitManager : MonoBehaviour
 {
     private List<BaseUnit> unitList = new List<BaseUnit>();
 
-    private List<GameObject> unitWaitList = new List<GameObject>();
+    //private List<GameObject> unitWaitList = new List<GameObject>();
 
     [SerializeField]
     private int unitValue = 10;
-
+    /*
     [SerializeField]
     private Transform okeTransform = null;
 
     [SerializeField]
     private GameObject unitPrefab = null;
-
+    */
+    /*
     private IEnumerator Start()
     {
         for(int i = 0; i < unitValue; i++)
@@ -30,14 +31,16 @@ public class UnitManager : MonoBehaviour
 
             yield return new WaitForSeconds(0.5f);
         }
-    }
+        
+    }*/
 
     public void AddUnitList(BaseUnit unit)
     {
         unitList.Add(unit);
 
-        Destroy(unitWaitList[0]);
-        unitWaitList.RemoveAt(0);
+        //Destroy(unitWaitList[0]);
+        //unitWaitList.RemoveAt(0);
+        unitValue--;
     }
 
     public void SetTargetToAllUnit(Transform target)
@@ -50,6 +53,6 @@ public class UnitManager : MonoBehaviour
 
     public bool SummonableUnit()
     {
-        return unitWaitList.Count != 0; 
+        return unitValue > 0; 
     }
 }

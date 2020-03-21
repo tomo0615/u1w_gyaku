@@ -17,19 +17,27 @@ public class PlayerSummoner : MonoBehaviour
 
     private float summonIntervalSave = 0f;
 
-    private List<Vector3> summonList = new List<Vector3>();
+    private List<BaseUnit> summonList = new List<BaseUnit>();
 
     private List<GameObject> furoOkeList = new List<GameObject>();
 
 
     public void SummonSetting(Vector3 summonPosition)
     {
+        if (_unitManager.SummonableUnit() == false) return;
+
         summonIntervalSave += Time.deltaTime;
 
         if (summonIntervalSave >= summonInterval)
         {
-            summonList.Add(summonPosition);
+            //Unit召喚
+            var instanceUnit = Instantiate(unit, summonPosition, Quaternion.identity);
+            instanceUnit.gameObject.SetActive(false);
 
+            _unitManager.AddUnitList(instanceUnit);
+            summonList.Add(instanceUnit);
+
+            //桶召喚
             var furoOke 
                 = Instantiate(FuroOkePrefab,
                 summonPosition + Vector3.up,
@@ -43,10 +51,9 @@ public class PlayerSummoner : MonoBehaviour
 
     public void SummonUnit()
     {
-        foreach(Vector3 summonPosition in summonList)
+        foreach(BaseUnit unit in summonList)
         {
-            var instanceUnit = Instantiate(unit, summonPosition, Quaternion.identity);
-            _unitManager.AddUnitList(instanceUnit);
+            unit.gameObject.SetActive(true);
         }
 
         foreach(GameObject furoOke in furoOkeList)
