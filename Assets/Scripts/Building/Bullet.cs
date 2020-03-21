@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
     }
     private void Start()
     {
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 10f);
     }
 
     public void SetShotVelocity(Vector3 velocity, int power)
