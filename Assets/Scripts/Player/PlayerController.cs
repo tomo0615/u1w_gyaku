@@ -11,8 +11,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private UnitManager _unitManager = null;
 
-    private Vector3 mousePosition;
-
     private void Awake()
     {
         Camera camera = Camera.main;
@@ -26,12 +24,26 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (_unitManager.SummonableUnit() == false) return;
-
-        mousePosition
+        var mousePosition
             = _playerRayCaster.GetPositionByRay(_playerInput.MouseDirection);
 
         transform.position = mousePosition;
+
+        //Unitへ命令
+        if (_playerInput.IsAllAttack)
+        {
+            Transform targetPosition
+                 = _playerRayCaster.GetRayHitObject(_playerInput.MouseDirection);
+
+            if (targetPosition == null)
+            {
+                return;
+            }
+
+            _unitManager.SetTargetToAllUnit(targetPosition);
+        }
+
+        if (_unitManager.SummonableUnit() == false) return;
 
         //召喚
         if (_playerInput.IsSummonSetting)
@@ -41,20 +53,6 @@ public class PlayerController : MonoBehaviour
         else if (_playerInput.IsSummon)
         {
             _playerSummoner.SummonUnit();
-        }
-
-        //Unitへ命令
-        if (_playerInput.IsAllAttack)
-        {
-           Transform targetPosition 
-                = _playerRayCaster.GetRayHitObject(_playerInput.MouseDirection);
-
-            if (targetPosition == null)
-            {
-                return;
-            }
-
-            _unitManager.SetTargetToAllUnit(targetPosition);
         }
     }
 }
