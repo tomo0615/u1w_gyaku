@@ -15,6 +15,9 @@ public class Turret :　BaseBuilding
     [SerializeField]
     private int bulletPower = 2;
 
+    [SerializeField]
+    private Transform shotTransform = default;
+
     private AttackRangeArea attackRangeArea;
 
     private Vector3 attackTargetPosition;
@@ -54,7 +57,7 @@ public class Turret :　BaseBuilding
         {
             if (attackRangeArea.IsAttackable())
             {
-                Bullet bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+                Bullet bullet = Instantiate(bulletPrefab, shotTransform.position, transform.rotation);
 
                 attackTargetPosition = attackRangeArea.GetCurrentTarget();
                 attackTargetPosition.y = transform.position.y;

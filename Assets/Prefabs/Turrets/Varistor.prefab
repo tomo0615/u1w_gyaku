@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &871379006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 871379007}
+  m_Layer: 8
+  m_Name: ShotTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &871379007
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871379006}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.18, z: -0.31}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7972792243744708428}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7972792242336907826
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,7 +85,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 9
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7972792243744708427
 GameObject:
@@ -88,6 +118,7 @@ Transform:
   m_Children:
   - {fileID: 7972792242336907827}
   - {fileID: 3161448336942164312}
+  - {fileID: 871379007}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -122,6 +153,7 @@ MonoBehaviour:
   shotInterval: 1
   bulletSpeed: 25
   bulletPower: 1
+  shotTransform: {fileID: 871379007}
 --- !u!1001 &7972792243045417538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -132,7 +164,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 055f5ab6505b2a3498e195fe667d14d0,
         type: 3}
       propertyPath: m_Name
-      value: Varistor
+      value: VaristorModel
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 055f5ab6505b2a3498e195fe667d14d0,
         type: 3}

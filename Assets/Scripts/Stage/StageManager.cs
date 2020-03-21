@@ -4,8 +4,7 @@ using System.Linq;
 
 public class StageManager : SingletonMonoBehaviour<StageManager>
 {
-    [SerializeField]
-    private List<Transform> buildingTransformList;
+    private List<Transform> buildingTransformList = new List<Transform>();
 
     protected override void Awake()
     {
