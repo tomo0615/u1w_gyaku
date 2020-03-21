@@ -10,7 +10,7 @@ public class PlayerSummoner : MonoBehaviour
     private GameObject FuroOkePrefab = null;
 
     [SerializeField]
-    private BaseUnit unit = null;
+    private BaseUnit unitPrefab = null;
 
     [SerializeField]
     private float summonInterval = 0.1f;
@@ -31,7 +31,7 @@ public class PlayerSummoner : MonoBehaviour
         if (summonIntervalSave >= summonInterval)
         {
             //Unit召喚
-            var instanceUnit = Instantiate(unit, summonPosition, Quaternion.identity);
+            var instanceUnit = Instantiate(unitPrefab, summonPosition, Quaternion.identity);
             instanceUnit.gameObject.SetActive(false);
 
             _unitManager.AddUnitList(instanceUnit);

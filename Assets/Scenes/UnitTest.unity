@@ -2083,7 +2083,8 @@ MonoBehaviour:
   _unitManager: {fileID: 257092825}
   FuroOkePrefab: {fileID: 828513295265244604, guid: b906402fccb30a84bbb50366fbf6cdf9,
     type: 3}
-  unit: {fileID: 2946545150675038398, guid: 537c9018b0f5aeb4d85be219682520b8, type: 3}
+  unitPrefab: {fileID: 2946545150675038398, guid: 537c9018b0f5aeb4d85be219682520b8,
+    type: 3}
   summonInterval: 0.1
 --- !u!1 &1437299129
 GameObject:
