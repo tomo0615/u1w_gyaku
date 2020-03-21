@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoint: 10
-  bulletPrefab: {fileID: 476940851333583506, guid: 416cebde00c19e743a7ba10415d1f4b5,
+  bulletPrefab: {fileID: 476940851333583506, guid: 1808b9cbb35bb7e4e8c4f590406a0de4,
     type: 3}
   shotInterval: 1
   bulletSpeed: 25
