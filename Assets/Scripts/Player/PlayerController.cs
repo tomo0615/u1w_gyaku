@@ -8,9 +8,6 @@ public class PlayerController : MonoBehaviour
 
     private PlayerSummoner _playerSummoner;
 
-    [SerializeField]
-    private UnitManager _unitManager = null;
-
     private void Awake()
     {
         Camera camera = Camera.main;
@@ -50,7 +47,7 @@ public class PlayerController : MonoBehaviour
                 return;
             }
 
-            _unitManager.SetTargetToAllUnit(targetPosition);
+            UnitManager.Instance.SetTargetToAllUnit(targetPosition);
         }
     }
 }

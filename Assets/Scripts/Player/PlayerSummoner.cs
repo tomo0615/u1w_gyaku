@@ -4,9 +4,6 @@ using System.Collections.Generic;
 public class PlayerSummoner : MonoBehaviour
 {
     [SerializeField]
-    private UnitManager _unitManager = null;
-
-    [SerializeField]
     private GameObject FuroOkePrefab = null;
 
     [SerializeField]
@@ -24,7 +21,7 @@ public class PlayerSummoner : MonoBehaviour
 
     public void SummonSetting(Vector3 summonPosition)
     {
-        if (_unitManager.SummonableUnit() == false) return;
+        if (UnitManager.Instance.SummonableUnit() == false) return;
 
         summonIntervalSave += Time.deltaTime;
 
@@ -34,7 +31,7 @@ public class PlayerSummoner : MonoBehaviour
             var instanceUnit = Instantiate(unitPrefab, summonPosition, Quaternion.identity);
             instanceUnit.gameObject.SetActive(false);
 
-            _unitManager.AddUnitList(instanceUnit);
+            UnitManager.Instance.AddUnitList(instanceUnit);
             summonList.Add(instanceUnit);
 
             //桶召喚

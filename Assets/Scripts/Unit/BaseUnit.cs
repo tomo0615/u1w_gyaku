@@ -130,9 +130,9 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
         hitPoint -= damageValue;
 
         if (hitPoint <= 0)
-        { 
+        {
             // TODO:撃破時Effect
-
+            UnitManager.Instance.RemoveUnitList(this);
             gameObject.SetActive(false);
         }
     }

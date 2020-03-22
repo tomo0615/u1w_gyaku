@@ -29,5 +29,11 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
     public void RemoveAtBuilding(BaseBuilding building)
     {
         buildingTransformList.Remove(building.transform);
+
+        if (buildingTransformList.Count == 0)
+        {
+            //GameClear! テスト済み
+            //TODO：Clear演出を追加
+        }
     }
 }
