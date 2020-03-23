@@ -8,6 +8,9 @@ public class UnitManager : SingletonMonoBehaviour<UnitManager>
     [SerializeField]
     private int unitValue = 10;
 
+    [SerializeField]
+    private GameEndPresenter _gameEndPresenter = null;
+
     public void AddUnitList(BaseUnit unit)
     {
         unitList.Add(unit);
@@ -22,7 +25,7 @@ public class UnitManager : SingletonMonoBehaviour<UnitManager>
         if(unitList.Count == 0 &&
            SummonableUnit() == false)
         {
-            //TODO：GameOver演出
+            _gameEndPresenter.OnGameEnd(isClear: false);
         }
     }
 

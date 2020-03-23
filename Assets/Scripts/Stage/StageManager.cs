@@ -6,6 +6,8 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
 {
     private List<Transform> buildingTransformList = new List<Transform>();
 
+    [SerializeField]
+    private GameEndPresenter _gameEndPresenter = default;
     protected override void Awake()
     {
         SetStageObjectPositions();
@@ -33,7 +35,7 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
         if (buildingTransformList.Count == 0)
         {
             //GameClear! テスト済み
-            //TODO：Clear演出を追加
+            _gameEndPresenter.OnGameEnd(isClear:true);
         }
     }
 }
