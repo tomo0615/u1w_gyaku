@@ -17,8 +17,8 @@ public class Bullet : MonoBehaviour
 
     public void SetShotVelocity(Vector3 velocity, int power)
     {
-        bulletPower = power;
         _rigidbody.velocity = velocity;
+        bulletPower = power;
     }
 
     private void OnTriggerEnter(Collider other)
