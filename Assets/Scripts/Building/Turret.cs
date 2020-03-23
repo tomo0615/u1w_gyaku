@@ -39,18 +39,21 @@ public class Turret :　BaseBuilding
     }
 
     private void LookTargtDirection()
-    {
+    { 
+        attackTargetPosition = attackRangeArea.GetCurrentTarget();
+        attackTargetPosition.y = transform.position.y;
+
+        targetDirection = attackTargetPosition - transform.position;
+        
         if (attackTargetPosition == Vector3.zero)
         {
             return;
         }
-
-        targetDirection = attackTargetPosition - transform.position;
+        
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.3f);
     }
 
-    //TODO：機能を分割する
     private IEnumerator ShotBullet()
     {
         while (true)
@@ -58,9 +61,6 @@ public class Turret :　BaseBuilding
             if (attackRangeArea.IsAttackable())
             {
                 Bullet bullet = Instantiate(bulletPrefab, shotTransform.position, transform.rotation);
-
-                attackTargetPosition = attackRangeArea.GetCurrentTarget();
-                attackTargetPosition.y = transform.position.y;
 
                 bullet.SetShotVelocity(targetDirection.normalized * bulletSpeed, bulletPower);
             }

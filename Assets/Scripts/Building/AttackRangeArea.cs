@@ -5,7 +5,10 @@ public class AttackRangeArea : MonoBehaviour
 {
     private List<GameObject> unitList = new List<GameObject>();
 
-    public bool IsAttackable() => unitList.Count > 0 && GetCurrentTarget() != Vector3.zero;
+    public bool IsAttackable()
+    {
+        return unitList.Count > 0 && GetCurrentTarget() != Vector3.zero;
+    }
 
     public Vector3 GetCurrentTarget()
     {
