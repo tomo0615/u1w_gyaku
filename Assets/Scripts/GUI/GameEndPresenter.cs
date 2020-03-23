@@ -1,18 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameEndPresenter : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private GameClearView _gameClearView = default;
+
+    [SerializeField]
+    private GameOverView _gameOverView = default;
+
+    public void OnGameEnd(bool isClear)
     {
-        
+        if (isClear)
+        {
+            _gameClearView.ViewGameClear();
+            return;
+        }
+
+        _gameOverView.ViewGameOver();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

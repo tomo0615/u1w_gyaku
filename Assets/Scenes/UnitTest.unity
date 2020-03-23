@@ -265,6 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb0b2c9e636c7545a9a4814c5d51022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverText: {fileID: 0}
 --- !u!1 &113330366
 GameObject:
   m_ObjectHideFlags: 0
@@ -2114,6 +2115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caa3b812f227dd440832dec00f4861f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameClearView: {fileID: 2106106615}
+  _gameOverView: {fileID: 90048947}
 --- !u!4 &1335832783 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3902936857199636169, guid: fc9ca2ab460cfc8498671b4925737011,
@@ -7826,6 +7829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772edab07f8c34e43a956e0fdbed1f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameClearText: {fileID: 0}
 --- !u!4 &2125540406 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2906475117256127823, guid: 36a1198de22013e42a1496d74d7a1639,
@@ -7913,22 +7917,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnitManager
       objectReference: {fileID: 0}
-    - target: {fileID: 3902936857199636168, guid: fc9ca2ab460cfc8498671b4925737011,
-        type: 3}
-      propertyPath: okeTransform
-      value: 
-      objectReference: {fileID: 1171027184}
-    - target: {fileID: 3902936857199636168, guid: fc9ca2ab460cfc8498671b4925737011,
-        type: 3}
-      propertyPath: unitPrefab
-      value: 
-      objectReference: {fileID: 7820394863377522564, guid: 92dc1eafdf53f2a40b491e142414d8c6,
-        type: 3}
-    - target: {fileID: 3902936857199636168, guid: fc9ca2ab460cfc8498671b4925737011,
-        type: 3}
-      propertyPath: unitValue
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 3902936857199636169, guid: fc9ca2ab460cfc8498671b4925737011,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7983,6 +7971,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3902936857199636168, guid: fc9ca2ab460cfc8498671b4925737011,
+        type: 3}
+      propertyPath: okeTransform
+      value: 
+      objectReference: {fileID: 1171027184}
+    - target: {fileID: 3902936857199636168, guid: fc9ca2ab460cfc8498671b4925737011,
+        type: 3}
+      propertyPath: unitPrefab
+      value: 
+      objectReference: {fileID: 7820394863377522564, guid: 92dc1eafdf53f2a40b491e142414d8c6,
+        type: 3}
+    - target: {fileID: 3902936857199636168, guid: fc9ca2ab460cfc8498671b4925737011,
+        type: 3}
+      propertyPath: unitValue
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc9ca2ab460cfc8498671b4925737011, type: 3}
