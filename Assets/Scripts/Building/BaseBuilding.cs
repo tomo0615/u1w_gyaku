@@ -13,6 +13,11 @@ public class BaseBuilding : MonoBehaviour , IDamageable
         {
             //gameObject.SetActive(false);
             StageManager.Instance.RemoveAtBuilding(this);
+
+            GameEffectManager.Instance.OnGenelateEffect
+                (transform.position,
+                EffectType.BuildingExplosion);
+
             Destroy(gameObject);
         }
     }

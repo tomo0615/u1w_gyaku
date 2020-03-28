@@ -1,4 +1,3 @@
 ﻿public enum EffectType{
-		DeadEffect = 0,
-		GiriGiri   = 1,
+		BuildingExplosion = 0,
 }
