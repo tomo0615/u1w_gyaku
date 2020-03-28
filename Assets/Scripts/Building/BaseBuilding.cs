@@ -11,7 +11,6 @@ public class BaseBuilding : MonoBehaviour , IDamageable
 
         if(hitPoint <= 0)
         {
-            //gameObject.SetActive(false);
             StageManager.Instance.RemoveAtBuilding(this);
 
             GameEffectManager.Instance.OnGenelateEffect

@@ -17,6 +17,10 @@ public class AttackObject : MonoBehaviour
         if (damageable != null)
         {
             damageable.ApplyDamage();
+            
+            GameEffectManager.Instance.OnGenelateEffect(
+                transform.position,
+                EffectType.Attack);
         }
     }
 }
