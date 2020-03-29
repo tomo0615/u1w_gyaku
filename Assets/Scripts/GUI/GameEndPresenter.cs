@@ -8,6 +8,12 @@ public class GameEndPresenter : MonoBehaviour
     [SerializeField]
     private GameOverView _gameOverView = default;
 
+    private void Awake()
+    {
+        _gameClearView.InitializeGameEndView();
+        _gameOverView.InitializeGameEndView();
+    }
+
     public void OnGameEnd(bool isClear)
     {
         if (isClear)

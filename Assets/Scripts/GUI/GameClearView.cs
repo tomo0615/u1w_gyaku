@@ -1,15 +1,16 @@
-﻿using UnityEngine.UI;
-using UnityEngine;
+﻿using UnityEngine;
+using TMPro;
 
 public class GameClearView : MonoBehaviour
 {
-    [SerializeField]
-    private Text gameClearText = default;
+    private TextMeshProUGUI gameClearText;
 
-    private void Start()
+    public void InitializeGameEndView()
     {
-        gameClearText.enabled = false;
+        gameClearText = GetComponent<TextMeshProUGUI>();
+        //gameClearText.enabled = false;
     }
+
     public void ViewGameClear()
     {
         gameClearText.enabled = true;

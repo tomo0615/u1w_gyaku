@@ -1,15 +1,15 @@
-﻿using UnityEngine.UI;
-using UnityEngine;
-
+﻿using UnityEngine;
+using TMPro;
 public class GameOverView : MonoBehaviour
 {
-    [SerializeField]
-    private Text gameOverText = default;
+    private TextMeshProUGUI gameOverText;
 
-    private void Start()
+    public void InitializeGameEndView()
     {
-        gameOverText.enabled = false;
+        gameOverText = GetComponent<TextMeshProUGUI>();
+        //gameOverText.enabled = false;
     }
+
     public void ViewGameOver()
     {
         gameOverText.enabled = true;
