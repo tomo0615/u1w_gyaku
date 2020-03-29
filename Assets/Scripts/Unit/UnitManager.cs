@@ -6,16 +6,21 @@ public class UnitManager : SingletonMonoBehaviour<UnitManager>
     private List<BaseUnit> unitList = new List<BaseUnit>();
 
     [SerializeField]
-    private int unitValue = 10;
+    private int unitCount = 10;
 
     [SerializeField]
     private GameEndPresenter _gameEndPresenter = null;
+
+    [SerializeField]
+    private UnitCountPresenter _unitCountPresenter = null;
 
     public void AddUnitList(BaseUnit unit)
     {
         unitList.Add(unit);
 
-        unitValue--;
+        unitCount--;
+
+        _unitCountPresenter.OnChangeUnitCount(unitCount);
     }
 
     public void RemoveUnitList(BaseUnit unit)
@@ -39,6 +44,6 @@ public class UnitManager : SingletonMonoBehaviour<UnitManager>
 
     public bool SummonableUnit()
     {
-        return unitValue > 0; 
+        return unitCount > 0; 
     }
 }
