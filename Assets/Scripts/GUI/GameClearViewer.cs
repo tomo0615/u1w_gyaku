@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using TMPro;
 
-public class GameClearView : MonoBehaviour
+public class GameClearViewer : MonoBehaviour, IGameEndViewer
 {
     private TextMeshProUGUI gameClearText;
 
-    public void InitializeGameEndView()
+    public void InitializeGameEndViewer()
     {
         gameClearText = GetComponent<TextMeshProUGUI>();
-        //gameClearText.enabled = false;
     }
 
     public void ViewGameClear()

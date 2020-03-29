@@ -1626,6 +1626,16 @@ PrefabInstance:
       propertyPath: _gameOverView
       value: 
       objectReference: {fileID: 1423504897}
+    - target: {fileID: 7527523353792732288, guid: a801c8d075c80254483006b2549d665f,
+        type: 3}
+      propertyPath: _gameClearViewer
+      value: 
+      objectReference: {fileID: 756419838}
+    - target: {fileID: 7527523353792732288, guid: a801c8d075c80254483006b2549d665f,
+        type: 3}
+      propertyPath: _gameOverViewer
+      value: 
+      objectReference: {fileID: 1423504897}
     - target: {fileID: 7527523354591266081, guid: a801c8d075c80254483006b2549d665f,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -3,26 +3,26 @@
 public class GameEndPresenter : MonoBehaviour
 {
     [SerializeField]
-    private GameClearView _gameClearView = default;
+    private GameClearViewer _gameClearViewer = default;
 
     [SerializeField]
-    private GameOverView _gameOverView = default;
+    private GameOverViewer _gameOverViewer = default;
 
     private void Awake()
     {
-        _gameClearView.InitializeGameEndView();
-        _gameOverView.InitializeGameEndView();
+        _gameClearViewer.InitializeGameEndViewer();
+        _gameOverViewer.InitializeGameEndViewer();
     }
 
     public void OnGameEnd(bool isClear)
     {
         if (isClear)
         {
-            _gameClearView.ViewGameClear();
+            _gameClearViewer.ViewGameClear();
             return;
         }
 
-        _gameOverView.ViewGameOver();
+        _gameOverViewer.ViewGameOver();
     }
 
 }

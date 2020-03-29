@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using TMPro;
-public class GameOverView : MonoBehaviour
+public class GameOverViewer : MonoBehaviour, IGameEndViewer
 {
     private TextMeshProUGUI gameOverText;
 
-    public void InitializeGameEndView()
+    public void InitializeGameEndViewer()
     {
         gameOverText = GetComponent<TextMeshProUGUI>();
-        //gameOverText.enabled = false;
     }
 
     public void ViewGameOver()
