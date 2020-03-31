@@ -14,6 +14,11 @@ public class UnitManager : SingletonMonoBehaviour<UnitManager>
     [SerializeField]
     private UnitCountPresenter _unitCountPresenter = null;
 
+    private void Start()
+    {
+        _unitCountPresenter.Initialize(unitCount);
+    }
+
     public void AddUnitList(BaseUnit unit)
     {
         unitList.Add(unit);
