@@ -29,8 +29,11 @@ public class Turret :　BaseBuilding
     {
         attackRangeArea = GetComponentInChildren<AttackRangeArea>();
     }
-    private void Start()
+
+    protected override void Start()
     {
+        base.Start();
+
         StartCoroutine(ShotBullet());
     }
 

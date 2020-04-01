@@ -5,8 +5,6 @@ using UnityEngine;
 public class HPBar : MonoBehaviour
 {
     private Slider slider;
-    private Slider Slider => slider
-        = slider ?? GetComponent<Slider>(); //Editor状態でテストするため
 
     [SerializeField]
     private Image barFillImage = default;
@@ -17,17 +15,23 @@ public class HPBar : MonoBehaviour
     [SerializeField]
     private Color minimumColor = Color.red;
 
+    private void Awake()
+    {
+        slider = GetComponent<Slider>();
+    }
+
     public void SetMaxHPValue(int hpValue)
     {
-        Slider.maxValue = hpValue;
+        slider.maxValue = hpValue;
+        slider.value = hpValue;
     }
 
     public void OnHPValueChange(int hpValue)
     {
-        Slider.value = hpValue;
+        slider.value = hpValue;
 
         //徐々にMAXからminに色を変更していく
-        float lerpValue = Slider.value / Slider.maxValue;
+        float lerpValue = slider.value / slider.maxValue;
 
         barFillImage.color = Color.Lerp(minimumColor,　maxColor, lerpValue);
     }

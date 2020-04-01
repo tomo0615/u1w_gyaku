@@ -10,10 +10,10 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
     private GameEndPresenter _gameEndPresenter = default;
     protected override void Awake()
     {
-        SetStageObjectPositions();
+        AddToListBuildingTransform();
     }
 
-    private void SetStageObjectPositions()
+    private void AddToListBuildingTransform()
     {
         var buildingList = GetComponentsInChildren<BaseBuilding>().ToList();
 

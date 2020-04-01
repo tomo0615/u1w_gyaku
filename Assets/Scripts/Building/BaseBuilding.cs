@@ -8,7 +8,7 @@ public class BaseBuilding : MonoBehaviour , IDamageable
     [SerializeField]
     private HPBar hpBar = default;
 
-    private void Start()
+    protected virtual void Start()
     {
         hpBar.SetMaxHPValue(hitPoint);
     }
