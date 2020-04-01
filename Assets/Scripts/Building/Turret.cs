@@ -16,11 +16,12 @@ public class Turret :　BaseBuilding
     private int bulletPower = 2;
 
     [SerializeField]
+    private Transform turretTransform = default;
+
+    [SerializeField]
     private Transform shotTransform = default;
 
     private AttackRangeArea attackRangeArea;
-
-    private Vector3 attackTargetPosition;
 
     private Vector3 targetDirection;
 
@@ -47,10 +48,10 @@ public class Turret :　BaseBuilding
             return;
         }
 
-        attackTargetPosition.y = transform.position.y;
-        targetDirection = attackTargetPosition - transform.position;
+        attackTargetPosition.y = turretTransform.position.y;
+        targetDirection = attackTargetPosition - turretTransform.position;
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.3f);
+        turretTransform.rotation = Quaternion.Slerp(turretTransform.rotation, targetRotation, 0.3f);
     }
 
     private IEnumerator ShotBullet()
@@ -59,7 +60,7 @@ public class Turret :　BaseBuilding
         {
             if (attackRangeArea.IsAttackable())
             {
-                Bullet bullet = Instantiate(bulletPrefab, shotTransform.position, transform.rotation);
+                Bullet bullet = Instantiate(bulletPrefab, shotTransform.position, turretTransform.rotation);
 
                 bullet.SetShotVelocity(targetDirection.normalized * bulletSpeed, bulletPower);
             }
