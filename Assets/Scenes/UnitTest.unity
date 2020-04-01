@@ -1751,8 +1751,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6877019809747672776, guid: c9cbf7f15952ee341a083f847a76d937,
         type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877019809747672776, guid: c9cbf7f15952ee341a083f847a76d937,
+        type: 3}
+      propertyPath: m_Value
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6877019808881215130, guid: c9cbf7f15952ee341a083f847a76d937,
         type: 3}
@@ -1762,6 +1767,11 @@ PrefabInstance:
     - target: {fileID: 6877019808881215130, guid: c9cbf7f15952ee341a083f847a76d937,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877019808881215129, guid: c9cbf7f15952ee341a083f847a76d937,
+        type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.7287984, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.7294118, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barFillImage: {fileID: 6877019808881215129}
-  maxColor: {r: 0, g: 1, b: 0.20283651, a: 1}
+  maxColor: {r: 0, g: 1, b: 0.7294118, a: 1}
   minimumColor: {r: 1, g: 0, b: 0.29065657, a: 1}
 --- !u!1 &6877019810682129000
 GameObject:
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 0.7058824}
+  m_Color: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 0.39215687}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
