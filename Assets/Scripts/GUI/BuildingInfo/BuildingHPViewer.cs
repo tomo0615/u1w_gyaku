@@ -2,8 +2,12 @@
 
 public class BuildingHPViewer : MonoBehaviour
 {
-    public void ViewBuildingHP()
+    [SerializeField]
+    private HPBar _hpBar = default;
+
+    public void ViewBuildingHP(int hitPoint)
     {
         //HPVarを表示
+        _hpBar.OnHPValueChange(hitPoint);
     }
 }

@@ -7,6 +7,6 @@ public class BuildingHPPresenter : MonoBehaviour
 
     public void OnChangeBuildingHP(int hitPoint)
     {
-        _buildingHPViewer.ViewBuildingHP();
+        _buildingHPViewer.ViewBuildingHP(hitPoint);
     }
 }

@@ -95,7 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 1, b: 0.7294118, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -121,7 +121,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6877019809747672777}
   - component: {fileID: 6877019809747672776}
-  - component: {fileID: 744815435}
   m_Layer: 5
   m_Name: HpVar
   m_TagString: Untagged
@@ -200,7 +199,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 744815435}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeColor
         m_Mode: 1
         m_Arguments:
@@ -213,21 +212,6 @@ MonoBehaviour:
         m_CallState: 1
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &744815435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6877019809747672778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9df9025da8915a14da77a083b52f0438, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  barFillImage: {fileID: 6877019808881215129}
-  maxColor: {r: 0, g: 1, b: 0.7294118, a: 1}
-  minimumColor: {r: 1, g: 0, b: 0.29065657, a: 1}
 --- !u!1 &6877019810682129000
 GameObject:
   m_ObjectHideFlags: 0

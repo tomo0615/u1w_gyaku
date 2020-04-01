@@ -5,9 +5,19 @@ public class BaseBuilding : MonoBehaviour , IDamageable
     [SerializeField]
     private int hitPoint = 20;
 
+    [SerializeField]
+    private HPBar hpBar = default;
+
+    private void Start()
+    {
+        hpBar.SetMaxHPValue(hitPoint);
+    }
+
     public void ApplyDamage()
     {
         hitPoint--;
+
+        hpBar.OnHPValueChange(hitPoint);
 
         if(hitPoint <= 0)
         {

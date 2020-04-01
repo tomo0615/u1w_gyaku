@@ -17,8 +17,15 @@ public class HPBar : MonoBehaviour
     [SerializeField]
     private Color minimumColor = Color.red;
 
-    public void ChangeColor()
+    public void SetMaxHPValue(int hpValue)
     {
+        Slider.maxValue = hpValue;
+    }
+
+    public void OnHPValueChange(int hpValue)
+    {
+        Slider.value = hpValue;
+
         //徐々にMAXからminに色を変更していく
         float lerpValue = Slider.value / Slider.maxValue;
 
