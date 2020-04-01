@@ -131,8 +131,11 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
 
         if (hitPoint <= 0)
         {
-            // TODO:撃破時Effect
+            GameEffectManager.Instance
+                .OnGenelateEffect(transform.position, EffectType.UnitDead);
+
             UnitManager.Instance.RemoveUnitList(this);
+
             gameObject.SetActive(false);
         }
     }
