@@ -8,8 +8,16 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
 
     [SerializeField]
     private GameEndPresenter _gameEndPresenter = default;
+
+    [SerializeField]
+    private Camera mainCamera = default;
+
+    private CameraController _cameraController;
+
     protected override void Awake()
     {
+        _cameraController = new CameraController(mainCamera);
+
         AddToListBuildingTransform();
     }
 
@@ -31,6 +39,9 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
     public void RemoveAtBuilding(BaseBuilding building)
     {
         buildingTransformList.Remove(building.transform);
+
+        //Cameraの揺れ
+        _cameraController.ShakeCamera(1.0f);
 
         if (buildingTransformList.Count == 0)
         {
