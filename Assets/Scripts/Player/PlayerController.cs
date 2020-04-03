@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
 
     private PlayerSummoner _playerSummoner;
 
+    private Vector3 mousePosition;
+
     private void Awake()
     {
         Camera camera = Camera.main;
@@ -21,11 +23,14 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        var mousePosition
+        mousePosition
             = _playerRayCaster.GetPositionByRay(_playerInput.MouseDirection);
 
         transform.position = mousePosition;
+    }
 
+    public void UpdatePlayerAction()
+    {
         //召喚
         if (_playerInput.IsSummonSetting)
         {

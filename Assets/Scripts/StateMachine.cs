@@ -4,6 +4,7 @@ using UnityEngine;
 public class StateMachine<T> : MonoBehaviour
 {
     private Dictionary<T, State<T>> stateList = new Dictionary<T, State<T>>();
+
     private State<T> state;
 
     public State<T> CurrentState
