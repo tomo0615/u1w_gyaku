@@ -923,6 +923,7 @@ GameObject:
   m_Component:
   - component: {fileID: 685945722}
   - component: {fileID: 685945724}
+  - component: {fileID: 685945723}
   m_Layer: 5
   m_Name: StartViewer
   m_TagString: Untagged
@@ -954,6 +955,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1980, y: 1240}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &685945723
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685945721}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c3fa48d642fc83943b19b07ffa9d5747, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!222 &685945724
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1636,7 +1656,7 @@ RectTransform:
   m_GameObject: {fileID: 1256299680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 685945722}
   m_RootOrder: 0
