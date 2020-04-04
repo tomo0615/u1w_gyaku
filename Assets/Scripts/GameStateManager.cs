@@ -2,10 +2,9 @@
 
 public class GameStateManager : StateMachine<GameState>
 {
-    /*Onhogeで参照する何かを書く
     [SerializeField]
-    private 
-    */
+    private StartPresenter _startPresenter = default;
+
     [SerializeField]
     private PlayerController _playerController = default;
 
@@ -48,15 +47,15 @@ public class GameStateManager : StateMachine<GameState>
     #region SettingMethod
     private void OnSetUpSetting()
     {
-        //Animationを表示する
-        //Debug.Log("Setting");
+        StartCoroutine(_startPresenter.OnGameStart());
     }
 
     private void OnUpdateSetting()
     {
-        //if(IsComplete()
-        GoToState(GameState.Game);
-
+        if (_startPresenter.IsCompleteSetting())
+        {
+            GoToState(GameState.Game);
+        }
     }
     #endregion
 
