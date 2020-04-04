@@ -9,6 +9,9 @@ public class GameStateManager : StateMachine<GameState>
     [SerializeField]
     private PlayerController _playerController = default;
 
+    [SerializeField]
+    private GameEndPresenter _gameEndPresenter = default;
+
     private void Awake()
     {
         InitializeStateMachine();
@@ -27,7 +30,7 @@ public class GameStateManager : StateMachine<GameState>
             state.SetUpAction = OnSetUpSetting;
             state.UpdateAction = OnUpdateSetting;
             AddState(state);
-        }/*
+        }
         //Game
         {
             var state = new State<GameState>(GameState.Game);
@@ -39,13 +42,14 @@ public class GameStateManager : StateMachine<GameState>
             var state = new State<GameState>(GameState.Finish);
             state.SetUpAction = OnSetUpFinish;
             AddState(state);
-        }*/
+        }
     }
 
     #region SettingMethod
     private void OnSetUpSetting()
     {
         //Animationを表示する
+        //Debug.Log("Setting");
     }
 
     private void OnUpdateSetting()
@@ -62,14 +66,17 @@ public class GameStateManager : StateMachine<GameState>
         //Playerを使えるようにする
         _playerController.UpdatePlayerAction();
 
-        GoToState(GameState.Finish);
+        if (_gameEndPresenter.IsGameEnd)
+        {
+            GoToState(GameState.Finish);
+        }
     }
     #endregion
 
     #region FinishMethod
     private void OnSetUpFinish()
     {
-        //
+        //Debug.Log("Finish");
     }
 
     #endregion 
