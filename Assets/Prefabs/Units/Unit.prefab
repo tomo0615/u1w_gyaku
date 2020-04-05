@@ -78,7 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPrefab: {fileID: 3254283864707958450, guid: d3a888b006c7b4047883ebc23b2384db,
     type: 3}
-  attackInterval: 1
+  attackInterval: 0.5
   attackRangeValue: 4
 --- !u!54 &2946545150675038397
 Rigidbody:

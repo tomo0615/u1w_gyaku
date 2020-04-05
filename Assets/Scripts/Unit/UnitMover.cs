@@ -19,4 +19,9 @@ public class UnitMover
 
         _rigidbody.velocity = _transform.forward * moveSpeed;
     }
+
+    public void StopMove()
+    {
+        _rigidbody.velocity *= 0;
+    }
 }

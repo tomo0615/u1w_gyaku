@@ -8,6 +8,8 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
 
     private UnitAttacker _unitAttacker;
 
+    private TargetSetter _targetSetter;
+
     [SerializeField]
     private int hitPoint = 1;
 
@@ -22,36 +24,35 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
 
     private Transform attackTarget;
 
-    private Rigidbody _rigidbody;
-
     private void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody>();
-
-        _unitMover = new UnitMover(transform, _rigidbody);
+        _unitMover = new UnitMover(transform, GetComponent<Rigidbody>());
 
         _unitAttacker = GetComponent<UnitAttacker>();
+
+        _targetSetter = new TargetSetter(transform);
     }
 
     private void Start()
     {
-        SetNearestTarget();
+        attackTarget =  _targetSetter.SetNearestTarget();
     }
 
     private void Update()
     {
         if (attackTarget == null)
         {
-            SetNearestTarget();
+            attackTarget = _targetSetter.SetNearestTarget();
         }
 
+        //Action
         if (currentState == UnitActionState.Move)
         {
             _unitMover.MoveToTartget(attackTarget, moveSpeed);
         }
         else if(currentState == UnitActionState.Attack)
         {
-            _rigidbody.velocity *= 0;
+            _unitMover.StopMove();
 
            _unitAttacker.AttackToTarget();
         }
@@ -64,36 +65,18 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
         if(_unitAttacker.IsAttackToTarget(attackTarget.position))
         {
             currentState = UnitActionState.Attack;
-            _animator.Play("Attack");
         }
         else
         {
             currentState = UnitActionState.Move;
-            _animator.Play("Move");
         }
+
+        SetAnimation();
     }
 
-    private void SetNearestTarget()
-    {        
-        float minDistance = 999f;
-        var buildingList = StageManager.Instance.GetBuildingList();
-
-        if(buildingList.Count == 0) currentState = UnitActionState.Freeze;
-
-        //近い建物を全検索する
-        foreach (Transform target in buildingList)
-        {
-            if (target == null) continue;
-
-            float distance = Vector3.Distance(transform.position, target.position);
-
-            if (minDistance > distance)
-            {
-                minDistance = distance;
-
-                SetTarget(target);
-            }
-        }
+    private void SetAnimation()
+    {
+        _animator.Play(currentState.ToString());
     }
 
     public void SetTarget(Transform target)
