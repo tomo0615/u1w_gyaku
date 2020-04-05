@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
-public enum UnitState
-{
-    Move,
-    Attack,
-    Freeze,
-};
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(UnitAttacker))]
 public abstract class BaseUnit : MonoBehaviour, IAttackable
 {
+    private UnitMover _unitMover;
+
+    private UnitAttacker _unitAttacker;
+
     [SerializeField]
     private int hitPoint = 1;
 
@@ -16,18 +15,10 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
     private float moveSpeed = 10;
 
     [SerializeField]
-    private UnitState currentState = UnitState.Move;
-
-    [SerializeField]
-    private AttackObject attackPrefab = null;
-
-    [SerializeField]
-    private float attackInterval = 2f;
+    private UnitActionState currentState = UnitActionState.Move;
 
     [SerializeField]
     private Animator _animator = null;
-
-    private float attackIntervalSave = 0f;
 
     private Transform attackTarget;
 
@@ -36,6 +27,10 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+
+        _unitMover = new UnitMover(transform, _rigidbody);
+
+        _unitAttacker = GetComponent<UnitAttacker>();
     }
 
     private void Start()
@@ -50,15 +45,15 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
             SetNearestTarget();
         }
 
-        if (currentState == UnitState.Move)
+        if (currentState == UnitActionState.Move)
         {
-            MoveToTartget();
+            _unitMover.MoveToTartget(attackTarget, moveSpeed);
         }
-        else if(currentState == UnitState.Attack)
+        else if(currentState == UnitActionState.Attack)
         {
             _rigidbody.velocity *= 0;
 
-            AttackTarget();
+           _unitAttacker.AttackToTarget();
         }
         else
         {
@@ -66,14 +61,14 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
         }
 
         //State変更
-        if(Vector3.Distance(transform.position, attackTarget.position) <= 4f)
+        if(_unitAttacker.IsAttackToTarget(attackTarget.position))
         {
-            currentState = UnitState.Attack;
+            currentState = UnitActionState.Attack;
             _animator.Play("Attack");
         }
         else
         {
-            currentState = UnitState.Move;
+            currentState = UnitActionState.Move;
             _animator.Play("Move");
         }
     }
@@ -83,7 +78,7 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
         float minDistance = 999f;
         var buildingList = StageManager.Instance.GetBuildingList();
 
-        if(buildingList.Count == 0) currentState = UnitState.Freeze;
+        if(buildingList.Count == 0) currentState = UnitActionState.Freeze;
 
         //近い建物を全検索する
         foreach (Transform target in buildingList)
@@ -104,25 +99,6 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
     public void SetTarget(Transform target)
     {
         attackTarget = target;
-    }
-
-    protected void MoveToTartget()
-    {
-        transform.LookAt(attackTarget);
-
-        _rigidbody.velocity = transform.forward * moveSpeed;
-    }
-
-    protected void AttackTarget()
-    {
-        attackIntervalSave += Time.deltaTime;
-
-        if(attackIntervalSave >= attackInterval)
-        {
-            Instantiate(attackPrefab, transform.position + transform.forward * 2, transform.rotation);
-
-            attackIntervalSave = 0f;
-        }
     }
 
     public void Attacked(int damageValue)

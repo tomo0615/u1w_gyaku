@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2946545150675038399}
   - component: {fileID: 2946545150675038338}
   - component: {fileID: 2946545150675038398}
+  - component: {fileID: 7623283157178220672}
   - component: {fileID: 2946545150675038397}
   m_Layer: 0
   m_Name: Unit
@@ -62,10 +63,23 @@ MonoBehaviour:
   hitPoint: 10
   moveSpeed: 10
   currentState: 0
+  _animator: {fileID: 7055693801599153888}
+--- !u!114 &7623283157178220672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2946545150675038339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ae631726d88b04ab0dbc89966d326a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   attackPrefab: {fileID: 3254283864707958450, guid: d3a888b006c7b4047883ebc23b2384db,
     type: 3}
-  attackInterval: 1.5
-  _animator: {fileID: 7055693801599153888}
+  attackInterval: 1
+  attackRangeValue: 4
 --- !u!54 &2946545150675038397
 Rigidbody:
   m_ObjectHideFlags: 0
