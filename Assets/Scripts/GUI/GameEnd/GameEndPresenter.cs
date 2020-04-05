@@ -8,12 +8,18 @@ public class GameEndPresenter : MonoBehaviour
     [SerializeField]
     private GameOverViewer _gameOverViewer = default;
 
+    [SerializeField]
+    private ResultButton _resultButton = default;
+
     public bool IsGameEnd { private set; get; } = false;
 
     private void Awake()
     {
         _gameClearViewer.InitializeGameEndViewer();
+
         _gameOverViewer.InitializeGameEndViewer();
+
+        _resultButton.InitializeResultButton();
     }
 
     public void OnGameEnd(bool isClear)
@@ -23,10 +29,14 @@ public class GameEndPresenter : MonoBehaviour
         if (isClear)
         {
             _gameClearViewer.ViewGameClear();
-            return;
+        }
+        else
+        {
+            _gameOverViewer.ViewGameOver();
         }
 
-        _gameOverViewer.ViewGameOver();
+        //resultButtonを表示
+        _resultButton.SetActiveButton();
     }
 
 }
