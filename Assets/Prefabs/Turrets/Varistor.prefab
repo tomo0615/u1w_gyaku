@@ -262,6 +262,7 @@ GameObject:
   - component: {fileID: 7972792243744708428}
   - component: {fileID: 7972792243744708430}
   - component: {fileID: 7972792243744708429}
+  - component: {fileID: 830759114}
   m_Layer: 8
   m_Name: Varistor
   m_TagString: Untagged
@@ -311,14 +312,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bffe0a54e39edf14bbd6bb032612d983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoint: 10
+  hitPoint: 30
   hpBar: {fileID: 2128716008}
+  turretTransform: {fileID: 3161448336942164312}
+--- !u!114 &830759114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7972792243744708427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6046df860f8938b49b4e6f34f97a8954, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 476940851333583506, guid: 1808b9cbb35bb7e4e8c4f590406a0de4,
     type: 3}
-  shotInterval: 1
-  bulletSpeed: 40
+  shotInterval: 0.7
+  bulletSpeed: 20
   bulletPower: 1
-  turretTransform: {fileID: 3161448336942164312}
   shotTransform: {fileID: 871379007}
 --- !u!1001 &7972792243045417538
 PrefabInstance:

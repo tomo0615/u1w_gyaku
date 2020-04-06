@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 2119142046838518884}
   - component: {fileID: 2119142046838518889}
   - component: {fileID: 2119142046838518885}
+  - component: {fileID: 2134920067}
   m_Layer: 8
   m_Name: Turret
   m_TagString: Untagged
@@ -189,14 +190,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bffe0a54e39edf14bbd6bb032612d983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoint: 10
+  hitPoint: 30
   hpBar: {fileID: 1512179071}
+  turretTransform: {fileID: 6346135617293789243}
+--- !u!114 &2134920067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119142046838518888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6046df860f8938b49b4e6f34f97a8954, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 476940851333583506, guid: 416cebde00c19e743a7ba10415d1f4b5,
     type: 3}
   shotInterval: 1
   bulletSpeed: 20
-  bulletPower: 3
-  turretTransform: {fileID: 6346135617293789243}
+  bulletPower: 2
   shotTransform: {fileID: 123228098}
 --- !u!1 &2119142047412132138
 GameObject:

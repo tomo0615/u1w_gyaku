@@ -8,27 +8,9 @@ public class BaseBuilding : MonoBehaviour , IDamageable
     [SerializeField]
     private HPBar hpBar = default;
 
-    protected virtual void Start()
+    private void Start()
     {
         hpBar.SetMaxHPValue(hitPoint);
-    }
-
-    public void ApplyDamage()
-    {
-        hitPoint--;
-
-        hpBar.OnHPValueChange(hitPoint);
-
-        if(hitPoint <= 0)
-        {
-            StageManager.Instance.RemoveAtBuilding(this);
-
-            GameEffectManager.Instance.OnGenelateEffect
-                (transform.position,
-                EffectType.BuildingExplosion);
-
-            Destroy(gameObject);
-        }
     }
 
     public void ApplyDamage(int damageValue)
