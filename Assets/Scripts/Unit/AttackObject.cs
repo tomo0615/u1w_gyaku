@@ -5,9 +5,13 @@ public class AttackObject : MonoBehaviour
     [SerializeField]
     private float lifeTime = 1f;
 
-    private void Start()
+    private int attackPower;
+
+    public void Initialize(int power)
     {
-        Destroy(gameObject,lifeTime);
+        Destroy(gameObject, lifeTime);
+
+        attackPower = power;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -16,7 +20,7 @@ public class AttackObject : MonoBehaviour
 
         if (damageable != null)
         {
-            damageable.ApplyDamage();
+            damageable.ApplyDamage(attackPower);
             
             GameEffectManager.Instance.OnGenelateEffect(
                 transform.position,

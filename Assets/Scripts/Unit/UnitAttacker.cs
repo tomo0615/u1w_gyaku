@@ -6,6 +6,9 @@ public class UnitAttacker : MonoBehaviour
     private AttackObject attackPrefab = null;
 
     [SerializeField]
+    private int attackPower = 1;
+
+    [SerializeField]
     private float attackInterval = 2f;
 
     [SerializeField]
@@ -19,9 +22,12 @@ public class UnitAttacker : MonoBehaviour
 
         if (attackIntervalSave >= attackInterval)
         {
-            Instantiate(attackPrefab,
+            var attackObject 
+                = Instantiate(attackPrefab,
                 transform.position + transform.forward * 2,
                 transform.rotation);
+
+            attackObject.Initialize(attackPower);
 
             attackIntervalSave = 0f;
         }
@@ -32,5 +38,4 @@ public class UnitAttacker : MonoBehaviour
         return Vector3.Distance(transform.position, targetPosition)
             <= attackRangeValue;
     }
-
 }

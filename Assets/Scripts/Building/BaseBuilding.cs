@@ -30,4 +30,22 @@ public class BaseBuilding : MonoBehaviour , IDamageable
             Destroy(gameObject);
         }
     }
+
+    public void ApplyDamage(int damageValue)
+    {
+        hitPoint -= damageValue;
+
+        hpBar.OnHPValueChange(hitPoint);
+
+        if (hitPoint <= 0)
+        {
+            StageManager.Instance.RemoveAtBuilding(this);
+
+            GameEffectManager.Instance.OnGenelateEffect
+                (transform.position,
+                EffectType.BuildingExplosion);
+
+            Destroy(gameObject);
+        }
+    }
 }

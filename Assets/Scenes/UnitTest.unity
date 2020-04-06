@@ -527,7 +527,7 @@ PrefabInstance:
     - target: {fileID: 2946545150675038339, guid: 537c9018b0f5aeb4d85be219682520b8,
         type: 3}
       propertyPath: m_Name
-      value: Unit
+      value: AssaltUnit
       objectReference: {fileID: 0}
     - target: {fileID: 2946545150675038399, guid: 537c9018b0f5aeb4d85be219682520b8,
         type: 3}
@@ -2731,7 +2731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2119336378
 RectTransform:
   m_ObjectHideFlags: 0
