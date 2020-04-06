@@ -33,17 +33,14 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
         _targetSetter = new TargetSetter(transform);
     }
 
-    private void Start()
-    {
-        attackTarget =  _targetSetter.SetNearestTarget();
-    }
-
     private void Update()
     {
         if (attackTarget == null)
         {
             attackTarget = _targetSetter.SetNearestTarget();
         }
+
+        UpdateAnimation();
 
         //Action
         if (currentState == UnitActionState.Move)
@@ -60,9 +57,12 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
         {
             return;
         }
+    }
 
-        //State変更
-        if(_unitAttacker.IsAttackToTarget(attackTarget.position))
+    private void UpdateAnimation()
+    {
+        //距離でState変更
+        if (_unitAttacker.IsAttackToTarget(attackTarget.position))
         {
             currentState = UnitActionState.Attack;
         }
@@ -71,11 +71,6 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
             currentState = UnitActionState.Move;
         }
 
-        SetAnimation();
-    }
-
-    private void SetAnimation()
-    {
         _animator.Play(currentState.ToString());
     }
 
