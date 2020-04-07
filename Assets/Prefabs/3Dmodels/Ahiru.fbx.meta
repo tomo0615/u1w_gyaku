@@ -8,22 +8,22 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert1
-    second: {fileID: 2100000, guid: d11a87cb2570fb74abfafcae8fb2ec1f, type: 2}
+    second: {fileID: 2100000, guid: 50059d2003ac9b74285ac444d1faf118, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert2
-    second: {fileID: 2100000, guid: 395fac89f6ae8754fbe36cb86c7adbf9, type: 2}
+    second: {fileID: 2100000, guid: a3d67e20006395049b8f326464ae9550, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert3
-    second: {fileID: 2100000, guid: 41ca62ff73ad6b9408aa2ee9c3908f16, type: 2}
+    second: {fileID: 2100000, guid: 439d2bc4a2395e647b76f5991b9ec522, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert4
-    second: {fileID: 2100000, guid: 2b858b2c3939a744798cd04344a597d2, type: 2}
+    second: {fileID: 2100000, guid: a8cf7efe1c4559742a088e071696cb10, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
