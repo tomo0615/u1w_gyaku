@@ -24,7 +24,7 @@ public class UnitAttacker : MonoBehaviour
         {
             var attackObject 
                 = Instantiate(attackPrefab,
-                transform.position + transform.forward * 2,
+                transform.position + transform.forward * 3,
                 transform.rotation);
 
             attackObject.Initialize(attackPower);
