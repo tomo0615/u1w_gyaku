@@ -7,7 +7,7 @@ public class AttackObject : MonoBehaviour
 
     private int attackPower;
 
-    public void Initialize(int power)
+    public virtual void Initialize(int power)
     {
         Destroy(gameObject, lifeTime);
 
