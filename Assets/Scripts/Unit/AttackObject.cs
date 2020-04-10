@@ -1,17 +1,24 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class AttackObject : MonoBehaviour
 {
-    [SerializeField]
-    private float lifeTime = 1f;
-
     private int attackPower;
 
-    public virtual void Initialize(int power)
+    public virtual void ActiveAttackObject(int power)
     {
-        Destroy(gameObject, lifeTime);
-
         attackPower = power;
+
+        gameObject.SetActive(true);
+    }
+
+    protected virtual void HitDamageableObject()
+    {
+        gameObject.SetActive(false);
+
+        GameEffectManager.Instance.OnGenelateEffect(
+            transform.position,
+            EffectType.Attack);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,10 +28,8 @@ public class AttackObject : MonoBehaviour
         if (damageable != null)
         {
             damageable.ApplyDamage(attackPower);
-            
-            GameEffectManager.Instance.OnGenelateEffect(
-                transform.position,
-                EffectType.Attack);
+
+            HitDamageableObject();
         }
     }
 }

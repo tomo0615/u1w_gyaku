@@ -3,7 +3,7 @@
 public class UnitAttacker : MonoBehaviour
 {
     [SerializeField]
-    private AttackObject attackPrefab = null;
+    private AttackObject attackObject = default;
 
     [SerializeField]
     private int attackPower = 1;
@@ -22,12 +22,7 @@ public class UnitAttacker : MonoBehaviour
 
         if (attackIntervalSave >= attackInterval)
         {
-            var attackObject 
-                = Instantiate(attackPrefab,
-                transform.position + transform.forward * 3,
-                transform.rotation);
-
-            attackObject.Initialize(attackPower);
+            attackObject.ActiveAttackObject(attackPower);
 
             attackIntervalSave = 0f;
         }
