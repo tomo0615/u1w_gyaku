@@ -16,6 +16,8 @@ public class TargetSetter
         float minDistance = 999f;
         var buildingList = StageManager.Instance.GetBuildingList();
 
+        if (buildingList.Count == 0) return null; //建物があるかチェック用
+
         //近い建物を全検索する
         foreach (Transform target in buildingList)
         {

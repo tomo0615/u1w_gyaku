@@ -18,7 +18,6 @@ public class PlayerSummoner : MonoBehaviour
 
     private List<GameObject> furoOkeList = new List<GameObject>();
 
-
     public void SummonSetting(Vector3 summonPosition, UnitType unitType)
     {
         if (UnitManager.Instance.SummonableUnit() == false) return;

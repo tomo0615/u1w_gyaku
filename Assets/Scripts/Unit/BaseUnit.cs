@@ -35,9 +35,12 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
 
     private void Update()
     {
+        attackTarget = _targetSetter.SetNearestTarget();
+
         if (attackTarget == null)
         {
-            attackTarget = _targetSetter.SetNearestTarget();
+            _unitMover.StopMove();
+            return;
         }
 
         UpdateAnimation();
