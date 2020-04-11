@@ -9,6 +9,17 @@ public class PlayerSummoner : MonoBehaviour
     [SerializeField]
     private BaseUnit unitPrefab = null;
 
+    /*
+    [SerializeField]
+    private BaseUnit assultUnitPrefab = null;
+
+    [SerializeField]
+    private BaseUnit tankUnitPrefab = null;
+
+    [SerializeField]
+    private BaseUnit gunUnitPrefab = null;
+    */
+
     [SerializeField]
     private float summonInterval = 0.1f;
 
@@ -17,7 +28,6 @@ public class PlayerSummoner : MonoBehaviour
     private List<BaseUnit> summonList = new List<BaseUnit>();
 
     private List<GameObject> furoOkeList = new List<GameObject>();
-
 
     public void SummonSetting(Vector3 summonPosition)
     {

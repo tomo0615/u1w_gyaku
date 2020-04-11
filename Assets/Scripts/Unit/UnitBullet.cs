@@ -9,7 +9,7 @@ public class UnitBullet : AttackObject
     private Rigidbody _rigidbody;
 
     [SerializeField]
-    private Transform shooterTransform;
+    private Transform shooterTransform = default;
 
     private void Awake()
     {

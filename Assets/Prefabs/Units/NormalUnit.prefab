@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7623283157178220672}
   - component: {fileID: 2946545150675038397}
   m_Layer: 0
-  m_Name: AssultUnit
+  m_Name: NormalUnit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 128111d3d14a0754588593308e4c546e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoint: 10
+  hitPoint: 20
   moveSpeed: 10
   currentState: 0
   _animator: {fileID: 7055693801599153888}
@@ -126,7 +126,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: b056d2f4a07391a4f96e3b7157e4c7e4,
         type: 3}
       propertyPath: m_Name
-      value: Ahiru
+      value: NormalAhiruModel
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b056d2f4a07391a4f96e3b7157e4c7e4,
         type: 3}

@@ -7,7 +7,14 @@ public class UnitManager : SingletonMonoBehaviour<UnitManager>
 
     [SerializeField]
     private int unitCount = 10;
-
+    /*
+    [SerializeField]
+    private float assultUnitCount = 10;
+    [SerializeField]
+    private float tankUnitCount = 10;
+    [SerializeField]
+    private float guntUnitCount = 10;
+    */
     [SerializeField]
     private GameEndPresenter _gameEndPresenter = null;
 
@@ -24,7 +31,6 @@ public class UnitManager : SingletonMonoBehaviour<UnitManager>
         unitList.Add(unit);
 
         unitCount--;
-
         _unitCountPresenter.OnChangeUnitCount(unitCount);
     }
 

@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 3881169720924368267}
   - component: {fileID: 3881169720924368270}
   m_Layer: 0
-  m_Name: GunUnit
+  m_Name: CannonUnit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackObject: {fileID: 7494897945837853383}
-  attackPower: 3
+  attackPower: 4
   attackInterval: 1
   attackRangeValue: 16
 --- !u!54 &3881169720924368267
@@ -157,7 +157,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: e14aff26dc08a5e4986af6a785623db6,
         type: 3}
       propertyPath: m_Name
-      value: GunAhiru
+      value: GunAhiruModel
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e14aff26dc08a5e4986af6a785623db6,
         type: 3}
@@ -245,16 +245,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6764290868303537853, guid: da66e1e2b2b142d40ac8b2500c7ff770,
-        type: 3}
-      propertyPath: moveSpeed
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 6764290868303537853, guid: da66e1e2b2b142d40ac8b2500c7ff770,
-        type: 3}
-      propertyPath: shooterTransform
-      value: 
-      objectReference: {fileID: 2131650532}
     - target: {fileID: 6764290868303537850, guid: da66e1e2b2b142d40ac8b2500c7ff770,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -310,6 +300,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6764290868303537853, guid: da66e1e2b2b142d40ac8b2500c7ff770,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764290868303537853, guid: da66e1e2b2b142d40ac8b2500c7ff770,
+        type: 3}
+      propertyPath: shooterTransform
+      value: 
+      objectReference: {fileID: 2131650532}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da66e1e2b2b142d40ac8b2500c7ff770, type: 3}
 --- !u!4 &7494897945837853376 stripped

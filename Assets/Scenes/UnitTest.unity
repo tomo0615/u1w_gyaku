@@ -788,7 +788,7 @@ PrefabInstance:
     - target: {fileID: 2946545150675038339, guid: 537c9018b0f5aeb4d85be219682520b8,
         type: 3}
       propertyPath: m_Name
-      value: AssultUnit
+      value: NormalUnit
       objectReference: {fileID: 0}
     - target: {fileID: 2946545150675038399, guid: 537c9018b0f5aeb4d85be219682520b8,
         type: 3}
@@ -844,11 +844,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2946545150675038398, guid: 537c9018b0f5aeb4d85be219682520b8,
-        type: 3}
-      propertyPath: hitPoint
-      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 537c9018b0f5aeb4d85be219682520b8, type: 3}
@@ -2939,7 +2934,7 @@ PrefabInstance:
     - target: {fileID: 3881169720924368268, guid: 8073d827cdcfee84299c868381341003,
         type: 3}
       propertyPath: m_Name
-      value: GunUnit
+      value: CannonUnit
       objectReference: {fileID: 0}
     - target: {fileID: 3881169720924368271, guid: 8073d827cdcfee84299c868381341003,
         type: 3}
@@ -2996,51 +2991,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3881169720924368264, guid: 8073d827cdcfee84299c868381341003,
-        type: 3}
-      propertyPath: attackPower
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3881169720924368264, guid: 8073d827cdcfee84299c868381341003,
-        type: 3}
-      propertyPath: attackInterval
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3881169720089638310, guid: 8073d827cdcfee84299c868381341003,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 562a831e534b2b741b5ccf1202999945, type: 2}
-    - target: {fileID: 1246201895024080236, guid: 8073d827cdcfee84299c868381341003,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.06964404
-      objectReference: {fileID: 0}
-    - target: {fileID: 1246201895024080236, guid: 8073d827cdcfee84299c868381341003,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8312625202057483558, guid: 8073d827cdcfee84299c868381341003,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.06964404
-      objectReference: {fileID: 0}
-    - target: {fileID: 8312625202057483558, guid: 8073d827cdcfee84299c868381341003,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8875510180512748043, guid: 8073d827cdcfee84299c868381341003,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.9488166
-      objectReference: {fileID: 0}
-    - target: {fileID: 8875510180512748043, guid: 8073d827cdcfee84299c868381341003,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8073d827cdcfee84299c868381341003, type: 3}
 --- !u!1001 &3899770940193914510
@@ -3053,12 +3003,7 @@ PrefabInstance:
     - target: {fileID: 3899770940625899738, guid: e411ed05026b25341ab90746032c3664,
         type: 3}
       propertyPath: m_Name
-      value: TankUnit
-      objectReference: {fileID: 0}
-    - target: {fileID: 3899770940625899738, guid: e411ed05026b25341ab90746032c3664,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      value: ShieldUnit
       objectReference: {fileID: 0}
     - target: {fileID: 3899770940625899739, guid: e411ed05026b25341ab90746032c3664,
         type: 3}
@@ -3114,16 +3059,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3899770940625899736, guid: e411ed05026b25341ab90746032c3664,
-        type: 3}
-      propertyPath: hitPoint
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3899770940625899737, guid: e411ed05026b25341ab90746032c3664,
-        type: 3}
-      propertyPath: attackPower
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e411ed05026b25341ab90746032c3664, type: 3}

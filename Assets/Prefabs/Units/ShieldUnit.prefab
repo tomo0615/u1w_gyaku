@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3899770940625899734}
   - component: {fileID: 3899770940625899735}
   m_Layer: 0
-  m_Name: TankUnit
+  m_Name: ShieldUnit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845e4d3616f5ba2498682bf6e5121c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoint: 20
+  hitPoint: 50
   moveSpeed: 10
   currentState: 0
   _animator: {fileID: 3899770941312882248}
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackObject: {fileID: 1961120742935199829}
-  attackPower: 1
+  attackPower: 2
   attackInterval: 2
   attackRangeValue: 5
 --- !u!54 &3899770940625899734
@@ -218,7 +218,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 9989c720922db8f4abac090c52ee3469,
         type: 3}
       propertyPath: m_Name
-      value: TankAhiru
+      value: ShieldAhiruModel
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 9989c720922db8f4abac090c52ee3469,
         type: 3}
