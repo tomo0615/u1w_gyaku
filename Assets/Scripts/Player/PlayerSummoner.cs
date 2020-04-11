@@ -4,21 +4,10 @@ using System.Collections.Generic;
 public class PlayerSummoner : MonoBehaviour
 {
     [SerializeField]
+    private UnitStorage _unitStorage = default;
+
+    [SerializeField]
     private GameObject FuroOkePrefab = null;
-
-    [SerializeField]
-    private BaseUnit unitPrefab = null;
-
-    /*
-    [SerializeField]
-    private BaseUnit assultUnitPrefab = null;
-
-    [SerializeField]
-    private BaseUnit tankUnitPrefab = null;
-
-    [SerializeField]
-    private BaseUnit gunUnitPrefab = null;
-    */
 
     [SerializeField]
     private float summonInterval = 0.1f;
@@ -29,7 +18,8 @@ public class PlayerSummoner : MonoBehaviour
 
     private List<GameObject> furoOkeList = new List<GameObject>();
 
-    public void SummonSetting(Vector3 summonPosition)
+
+    public void SummonSetting(Vector3 summonPosition, UnitType unitType)
     {
         if (UnitManager.Instance.SummonableUnit() == false) return;
 
@@ -37,6 +27,7 @@ public class PlayerSummoner : MonoBehaviour
 
         if (summonIntervalSave >= summonInterval)
         {
+            BaseUnit unitPrefab = _unitStorage.GetUnitPrefab(unitType);
             //Unit召喚
             var instanceUnit = Instantiate(unitPrefab, summonPosition, Quaternion.identity);
             instanceUnit.gameObject.SetActive(false);

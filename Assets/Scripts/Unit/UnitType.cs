@@ -2,5 +2,5 @@
 {
     Normal,
     Shield,
-    Cannon
+    Cannon,
 }

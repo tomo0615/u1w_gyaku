@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 mousePosition;
 
+    [SerializeField]
+    private UnitType currentUnitType = UnitType.Normal;
+
     private void Awake()
     {
         Camera camera = Camera.main;
@@ -34,7 +37,7 @@ public class PlayerController : MonoBehaviour
         //召喚
         if (_playerInput.IsSummonSetting)
         {
-            _playerSummoner.SummonSetting(mousePosition);
+            _playerSummoner.SummonSetting(mousePosition, currentUnitType);
         }
         else if (_playerInput.IsSummon)
         {
