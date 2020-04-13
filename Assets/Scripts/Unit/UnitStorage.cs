@@ -8,6 +8,8 @@ public class UnitStorage : MonoBehaviour
 
     private Dictionary<UnitType, BaseUnit> unitDictionary;
 
+    //Unit選択フェイズで初期化に変更
+    //数も初期化できるように
     public void Awake()
     {
         unitDictionary = new Dictionary<UnitType, BaseUnit>

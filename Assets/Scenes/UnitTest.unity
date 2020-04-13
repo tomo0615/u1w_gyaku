@@ -684,7 +684,7 @@ PrefabInstance:
     - target: {fileID: 828513295265244604, guid: b906402fccb30a84bbb50366fbf6cdf9,
         type: 3}
       propertyPath: m_Name
-      value: FuroOke (2)
+      value: CannonFuroOke
       objectReference: {fileID: 0}
     - target: {fileID: 828513295265244611, guid: b906402fccb30a84bbb50366fbf6cdf9,
         type: 3}
@@ -788,7 +788,7 @@ PrefabInstance:
     - target: {fileID: 828513295265244604, guid: b906402fccb30a84bbb50366fbf6cdf9,
         type: 3}
       propertyPath: m_Name
-      value: FuroOke (1)
+      value: ShieldFuroOke
       objectReference: {fileID: 0}
     - target: {fileID: 828513295265244611, guid: b906402fccb30a84bbb50366fbf6cdf9,
         type: 3}
@@ -1600,7 +1600,7 @@ PrefabInstance:
     - target: {fileID: 828513295265244604, guid: b906402fccb30a84bbb50366fbf6cdf9,
         type: 3}
       propertyPath: m_Name
-      value: FuroOke
+      value: NormalFuroOke
       objectReference: {fileID: 0}
     - target: {fileID: 828513295265244611, guid: b906402fccb30a84bbb50366fbf6cdf9,
         type: 3}
@@ -2288,7 +2288,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368131954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.01, y: 1.5, z: -19.76}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
