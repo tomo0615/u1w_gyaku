@@ -24,7 +24,7 @@ public class UnirSelectPresenter : MonoBehaviour
 
         //Modelの値を監視　変化時Viewに反映
         _unitSelectModel.UnitCounter
-            .Subscribe()
+            .Subscribe(_unitSelectView.OnUnitCountChanged)
             .AddTo(gameObject);
 
         SetEvents();
