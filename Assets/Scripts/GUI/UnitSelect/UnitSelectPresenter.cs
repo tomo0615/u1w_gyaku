@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UniRx;
 
-public class UnirSelectPresenter : MonoBehaviour
+public class UnitSelectPresenter : MonoBehaviour
 {
     [SerializeField]
     private UnitSelectView _unitSelectView = default;
