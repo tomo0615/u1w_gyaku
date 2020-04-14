@@ -18,5 +18,4 @@ public class UnitSelectModel
     {
         _unitCount.Value = count;
     }
-
 }

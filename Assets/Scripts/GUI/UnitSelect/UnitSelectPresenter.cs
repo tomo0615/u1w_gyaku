@@ -4,9 +4,18 @@ using UniRx;
 public class UnitSelectPresenter : MonoBehaviour
 {
     [SerializeField]
+    private int unitCostValue = 0;
+
+    [SerializeField]
     private UnitSelectView _unitSelectView = default;
 
+    [SerializeField]
+    private TotalCostView _totalCostView = default;
+
     private UnitSelectModel _unitSelectModel;
+
+    [SerializeField]
+    private TotalCostModel _totalCostModel;
 
     private const int MAX_COUNT = 100;
 
@@ -21,10 +30,15 @@ public class UnitSelectPresenter : MonoBehaviour
     {
         _unitSelectModel = new UnitSelectModel();
 
-
-        //Modelの値を監視　変化時Viewに反映
+        //個別のUnitCount監視
         _unitSelectModel.UnitCounter
             .Subscribe(_unitSelectView.OnUnitCountChanged)
+            .AddTo(gameObject);
+
+
+        //TotalCost監視
+        _totalCostModel.TotalCost
+            .Subscribe(_totalCostView.OnTotalCostChanged)
             .AddTo(gameObject);
 
         SetEvents();
@@ -44,6 +58,9 @@ public class UnitSelectPresenter : MonoBehaviour
         {
             _unitSelectModel
                 .SetUnitCount(_unitSelectModel.UnitCounter.Value + 1);
+
+            _totalCostModel
+                .SetTotalCost(_totalCostModel.TotalCost.Value + unitCostValue);
         }
     }
 
@@ -53,6 +70,10 @@ public class UnitSelectPresenter : MonoBehaviour
         {
             _unitSelectModel
                 .SetUnitCount(_unitSelectModel.UnitCounter.Value - 1);
+
+
+            _totalCostModel
+                .SetTotalCost(_totalCostModel.TotalCost.Value - unitCostValue);
         }
     }
 }

@@ -562,9 +562,10 @@ GameObject:
   m_Component:
   - component: {fileID: 36465749}
   - component: {fileID: 36465751}
+  - component: {fileID: 36465752}
   - component: {fileID: 36465750}
   m_Layer: 5
-  m_Name: TotalCostText
+  m_Name: TotalCostView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -709,6 +710,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 36465748}
   m_CullTransparentMesh: 0
+--- !u!114 &36465752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36465748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b439d91ad26ec5141a11f5ae42d7abb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _totalCostText: {fileID: 36465750}
 --- !u!1 &66241724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,7 +1340,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8768a63ddcc1bfb4aa81ad605591e97e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitCostValue: 10
   _unitSelectView: {fileID: 1934219078}
+  _totalCostView: {fileID: 36465752}
+  _totalCostModel: {fileID: 890086690}
 --- !u!1 &206290969
 GameObject:
   m_ObjectHideFlags: 0
@@ -2230,7 +2247,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8768a63ddcc1bfb4aa81ad605591e97e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitCostValue: 30
   _unitSelectView: {fileID: 714295387}
+  _totalCostView: {fileID: 36465752}
+  _totalCostModel: {fileID: 890086690}
 --- !u!1 &580313647
 GameObject:
   m_ObjectHideFlags: 0
@@ -2475,6 +2495,7 @@ RectTransform:
   - {fileID: 399110417}
   - {fileID: 687536169}
   - {fileID: 36465749}
+  - {fileID: 890086689}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3025,7 +3046,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8768a63ddcc1bfb4aa81ad605591e97e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitCostValue: 30
   _unitSelectView: {fileID: 1450596562}
+  _totalCostView: {fileID: 36465752}
+  _totalCostModel: {fileID: 890086690}
 --- !u!1 &766936389
 GameObject:
   m_ObjectHideFlags: 0
@@ -3536,6 +3560,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 806087959}
   m_CullTransparentMesh: 0
+--- !u!1 &890086688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 890086689}
+  - component: {fileID: 890086690}
+  m_Layer: 5
+  m_Name: TotalCostModel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &890086689
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890086688}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 649357955}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &890086690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890086688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26bd3fdf7290a324c90689417c538fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &896868957
 GameObject:
   m_ObjectHideFlags: 0
