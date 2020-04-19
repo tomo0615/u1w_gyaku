@@ -4,18 +4,24 @@ using UniRx;
 public class UnitSelectPresenter : MonoBehaviour
 {
     [SerializeField]
+    private UnitType _unitType = UnitType.Normal;
+
+    [SerializeField]
     private int unitCostValue = 0;
 
     [SerializeField]
     private UnitSelectView _unitSelectView = default;
 
     [SerializeField]
-    private TotalCostView _totalCostView = default;
+    private TotalUnitView _totalUnitView = default;
 
     private UnitSelectModel _unitSelectModel;
 
     [SerializeField]
-    private TotalCostModel _totalCostModel;
+    private TotalUnitModel _totalUnitModel = default;
+
+    [SerializeField]
+    private UnitStorage _unitStorage = default;
 
     private const int MAX_COUNT = 100;
 
@@ -37,8 +43,8 @@ public class UnitSelectPresenter : MonoBehaviour
 
 
         //TotalCost監視
-        _totalCostModel.TotalCost
-            .Subscribe(_totalCostView.OnTotalCostChanged)
+        _totalUnitModel.TotalCost
+            .Subscribe(_totalUnitView.OnTotalCostChanged)
             .AddTo(gameObject);
 
         SetEvents();
@@ -59,21 +65,28 @@ public class UnitSelectPresenter : MonoBehaviour
             _unitSelectModel
                 .SetUnitCount(_unitSelectModel.UnitCounter.Value + 1);
 
-            _totalCostModel
-                .SetTotalCost(_totalCostModel.TotalCost.Value + unitCostValue);
+            _totalUnitModel
+                .SetTotalCost(_totalUnitModel.TotalCost.Value + unitCostValue);
         }
     }
 
     public void OnMinusButtonClicked()
     {
-        if(_unitSelectModel.UnitCounter.Value > MIN_COUNT)
+        if (_unitSelectModel.UnitCounter.Value > MIN_COUNT)
         {
+            //Unitの数を変更
             _unitSelectModel
                 .SetUnitCount(_unitSelectModel.UnitCounter.Value - 1);
 
 
-            _totalCostModel
-                .SetTotalCost(_totalCostModel.TotalCost.Value - unitCostValue);
+            //TotalCost更新
+            _totalUnitModel
+                .SetTotalCost(_totalUnitModel.TotalCost.Value - unitCostValue);
         }
+    }
+
+    public void OnReadyOKBUttonClicked()
+    {
+        _unitStorage.SetHasUnitList(_unitType, _unitSelectModel.UnitCounter.Value);
     }
 }

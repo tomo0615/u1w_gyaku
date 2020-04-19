@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class UnitStorage : MonoBehaviour
 {
@@ -8,8 +9,8 @@ public class UnitStorage : MonoBehaviour
 
     private Dictionary<UnitType, BaseUnit> unitDictionary;
 
-    //Unit選択フェイズで初期化に変更
-    //数も初期化できるように
+    private List<int> hasUnitList; //UnitTypeの値とIndexが対応
+
     public void Awake()
     {
         unitDictionary = new Dictionary<UnitType, BaseUnit>
@@ -18,10 +19,17 @@ public class UnitStorage : MonoBehaviour
                 {UnitType.Shield, unitTable.shieldUnit},
                 {UnitType.Cannon, unitTable.cannonUnit}
             };
+
+        hasUnitList = new int[unitDictionary.Count].ToList();
     }
 
-    public BaseUnit GetUnitPrefab(UnitType unitType)
+    public void SetHasUnitList(UnitType type, int unitCount)
     {
-        return unitDictionary[unitType];
+        hasUnitList[(int)type] = unitCount;
+    }
+
+    public BaseUnit GetUnitPrefab(UnitType type)
+    {
+        return unitDictionary[type];
     }
 }

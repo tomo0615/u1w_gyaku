@@ -1,7 +1,7 @@
 ﻿using UniRx;
 using UnityEngine;
 
-public class TotalCostModel : MonoBehaviour
+public class TotalUnitModel : MonoBehaviour
 {
     private ReactiveProperty<int> _totalCost = new ReactiveProperty<int>(0);
 

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 
-public class TotalCostView : MonoBehaviour
+public class TotalUnitView : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI _totalCostText = default;

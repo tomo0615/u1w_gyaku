@@ -1,6 +1,6 @@
 ﻿public enum UnitType
 {
-    Normal,
-    Shield,
-    Cannon,
+    Normal = 0,
+    Shield = 1,
+    Cannon = 2,
 }
