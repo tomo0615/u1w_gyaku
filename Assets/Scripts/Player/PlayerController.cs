@@ -8,10 +8,10 @@ public class PlayerController : MonoBehaviour
 
     private PlayerSummoner _playerSummoner;
 
-    private Vector3 mousePosition;
+    private Vector3 _mousePosition;
 
     [SerializeField]
-    private UnitType currentUnitType = UnitType.Normal;
+    private UnitType _currentUnitType = UnitType.Normal;
 
     private void Awake()
     {
@@ -26,18 +26,24 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        mousePosition
+        _mousePosition
             = _playerRayCaster.GetPositionByRay(_playerInput.MouseDirection);
 
-        transform.position = mousePosition;
+        transform.position = _mousePosition;
     }
 
     public void UpdatePlayerAction()
     {
+        //Unitの選択
+        if (_playerInput.IsSelectSlot() >= 0)
+        {
+            _currentUnitType = (UnitType)_playerInput.IsSelectSlot();
+        }
+
         //召喚
         if (_playerInput.IsSummonSetting)
         {
-            _playerSummoner.SummonSetting(mousePosition, currentUnitType);
+            _playerSummoner.SummonSetting(_mousePosition, _currentUnitType);
         }
         else if (_playerInput.IsSummon)
         {

@@ -2,9 +2,13 @@
 
 public class PlayerInput
 {
-    private KeyCode
+    private readonly KeyCode
         summonKey = KeyCode.Mouse0,
-        allAttackKey = KeyCode.Mouse1;
+        allAttackKey = KeyCode.Mouse1,
+        selectSlot1 = KeyCode.Q,
+        selectSlot2 = KeyCode.W,
+        selectSlot3 = KeyCode.E;
+                                
 
     public Vector3 MouseDirection => Input.mousePosition;
 
@@ -12,4 +16,22 @@ public class PlayerInput
     public bool IsSummon => Input.GetKeyUp(summonKey);
 
     public bool IsAllAttack => Input.GetKeyUp(allAttackKey);
+
+    public int IsSelectSlot()
+    {
+        if (Input.GetKeyUp(selectSlot1))
+        {
+            return 0;
+        }
+        else if (Input.GetKeyUp(selectSlot2))
+        {
+            return 1;
+        }
+        else if (Input.GetKeyUp(selectSlot3))
+        {
+            return 2;
+        }
+
+        return -1;
+    }
 }
