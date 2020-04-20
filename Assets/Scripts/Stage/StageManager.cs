@@ -9,14 +9,11 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
     [SerializeField]
     private GameEndPresenter _gameEndPresenter = default;
 
-    [SerializeField]
-    private Camera mainCamera = default;
-
     private CameraController _cameraController;
 
     protected override void Awake()
     {
-        _cameraController = new CameraController(mainCamera);
+        _cameraController = new CameraController(Camera.main);
 
         AddToListBuildingTransform();
     }
