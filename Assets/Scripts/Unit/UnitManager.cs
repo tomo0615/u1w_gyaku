@@ -6,9 +6,6 @@ public class UnitManager : SingletonMonoBehaviour<UnitManager>
     private List<BaseUnit> summonedUnitList = new List<BaseUnit>();
 
     [SerializeField]
-    private int unitCount = 10;
-
-    [SerializeField]
     private GameEndPresenter _gameEndPresenter = null;
 
     [SerializeField]
@@ -19,15 +16,14 @@ public class UnitManager : SingletonMonoBehaviour<UnitManager>
 
     private void Start()
     {
-        _unitCountPresenter.Initialize(unitCount);
+        //_unitCountPresenter.Initialize(unitCount);
     }
 
     public void AddSummonedUnitList(BaseUnit unit)
     {
         summonedUnitList.Add(unit);
 
-        unitCount--;
-        _unitCountPresenter.OnChangeUnitCount(unitCount);
+        //_unitCountPresenter.OnChangeUnitCount(unitCount);
     }
 
     public void RemoveUnitList(BaseUnit unit)
