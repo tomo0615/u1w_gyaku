@@ -9,6 +9,7 @@ public class UnitStorage : MonoBehaviour
 
     private Dictionary<UnitType, BaseUnit> unitDictionary;
 
+    [SerializeField]
     private List<int> hasUnitList; //UnitTypeの値とIndexが対応
 
     public void Awake()
@@ -30,6 +31,11 @@ public class UnitStorage : MonoBehaviour
 
     public BaseUnit GetUnitPrefab(UnitType type)
     {
+        if (hasUnitList[(int)type] > 0)
+        {
+            hasUnitList[(int)type]--;
+        }
+
         return unitDictionary[type];
     }
 }
