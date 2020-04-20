@@ -9,8 +9,9 @@ public class UnitStorage : MonoBehaviour
 
     private Dictionary<UnitType, BaseUnit> unitDictionary;
 
-    [SerializeField]
     private List<int> hasUnitList; //UnitTypeの値とIndexが対応
+
+    public bool IsFullHasUnitList { get; private set; } = false;
 
     public void Awake()
     {
@@ -27,15 +28,27 @@ public class UnitStorage : MonoBehaviour
     public void SetHasUnitList(UnitType type, int unitCount)
     {
         hasUnitList[(int)type] = unitCount;
+
+        IsFullHasUnitList = true;
     }
 
     public BaseUnit GetUnitPrefab(UnitType type)
     {
-        if (hasUnitList[(int)type] > 0)
-        {
-            hasUnitList[(int)type]--;
-        }
+        hasUnitList[(int)type]--;
 
         return unitDictionary[type];
+    }
+
+    public bool IsGetableUnit(UnitType type)
+    {
+        return hasUnitList[(int)type] > 0;
+    }
+
+    public bool IsGetableAllUnit()
+    {
+        return
+            !IsGetableUnit(UnitType.Normal) &&
+            !IsGetableUnit(UnitType.Cannon) &&
+            !IsGetableUnit(UnitType.Cannon);
     }
 }

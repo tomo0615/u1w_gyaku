@@ -3,6 +3,9 @@
 public class GameStateManager : StateMachine<GameState>
 {
     [SerializeField]
+    private UnitStorage _unitStorage = default;
+
+    [SerializeField]
     private StartPresenter _startPresenter = default;
 
     [SerializeField]
@@ -33,6 +36,7 @@ public class GameStateManager : StateMachine<GameState>
         //Game
         {
             var state = new State<GameState>(GameState.Game);
+            state.SetUpAction = OnSetUpGame;
             state.UpdateAction = OnUpdateGame;
             AddState(state);
         }
@@ -40,6 +44,7 @@ public class GameStateManager : StateMachine<GameState>
         {
             var state = new State<GameState>(GameState.Finish);
             state.SetUpAction = OnSetUpFinish;
+            state.UpdateAction = OnUpdateFinish;
             AddState(state);
         }
     }
@@ -47,12 +52,12 @@ public class GameStateManager : StateMachine<GameState>
     #region SettingMethod
     private void OnSetUpSetting()
     {
-        StartCoroutine(_startPresenter.OnGameStart());
+        //UnitSelectUIの表示
     }
 
     private void OnUpdateSetting()
     {
-        if (_startPresenter.IsCompleteSetting())
+        if (_unitStorage.IsFullHasUnitList)
         {
             GoToState(GameState.Game);
         }
@@ -60,6 +65,12 @@ public class GameStateManager : StateMachine<GameState>
     #endregion
 
     #region GameMethod
+
+    private void OnSetUpGame()
+    {
+        _startPresenter.OnGameStart();
+    }
+
     private void OnUpdateGame()
     {
         //Playerを使えるようにする
@@ -74,6 +85,10 @@ public class GameStateManager : StateMachine<GameState>
 
     #region FinishMethod
     private void OnSetUpFinish()
+    {
+        //Debug.Log("Finish");
+    }
+    private void OnUpdateFinish()
     {
         //Debug.Log("Finish");
     }

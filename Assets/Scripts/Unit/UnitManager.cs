@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class UnitManager : SingletonMonoBehaviour<UnitManager>
 {
-    private List<BaseUnit> unitList = new List<BaseUnit>();
+    private List<BaseUnit> summonedUnitList = new List<BaseUnit>();
 
     [SerializeField]
     private int unitCount = 10;
@@ -14,14 +14,17 @@ public class UnitManager : SingletonMonoBehaviour<UnitManager>
     [SerializeField]
     private UnitCountPresenter _unitCountPresenter = null;
 
+    [SerializeField]
+    private UnitStorage _unitStorage = null;
+
     private void Start()
     {
         _unitCountPresenter.Initialize(unitCount);
     }
 
-    public void AddUnitList(BaseUnit unit)
+    public void AddSummonedUnitList(BaseUnit unit)
     {
-        unitList.Add(unit);
+        summonedUnitList.Add(unit);
 
         unitCount--;
         _unitCountPresenter.OnChangeUnitCount(unitCount);
@@ -29,10 +32,10 @@ public class UnitManager : SingletonMonoBehaviour<UnitManager>
 
     public void RemoveUnitList(BaseUnit unit)
     {
-        unitList.Remove(unit);
+        summonedUnitList.Remove(unit);
 
-        if(unitList.Count == 0 &&
-           SummonableUnit() == false)
+        if(summonedUnitList.Count == 0 &&
+           _unitStorage.IsGetableAllUnit())
         {
             _gameEndPresenter.OnGameEnd(isClear: false);
         }
@@ -40,14 +43,9 @@ public class UnitManager : SingletonMonoBehaviour<UnitManager>
 
     public void SetTargetToAllUnit(Transform target)
     {
-        foreach(BaseUnit unit in unitList)
+        foreach(BaseUnit unit in summonedUnitList)
         {
             unit.SetTarget(target);
         }
-    }
-
-    public bool SummonableUnit()
-    {
-        return unitCount > 0; 
     }
 }

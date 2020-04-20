@@ -20,21 +20,24 @@ public class PlayerSummoner : MonoBehaviour
 
     public void SummonSetting(Vector3 summonPosition, UnitType unitType)
     {
-        if (UnitManager.Instance.SummonableUnit() == false) return;
+        if (_unitStorage.IsGetableUnit(unitType) == false) return;
 
         summonIntervalSave += Time.deltaTime;
 
         if (summonIntervalSave >= summonInterval)
         {
             BaseUnit unitPrefab = _unitStorage.GetUnitPrefab(unitType);
+
             //Unit召喚
             var instanceUnit = Instantiate(unitPrefab, summonPosition, Quaternion.identity);
             instanceUnit.gameObject.SetActive(false);
 
-            UnitManager.Instance.AddUnitList(instanceUnit);
+            UnitManager.Instance.AddSummonedUnitList(instanceUnit);
             summonList.Add(instanceUnit);
 
-            //桶召喚
+
+
+            //桶召喚　TODO:Effectに変更
             var furoOke 
                 = Instantiate(FuroOkePrefab,
                 summonPosition + Vector3.up,
