@@ -1,6 +1,6 @@
 ﻿using UniRx;
 
-public class UnitSelectModel
+public class UnitCountModel
 {
     private ReactiveProperty<int> _unitCount;
 
@@ -9,7 +9,7 @@ public class UnitSelectModel
         get { return _unitCount; }
     }
 
-    public UnitSelectModel()
+    public UnitCountModel()
     {
         _unitCount = new ReactiveProperty<int>(0);
     }

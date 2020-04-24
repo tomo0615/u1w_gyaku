@@ -9,21 +9,11 @@ public class UnitManager : SingletonMonoBehaviour<UnitManager>
     private GameEndPresenter _gameEndPresenter = null;
 
     [SerializeField]
-    private UnitCountPresenter _unitCountPresenter = null;
-
-    [SerializeField]
     private UnitStorage _unitStorage = null;
-
-    private void Start()
-    {
-        //_unitCountPresenter.Initialize(unitCount);
-    }
 
     public void AddSummonedUnitList(BaseUnit unit)
     {
         summonedUnitList.Add(unit);
-
-        //_unitCountPresenter.OnChangeUnitCount(unitCount);
     }
 
     public void RemoveUnitList(BaseUnit unit)

@@ -1,29 +1,18 @@
-﻿using TMPro;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class UnitSelectView : MonoBehaviour
 {
-    [SerializeField]
-    private TextMeshProUGUI _unitCountText = default;
-
-    public Action OnPlusButtonClickedListener;
-
-    public Action OnMinusButtonClickedListener;
-
-
-    public void OnUnitCountChanged(int count)
+    // Start is called before the first frame update
+    void Start()
     {
-        _unitCountText.text = count.ToString();
+        
     }
 
-    public void OnPlusButtonClicked()
+    // Update is called once per frame
+    void Update()
     {
-        OnPlusButtonClickedListener?.Invoke();
-    }
-
-    public void OnMinusButtonClicked()
-    {
-        OnMinusButtonClickedListener?.Invoke();
+        
     }
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UniRx;
 
-public class UnitSelectPresenter : MonoBehaviour
+public class UnitCountPresenter : MonoBehaviour
 {
     [SerializeField]
     private UnitType _unitType = UnitType.Normal;
@@ -10,12 +10,12 @@ public class UnitSelectPresenter : MonoBehaviour
     private int unitCostValue = 0;
 
     [SerializeField]
-    private UnitSelectView _unitSelectView = default;
+    private UnitCountView _unitSelectView = default;
 
     [SerializeField]
     private TotalUnitView _totalUnitView = default;
 
-    private UnitSelectModel _unitSelectModel;
+    private UnitCountModel _unitSelectModel;
 
     [SerializeField]
     private TotalUnitModel _totalUnitModel = default;
@@ -34,7 +34,7 @@ public class UnitSelectPresenter : MonoBehaviour
 
     public void Initialize()
     {
-        _unitSelectModel = new UnitSelectModel();
+        _unitSelectModel = new UnitCountModel();
 
         //個別のUnitCount監視
         _unitSelectModel.UnitCounter
