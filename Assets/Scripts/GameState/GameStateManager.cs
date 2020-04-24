@@ -6,6 +6,9 @@ public class GameStateManager : StateMachine<GameState>
     private UnitStorage _unitStorage = default;
 
     [SerializeField]
+    private UnitSelectView _unitSelectView = default;
+
+    [SerializeField]
     private StartPresenter _startPresenter = default;
 
     [SerializeField]
@@ -53,12 +56,14 @@ public class GameStateManager : StateMachine<GameState>
     private void OnSetUpSetting()
     {
         //UnitSelectUIの表示
+        _unitSelectView.ActiveUnitSelectUI(true);
     }
 
     private void OnUpdateSetting()
     {
         if (_unitStorage.IsFullHasUnitList)
         {
+            _unitSelectView.ActiveUnitSelectUI(false);
             GoToState(GameState.Game);
         }
     }

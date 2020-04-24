@@ -1532,6 +1532,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 946143027}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1146063688 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1146063688, guid: 1bd4284c596e3d145aa4073ff45fe99e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5608217395532915752}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1146063689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146063688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d05fec1306ab54488d17538aed3dd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationTime: 0.5
 --- !u!1001 &1171027181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3301,7 +3320,7 @@ PrefabInstance:
       objectReference: {fileID: 1368131956}
     - target: {fileID: 1146063688, guid: 1bd4284c596e3d145aa4073ff45fe99e, type: 3}
       propertyPath: m_Name
-      value: UnitSettingView
+      value: UnitSelectView
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bd4284c596e3d145aa4073ff45fe99e, type: 3}
@@ -3745,5 +3764,10 @@ PrefabInstance:
       propertyPath: _unitStorage
       value: 
       objectReference: {fileID: 1368131956}
+    - target: {fileID: 8341141169590122853, guid: 03e61a7e61721b64391671055e807947,
+        type: 3}
+      propertyPath: _unitSelectView
+      value: 
+      objectReference: {fileID: 1146063689}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03e61a7e61721b64391671055e807947, type: 3}
