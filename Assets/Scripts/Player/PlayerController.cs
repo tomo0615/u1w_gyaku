@@ -13,9 +13,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private UnitType _currentUnitType = UnitType.Normal;
 
-    [SerializeField]
-    private UnitStorageView _unitStorageView = null;
-
     private void Awake()
     {
         Camera camera = Camera.main;
