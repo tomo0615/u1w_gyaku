@@ -7,6 +7,9 @@ public class UnitStorage : MonoBehaviour
     [SerializeField]
     private UnitTable unitTable = default;
 
+    [SerializeField]
+    private UnitStorageView _unitStorageView = null;
+
     private Dictionary<UnitType, BaseUnit> unitDictionary;
 
     private List<int> hasUnitList; //UnitTypeの値とIndexが対応
@@ -28,6 +31,7 @@ public class UnitStorage : MonoBehaviour
     public void SetHasUnitList(UnitType type, int unitCount)
     {
         hasUnitList[(int)type] = unitCount;
+        _unitStorageView.ViewUnitCount(type, hasUnitList[(int)type]);
 
         IsFullHasUnitList = true;
     }
@@ -35,6 +39,8 @@ public class UnitStorage : MonoBehaviour
     public BaseUnit GetUnitPrefab(UnitType type)
     {
         hasUnitList[(int)type]--;
+
+        _unitStorageView.ViewUnitCount(type, hasUnitList[(int)type]);
 
         return unitDictionary[type];
     }
