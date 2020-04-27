@@ -1550,7 +1550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77d05fec1306ab54488d17538aed3dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationTime: 0.5
+  animationTime: 0.25
 --- !u!1001 &1171027181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3138,6 +3138,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnitSelectUI
       objectReference: {fileID: 0}
+    - target: {fileID: 1146063688, guid: 1bd4284c596e3d145aa4073ff45fe99e, type: 3}
+      propertyPath: m_Name
+      value: UnitSelectView
+      objectReference: {fileID: 0}
     - target: {fileID: 5608217393880479988, guid: 1bd4284c596e3d145aa4073ff45fe99e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3268,6 +3272,11 @@ PrefabInstance:
       propertyPath: _unitStorage
       value: 
       objectReference: {fileID: 1368131956}
+    - target: {fileID: 5608217394184944291, guid: 1bd4284c596e3d145aa4073ff45fe99e,
+        type: 3}
+      propertyPath: maxTotalCost
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 5608217395583832486, guid: 1bd4284c596e3d145aa4073ff45fe99e,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -3293,6 +3302,11 @@ PrefabInstance:
       propertyPath: _unitStorage
       value: 
       objectReference: {fileID: 1368131956}
+    - target: {fileID: 5608217395583832485, guid: 1bd4284c596e3d145aa4073ff45fe99e,
+        type: 3}
+      propertyPath: maxTotalCost
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 5608217395080644961, guid: 1bd4284c596e3d145aa4073ff45fe99e,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -3318,9 +3332,45 @@ PrefabInstance:
       propertyPath: _unitStorage
       value: 
       objectReference: {fileID: 1368131956}
-    - target: {fileID: 1146063688, guid: 1bd4284c596e3d145aa4073ff45fe99e, type: 3}
-      propertyPath: m_Name
-      value: UnitSelectView
+    - target: {fileID: 5608217395080644960, guid: 1bd4284c596e3d145aa4073ff45fe99e,
+        type: 3}
+      propertyPath: maxTotalCost
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5608217394999696494, guid: 1bd4284c596e3d145aa4073ff45fe99e,
+        type: 3}
+      propertyPath: maxUnitCost
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5608217393658085593, guid: 1bd4284c596e3d145aa4073ff45fe99e,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5608217393658085593, guid: 1bd4284c596e3d145aa4073ff45fe99e,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5608217393658085593, guid: 1bd4284c596e3d145aa4073ff45fe99e,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5608217393658085593, guid: 1bd4284c596e3d145aa4073ff45fe99e,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5608217393658085593, guid: 1bd4284c596e3d145aa4073ff45fe99e,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5608217393658085593, guid: 1bd4284c596e3d145aa4073ff45fe99e,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bd4284c596e3d145aa4073ff45fe99e, type: 3}

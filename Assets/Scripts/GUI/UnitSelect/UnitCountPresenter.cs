@@ -23,6 +23,9 @@ public class UnitCountPresenter : MonoBehaviour
     [SerializeField]
     private UnitStorage _unitStorage = default;
 
+    [SerializeField]
+    private int maxTotalCost = 1000;
+
     private const int MAX_COUNT = 100;
 
     private const int MIN_COUNT = 0;
@@ -44,7 +47,7 @@ public class UnitCountPresenter : MonoBehaviour
 
         //TotalCost監視
         _totalUnitModel.TotalCost
-            .Subscribe(_totalUnitView.OnTotalCostChanged)
+            .Subscribe(value => _totalUnitView.OnTotalCostChanged(value,maxTotalCost))
             .AddTo(gameObject);
 
         SetEvents();
@@ -60,7 +63,8 @@ public class UnitCountPresenter : MonoBehaviour
 
     public void OnPlusButtonClicked()
     {
-        if (_unitSelectModel.UnitCounter.Value < MAX_COUNT)
+        if (_unitSelectModel.UnitCounter.Value < MAX_COUNT &&
+            _totalUnitModel.TotalCost.Value < maxTotalCost)
         {
             _unitSelectModel
                 .SetUnitCount(_unitSelectModel.UnitCounter.Value + 1);
@@ -78,7 +82,6 @@ public class UnitCountPresenter : MonoBehaviour
             _unitSelectModel
                 .SetUnitCount(_unitSelectModel.UnitCounter.Value - 1);
 
-
             //TotalCost更新
             _totalUnitModel
                 .SetTotalCost(_totalUnitModel.TotalCost.Value - unitCostValue);
@@ -87,6 +90,8 @@ public class UnitCountPresenter : MonoBehaviour
 
     public void OnReadyOKBUttonClicked()
     {
+        if (_totalUnitModel.TotalCost.Value > maxTotalCost) return;
+
         _unitStorage.SetHasUnitList(_unitType, _unitSelectModel.UnitCounter.Value);
     }
 }
