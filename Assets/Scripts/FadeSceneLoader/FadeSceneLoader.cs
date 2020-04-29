@@ -26,6 +26,13 @@ public class FadeSceneLoader : MonoBehaviour
     private void Construct(ZenjectSceneLoader zenjectSceneLoader)
     {
         _zenjectSceneLoader = zenjectSceneLoader;
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene nextScene, LoadSceneMode mode)
+    {
+        DoFadeOut();
     }
 
     public void JumpSceneLoad(SceneName sceneName)
