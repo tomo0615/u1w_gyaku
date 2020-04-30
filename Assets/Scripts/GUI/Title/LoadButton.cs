@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 using UniRx;
 using UnityEngine.UI;
@@ -8,7 +6,7 @@ using UnityEngine.UI;
 public class LoadButton : MonoBehaviour
 {
     [Inject]
-    private FadeSceneLoader _fadeSceneLoader;
+    private FadeSceneLoader _fadeSceneLoader = default;
 
     private Button _button;
 
