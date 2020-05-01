@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Zenject;
+using DG.Tweening;
 
 public class StagePoint : MonoBehaviour
 {
@@ -8,6 +9,11 @@ public class StagePoint : MonoBehaviour
 
     [Inject]
     private readonly FadeSceneLoader _fadeSceneLoader = default;
+
+    private void Start()
+    {
+        transform.DOShakeRotation(5, 8, 0).SetLoops(-1);
+    }
 
     private void OnMouseEnter()
     {
