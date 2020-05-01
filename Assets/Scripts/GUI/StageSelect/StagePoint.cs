@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-public class StagePoint : MonoBehaviour , IStagePoint
+public class StagePoint : MonoBehaviour
 {
     [SerializeField]
     private SceneName _stageName = SceneName.Stage1;
@@ -9,10 +9,23 @@ public class StagePoint : MonoBehaviour , IStagePoint
     [Inject]
     private readonly FadeSceneLoader _fadeSceneLoader = default;
 
-
-    public void StageSelected()
+    private void OnMouseEnter()
     {
-        Debug.Log("hit");
-        //_fadeSceneLoader.JumpSceneLoad(_stageName);
+        MouseEnterAnimation();
+    }
+
+    private void OnMouseUpAsButton()
+    {
+        StageSelected();
+    }
+
+    private void MouseEnterAnimation()
+    {
+
+    }
+
+    private void StageSelected()
+    {
+        _fadeSceneLoader.JumpSceneLoad(_stageName);
     }
 }
