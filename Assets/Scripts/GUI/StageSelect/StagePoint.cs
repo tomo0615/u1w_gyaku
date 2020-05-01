@@ -12,7 +12,8 @@ public class StagePoint : MonoBehaviour
 
     private void Start()
     {
-        transform.DOShakeRotation(5, 8, 0).SetLoops(-1);
+        //浮遊アニメーション
+        transform.DOShakeRotation(5, 7, 0).SetLoops(-1);
     }
 
     private void OnMouseEnter()
@@ -27,7 +28,7 @@ public class StagePoint : MonoBehaviour
 
     private void MouseEnterAnimation()
     {
-
+        //Todo:何らかのAnimationを実装
     }
 
     private void StageSelected()
