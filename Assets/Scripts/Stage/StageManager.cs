@@ -42,7 +42,6 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
 
         if (buildingTransformList.Count == 0)
         {
-            //GameClear! テスト済み
             _gameEndPresenter.OnGameEnd(isClear:true);
         }
     }
