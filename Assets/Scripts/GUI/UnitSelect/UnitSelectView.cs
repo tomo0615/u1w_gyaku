@@ -7,10 +7,12 @@ public class UnitSelectView : MonoBehaviour
     private float animationTime = 0.5f;
 
     private RectTransform _rectTransform;
+
     private void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
     }
+
     public void ActiveUnitSelectUI(bool isActive)
     {
         if(isActive)

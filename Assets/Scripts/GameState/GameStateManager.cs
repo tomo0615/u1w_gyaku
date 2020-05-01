@@ -1,7 +1,11 @@
 ﻿using UnityEngine;
+using Zenject;
 
 public class GameStateManager : StateMachine<GameState>
 {
+    [Inject]
+    private readonly FadeSceneLoader _fadeSceneLoader = default;
+
     [SerializeField]
     private UnitStorage _unitStorage = default;
 
@@ -24,11 +28,17 @@ public class GameStateManager : StateMachine<GameState>
 
     private void Start()
     {
-        GoToState(GameState.Setting);
+        GoToState(GameState.FadeOut);
     }
 
     private void InitializeStateMachine()
     {
+        //FadeOut
+        {
+            var state = new State<GameState>(GameState.FadeOut);
+            state.UpdateAction = OnUpdateFadeOut;
+            AddState(state);
+        }
         //Setting
         {
             var state = new State<GameState>(GameState.Setting);
@@ -51,6 +61,17 @@ public class GameStateManager : StateMachine<GameState>
             AddState(state);
         }
     }
+
+    #region FadeOutMethod
+
+    private void OnUpdateFadeOut()
+    {
+        if (_fadeSceneLoader.IsFadeOutCompleted)
+        {
+            GoToState(GameState.Setting);
+        }
+    }
+    #endregion
 
     #region SettingMethod
     private void OnSetUpSetting()
@@ -91,12 +112,12 @@ public class GameStateManager : StateMachine<GameState>
     #region FinishMethod
     private void OnSetUpFinish()
     {
-        //Debug.Log("Finish");
+        _gameEndPresenter.OnResult();
     }
     private void OnUpdateFinish()
     {
         //Debug.Log("Finish");
     }
 
-    #endregion 
+    #endregion
 }

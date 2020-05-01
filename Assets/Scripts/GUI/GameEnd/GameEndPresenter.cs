@@ -13,6 +13,8 @@ public class GameEndPresenter : MonoBehaviour
 
     public bool IsGameEnd { private set; get; } = false;
 
+    public bool IsClear { private set; get; } = false;
+
     private void Awake()
     {
         _gameClearViewer.InitializeGameEndViewer();
@@ -26,7 +28,12 @@ public class GameEndPresenter : MonoBehaviour
     {
         IsGameEnd = true;
 
-        if (isClear)
+        IsClear = isClear;
+    }
+
+    public void OnResult()
+    {
+        if (IsClear)
         {
             _gameClearViewer.ViewGameClear();
         }
@@ -38,5 +45,4 @@ public class GameEndPresenter : MonoBehaviour
         //resultButtonを表示
         _resultButton.SetActiveButton();
     }
-
 }
