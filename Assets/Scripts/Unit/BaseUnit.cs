@@ -33,12 +33,16 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
         _targetSetter = new TargetSetter(transform);
     }
 
-    private void Update()
+    private void Start()
     {
         attackTarget = _targetSetter.SetNearestTarget();
+    }
 
+    private void Update()
+    {
         if (attackTarget == null)
         {
+            attackTarget = _targetSetter.SetNearestTarget();
             _unitMover.StopMove();
             return;
         }
