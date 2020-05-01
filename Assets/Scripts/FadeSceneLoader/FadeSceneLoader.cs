@@ -34,6 +34,13 @@ public class FadeSceneLoader : MonoBehaviour
     {
         DoFadeOut();
     }
+    public void CurrentSceneLoad()
+    {
+        var currentScene = SceneManager.GetActiveScene().buildIndex;
+        var sceneName = ((SceneName)currentScene).ToString();
+
+        DOFadeInSceneLoad(sceneName);
+    }
 
     public void JumpSceneLoad(SceneName sceneName)
     {
@@ -41,12 +48,13 @@ public class FadeSceneLoader : MonoBehaviour
 
         DOFadeInSceneLoad(scene);
     }
+
     public void NextSceneLoad()
     {
-        var _currentSceneName = SceneManager.GetActiveScene().buildIndex;
+        var currentSceneName = SceneManager.GetActiveScene().buildIndex;
 
         var enumMax = Enum.GetValues(typeof(SceneName)).Length;
-        var nextIndex = (int)(_currentSceneName + 1) % enumMax;
+        var nextIndex = (int)(currentSceneName + 1) % enumMax;
 
         var nextSceneName = (SceneName)nextIndex;
         var scene = nextSceneName.ToString();

@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using DG.Tweening;
+using Zenject;
 
 public class ResultButton : MonoBehaviour
 {
+    [Inject]
+    private FadeSceneLoader _fadeSceneLoader = default;
+
     private RectTransform _rectTransform;
 
     public void InitializeResultButton()
@@ -24,11 +28,11 @@ public class ResultButton : MonoBehaviour
 
     public void OnRetry()
     {
-        //Scene遷移
+        _fadeSceneLoader.CurrentSceneLoad();
     }
 
     public void OnNextStage()
     {
-        //Scene遷移
+        _fadeSceneLoader.NextSceneLoad();
     }
 }
