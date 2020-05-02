@@ -88,7 +88,7 @@ public class UnitCountPresenter : MonoBehaviour
         }
     }
 
-    public void OnReadyOKBUttonClicked()
+    public void OnReadyOKButtonClicked()
     {
         if (_totalUnitModel.TotalCost.Value > maxTotalCost) return;
 

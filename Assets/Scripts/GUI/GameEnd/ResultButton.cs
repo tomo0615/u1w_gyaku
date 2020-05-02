@@ -1,13 +1,17 @@
 ﻿using UnityEngine;
 using DG.Tweening;
 using Zenject;
+using UniRx;
+using System;
 
 public class ResultButton : MonoBehaviour
 {
     [Inject]
-    private FadeSceneLoader _fadeSceneLoader = default;
+    private readonly FadeSceneLoader _fadeSceneLoader = default;
 
     private RectTransform _rectTransform;
+
+    public Action OnClickedResultButtonListner = default;
 
     public void InitializeResultButton()
     {
@@ -28,11 +32,22 @@ public class ResultButton : MonoBehaviour
 
     public void OnRetry()
     {
+        OnClickedResultButtonListner.Invoke();
+
         _fadeSceneLoader.CurrentSceneLoad();
     }
 
     public void OnNextStage()
     {
+        OnClickedResultButtonListner.Invoke();
+
         _fadeSceneLoader.NextSceneLoad();
+    }
+
+    public void OnReturnStageSelect()
+    {
+        OnClickedResultButtonListner.Invoke();
+
+        _fadeSceneLoader.JumpSceneLoad(SceneName.StageSelect);
     }
 }

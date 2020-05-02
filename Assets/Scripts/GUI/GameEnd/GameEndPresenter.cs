@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 public class GameEndPresenter : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class GameEndPresenter : MonoBehaviour
     [SerializeField]
     private ResultButton _resultButton = default;
 
+    [SerializeField]
+    private GameEndView _gameEndView = default;
+
     public bool IsGameEnd { private set; get; } = false;
 
     public bool IsClear { private set; get; } = false;
@@ -22,6 +26,12 @@ public class GameEndPresenter : MonoBehaviour
         _gameOverViewer.InitializeGameEndViewer();
 
         _resultButton.InitializeResultButton();
+
+        _resultButton.OnClickedResultButtonListner = OnClickedResultButton;
+    }
+    private void Start()
+    {
+        _gameEndView.ActiveGameEndView(false);
     }
 
     public void OnGameEnd(bool isClear)
@@ -33,6 +43,9 @@ public class GameEndPresenter : MonoBehaviour
 
     public void OnResult()
     {
+        _gameEndView.ActiveGameEndView(true);
+
+
         if (IsClear)
         {
             _gameClearViewer.ViewGameClear();
@@ -44,5 +57,10 @@ public class GameEndPresenter : MonoBehaviour
 
         //resultButtonを表示
         _resultButton.SetActiveButton();
+    }
+
+    public void OnClickedResultButton()
+    {
+        _gameEndView.ActiveGameEndView(false);
     }
 }
