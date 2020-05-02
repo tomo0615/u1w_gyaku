@@ -21,6 +21,9 @@ public class GameStateManager : StateMachine<GameState>
     [SerializeField]
     private GameEndPresenter _gameEndPresenter = default;
 
+    [SerializeField]
+    private UnitStorageView _unitStorageView = default;
+
     private void Awake()
     {
         InitializeStateMachine();
@@ -112,6 +115,8 @@ public class GameStateManager : StateMachine<GameState>
     #region FinishMethod
     private void OnSetUpFinish()
     {
+        _unitStorageView.ActiveUnitStorageView(false);
+
         _gameEndPresenter.OnResult();
     }
     private void OnUpdateFinish()
