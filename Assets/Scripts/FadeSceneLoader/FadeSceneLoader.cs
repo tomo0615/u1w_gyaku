@@ -39,14 +39,14 @@ public class FadeSceneLoader : MonoBehaviour
         var currentScene = SceneManager.GetActiveScene().buildIndex;
         var sceneName = ((SceneName)currentScene).ToString();
 
-        DOFadeInSceneLoad(sceneName);
+        DoFadeInSceneLoad(sceneName);
     }
 
     public void JumpSceneLoad(SceneName sceneName)
     {
         var scene = sceneName.ToString();
 
-        DOFadeInSceneLoad(scene);
+        DoFadeInSceneLoad(scene);
     }
 
     public void NextSceneLoad()
@@ -59,10 +59,10 @@ public class FadeSceneLoader : MonoBehaviour
         var nextSceneName = (SceneName)nextIndex;
         var scene = nextSceneName.ToString();
 
-        DOFadeInSceneLoad(scene);
+        DoFadeInSceneLoad(scene);
     }
 
-    private void DOFadeInSceneLoad(string sceneName)
+    private void DoFadeInSceneLoad(string sceneName)
     {
         _fade.FadeIn(fadeTime, () =>
         {
