@@ -8,7 +8,7 @@ public class TotalUnitView : MonoBehaviour
 
     public void OnTotalCostChanged(int costValue, int maxValue)
     {
-        _totalCostText.text = costValue.ToString() + "/" + maxValue; //1000部分をmaxTotalCostに変更
+        _totalCostText.text = costValue.ToString() + "/" + maxValue;
 
 
         //超えていたら赤文字にするか何かを可視化する

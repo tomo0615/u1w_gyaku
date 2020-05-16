@@ -19,12 +19,11 @@ public class UnitSelectView : MonoBehaviour
         {
             _rectTransform.localScale = Vector3.zero;
 
-            _rectTransform.DOScale(new Vector3(1, 1, 1), animationTime);
+            _rectTransform.DOScale(Vector3.one, animationTime);
         }
         else
         {
             _rectTransform.DOScale(Vector3.zero, animationTime);
         }
-
     } 
 }

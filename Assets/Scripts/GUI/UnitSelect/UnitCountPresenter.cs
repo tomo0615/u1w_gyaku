@@ -15,7 +15,7 @@ public class UnitCountPresenter : MonoBehaviour
     [SerializeField]
     private TotalUnitView _totalUnitView = default;
 
-    private UnitCountModel _unitSelectModel;
+    private UnitCountModel _unitCountModel;
 
     [SerializeField]
     private TotalUnitModel _totalUnitModel = default;
@@ -37,10 +37,10 @@ public class UnitCountPresenter : MonoBehaviour
 
     public void Initialize()
     {
-        _unitSelectModel = new UnitCountModel();
+        _unitCountModel = new UnitCountModel();
 
         //個別のUnitCount監視
-        _unitSelectModel.UnitCounter
+        _unitCountModel.UnitCounter
             .Subscribe(_unitSelectView.OnUnitCountChanged)
             .AddTo(gameObject);
 
@@ -63,12 +63,18 @@ public class UnitCountPresenter : MonoBehaviour
 
     public void OnPlusButtonClicked()
     {
-        if (_unitSelectModel.UnitCounter.Value < MAX_COUNT &&
+        int plusedCost = _totalUnitModel.TotalCost.Value + unitCostValue;
+
+        if (maxTotalCost < plusedCost) return;
+
+        if (_unitCountModel.UnitCounter.Value < MAX_COUNT &&
             _totalUnitModel.TotalCost.Value < maxTotalCost)
         {
-            _unitSelectModel
-                .SetUnitCount(_unitSelectModel.UnitCounter.Value + 1);
+            //Unitの数を変更
+            _unitCountModel
+                .SetUnitCount(_unitCountModel.UnitCounter.Value + 1);
 
+            //TotalCost更新
             _totalUnitModel
                 .SetTotalCost(_totalUnitModel.TotalCost.Value + unitCostValue);
         }
@@ -76,11 +82,11 @@ public class UnitCountPresenter : MonoBehaviour
 
     public void OnMinusButtonClicked()
     {
-        if (_unitSelectModel.UnitCounter.Value > MIN_COUNT)
+        if (_unitCountModel.UnitCounter.Value > MIN_COUNT)
         {
             //Unitの数を変更
-            _unitSelectModel
-                .SetUnitCount(_unitSelectModel.UnitCounter.Value - 1);
+            _unitCountModel
+                .SetUnitCount(_unitCountModel.UnitCounter.Value - 1);
 
             //TotalCost更新
             _totalUnitModel
@@ -92,6 +98,6 @@ public class UnitCountPresenter : MonoBehaviour
     {
         if (_totalUnitModel.TotalCost.Value > maxTotalCost) return;
 
-        _unitStorage.SetHasUnitList(_unitType, _unitSelectModel.UnitCounter.Value);
+        _unitStorage.SetHasUnitList(_unitType, _unitCountModel.UnitCounter.Value);
     }
 }
