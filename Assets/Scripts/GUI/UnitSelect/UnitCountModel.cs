@@ -32,11 +32,12 @@ public class UnitCountModel
 
     public void UpdateUnitCount(int count)
     {
-        if (count > MAX_COUNT ||
-            count < MIN_COUNT) return;
-
         _unitCount.Value = count;
+    }
 
-        _unitCostValue.Value = _unitCost;
+    public bool IsUpdateUnitCount(int count)
+    {
+        return count <= MAX_COUNT &&
+               count >= MIN_COUNT;
     }
 }

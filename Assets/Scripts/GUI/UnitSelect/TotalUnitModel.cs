@@ -1,4 +1,5 @@
-﻿using UniRx;
+﻿using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 
 public class TotalUnitModel : MonoBehaviour
@@ -22,6 +23,6 @@ public class TotalUnitModel : MonoBehaviour
 
     public void SetTotalCost(int cost)
     {
-        _totalCost.Value = cost;
+        _totalCost.Value += cost;
     }
 }

@@ -31,7 +31,6 @@ public class UnitCountPresenter : MonoBehaviour
         _unitCountModel = new UnitCountModel(unitCostValue);
         _unitCountView.Initialize();
 
-        _totalUnitModel.Initialize(_unitCountModel);
 
         //個別のUnitCount監視
         _unitCountModel.UnitCounter
@@ -41,15 +40,26 @@ public class UnitCountPresenter : MonoBehaviour
         //加算
         _unitCountView.OnPlus()
             .Select(plusValue => _totalUnitModel.TotalCost.Value + unitCostValue)
-            .Where(plusValue => _totalUnitModel.MaxTotalCost >= plusValue)
-            .Subscribe(_ => _unitCountModel.UpdateUnitCount(_unitCountModel.UnitCounter.Value + 1))
+            .Where(plusValue => _totalUnitModel.MaxTotalCost >= plusValue &&
+                   _unitCountModel.IsUpdateUnitCount(_unitCountModel.UnitCounter.Value + 1))
+            .Subscribe(_ =>
+            {
+                _unitCountModel.UpdateUnitCount(_unitCountModel.UnitCounter.Value + 1);
+
+                _totalUnitModel.SetTotalCost(unitCostValue);
+            })
             .AddTo(gameObject);
 
         //減算
         _unitCountView.OnMinus()
-            .Select(minusValue => _totalUnitModel.TotalCost.Value - unitCostValue)
-            .Where(minusValue => 0 <= minusValue)
-            .Subscribe(_ => _unitCountModel.UpdateUnitCount(_unitCountModel.UnitCounter.Value - 1))
+            .Select(count => _unitCountModel.UnitCounter.Value - 1)
+            .Where(count => _unitCountModel.IsUpdateUnitCount(count))
+            .Subscribe(count =>
+            {
+                _unitCountModel.UpdateUnitCount(count);
+
+                _totalUnitModel.SetTotalCost(unitCostValue * -1);
+            })
             .AddTo(gameObject);
     }
 
