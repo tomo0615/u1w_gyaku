@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitTable: {fileID: 11400000, guid: 71e151e61ea02f7429e8ce9c17945d49, type: 2}
+  _unitStorageView: {fileID: 0}

@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d3ec8dbf643cff4c88378fbeac53626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentUnitType: 0
 --- !u!114 &1249872875839922342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,9 +58,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 268ed06c2b1f41b48ad518343823bf7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _unitStorage: {fileID: 0}
   FuroOkePrefab: {fileID: 828513295265244604, guid: b906402fccb30a84bbb50366fbf6cdf9,
-    type: 3}
-  unitPrefab: {fileID: 2946545150675038398, guid: 537c9018b0f5aeb4d85be219682520b8,
     type: 3}
   summonInterval: 0.1
 --- !u!1 &1249872876471194822

@@ -43,6 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23ec9d4870852649861950e341b2f43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _unitStorage: {fileID: 0}
+  _unitSelectView: {fileID: 0}
   _startPresenter: {fileID: 0}
   _playerController: {fileID: 0}
   _gameEndPresenter: {fileID: 0}
+  _unitStorageView: {fileID: 0}
