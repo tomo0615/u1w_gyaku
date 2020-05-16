@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UniRx;
+using UnityEngine.UI;
 
 public class UnitCountPresenter : MonoBehaviour
 {
@@ -10,10 +11,7 @@ public class UnitCountPresenter : MonoBehaviour
     private int unitCostValue = 0;
 
     [SerializeField]
-    private UnitCountView _unitSelectView = default;
-
-    [SerializeField]
-    private TotalUnitView _totalUnitView = default;
+    private UnitCountView _unitCountView = default;
 
     private UnitCountModel _unitCountModel;
 
@@ -23,81 +21,40 @@ public class UnitCountPresenter : MonoBehaviour
     [SerializeField]
     private UnitStorage _unitStorage = default;
 
-    [SerializeField]
-    private int maxTotalCost = 1000;
-
-    private const int MAX_COUNT = 100;
-
-    private const int MIN_COUNT = 0;
-
-    private void Awake()
+    private void Start()
     {
         Initialize();
     }
 
     public void Initialize()
     {
-        _unitCountModel = new UnitCountModel();
+        _unitCountModel = new UnitCountModel(unitCostValue);
+        _unitCountView.Initialize();
+
+        _totalUnitModel.MergeTotalCost(_unitCountModel);
 
         //個別のUnitCount監視
         _unitCountModel.UnitCounter
-            .Subscribe(_unitSelectView.OnUnitCountChanged)
+            .Subscribe(_unitCountView.OnUnitCountChanged)
             .AddTo(gameObject);
 
-
-        //TotalCost監視
-        _totalUnitModel.TotalCost
-            .Subscribe(value => _totalUnitView.OnTotalCostChanged(value,maxTotalCost))
+        //加算
+        _unitCountView.OnPlus()
+            .Select(plusValue => _totalUnitModel.TotalCost.Value + unitCostValue)
+            .Where(plusValue => _totalUnitModel.MaxTotalCost > plusValue)
+            .Subscribe(_ => _unitCountModel.UpdateUnitCount(_unitCountModel.UnitCounter.Value + 1))
             .AddTo(gameObject);
 
-        SetEvents();
-    }
-
-
-    private void SetEvents()
-    {
-        _unitSelectView.OnPlusButtonClickedListener = OnPlusButtonClicked;
-
-        _unitSelectView.OnMinusButtonClickedListener = OnMinusButtonClicked;
-    }
-
-    public void OnPlusButtonClicked()
-    {
-        int plusedCost = _totalUnitModel.TotalCost.Value + unitCostValue;
-
-        if (maxTotalCost < plusedCost) return;
-
-        if (_unitCountModel.UnitCounter.Value < MAX_COUNT &&
-            _totalUnitModel.TotalCost.Value < maxTotalCost)
-        {
-            //Unitの数を変更
-            _unitCountModel
-                .SetUnitCount(_unitCountModel.UnitCounter.Value + 1);
-
-            //TotalCost更新
-            _totalUnitModel
-                .SetTotalCost(_totalUnitModel.TotalCost.Value + unitCostValue);
-        }
-    }
-
-    public void OnMinusButtonClicked()
-    {
-        if (_unitCountModel.UnitCounter.Value > MIN_COUNT)
-        {
-            //Unitの数を変更
-            _unitCountModel
-                .SetUnitCount(_unitCountModel.UnitCounter.Value - 1);
-
-            //TotalCost更新
-            _totalUnitModel
-                .SetTotalCost(_totalUnitModel.TotalCost.Value - unitCostValue);
-        }
+        //減算
+        _unitCountView.OnMinus()
+            .Select(minusValue => _totalUnitModel.TotalCost.Value - unitCostValue)
+            .Where(minusValue => 0 < minusValue)
+            .Subscribe(_ => _unitCountModel.UpdateUnitCount(_unitCountModel.UnitCounter.Value - 1))
+            .AddTo(gameObject);
     }
 
     public void OnReadyOKButtonClicked()
     {
-        if (_totalUnitModel.TotalCost.Value > maxTotalCost) return;
-
         _unitStorage.SetHasUnitList(_unitType, _unitCountModel.UnitCounter.Value);
     }
 }

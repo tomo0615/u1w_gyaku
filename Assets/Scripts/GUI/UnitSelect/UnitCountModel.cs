@@ -2,6 +2,8 @@
 
 public class UnitCountModel
 {
+    private int _unitCost;
+
     private ReactiveProperty<int> _unitCount;
 
     public IReadOnlyReactiveProperty<int> UnitCounter
@@ -9,13 +11,32 @@ public class UnitCountModel
         get { return _unitCount; }
     }
 
-    public UnitCountModel()
+    private ReactiveProperty<int> _unitCostValue;
+
+    public IReadOnlyReactiveProperty<int> UnitCostValue
     {
-        _unitCount = new ReactiveProperty<int>(0);
+        get { return _unitCostValue; }
     }
 
-    public void SetUnitCount(int count)
+    private const int MAX_COUNT = 100;
+    private const int MIN_COUNT = 0;
+
+    public UnitCountModel(int cost)
     {
+        _unitCount = new ReactiveProperty<int>(0);
+
+        _unitCostValue = new ReactiveProperty<int>(0);
+
+        _unitCost = cost;
+    }
+
+    public void UpdateUnitCount(int count)
+    {
+        if (count > MAX_COUNT ||
+            count < MIN_COUNT) return;
+
         _unitCount.Value = count;
+
+        _unitCostValue.Value = _unitCost;
     }
 }
