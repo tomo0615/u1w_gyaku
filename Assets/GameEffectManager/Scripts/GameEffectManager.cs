@@ -1,9 +1,7 @@
-﻿using DG.Tweening;
-using UnityEngine;
+﻿using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
 using System.Collections.Generic;
-//using System;
 
 public class GameEffectManager : SingletonMonoBehaviour<GameEffectManager>
 {
@@ -43,7 +41,7 @@ public class GameEffectManager : SingletonMonoBehaviour<GameEffectManager>
         var gameObj = _effectPool[type].Rent();
 
         gameObj.PlayEffect(position)
-            .Subscribe(__ =>
+            .Subscribe(_=>
             {
                 _effectPool[type].Return(gameObj);
             });
