@@ -97,6 +97,8 @@ public class GameStateManager : StateMachine<GameState>
 
     private void OnSetUpGame()
     {
+        _playerController.InitializePlayer();
+
         _startPresenter.OnGameStart();
     }
 

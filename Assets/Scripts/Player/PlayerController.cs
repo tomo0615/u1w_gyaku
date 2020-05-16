@@ -13,7 +13,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private UnitType _currentUnitType = UnitType.Normal;
 
-    private void Awake()
+    [SerializeField]
+    private SpriteRenderer _pointer = default;
+
+    public void InitializePlayer()
     {
         Camera camera = Camera.main;
 
@@ -22,18 +25,18 @@ public class PlayerController : MonoBehaviour
         _playerRayCaster = new PlayerRayCaster(camera, transform);
 
         _playerSummoner = GetComponent<PlayerSummoner>();
-    }
 
-    private void Update()
-    {
-        _mousePosition
-            = _playerRayCaster.GetPositionByRay(_playerInput.MouseDirection);
-
-        transform.position = _mousePosition;
+        _pointer.enabled = true;
     }
 
     public void UpdatePlayerAction()
     {
+
+        _mousePosition
+            = _playerRayCaster.GetPositionByRay(_playerInput.MouseDirection);
+
+        transform.position = _mousePosition;
+
         //Unitの選択
         if (_playerInput.IsSelectSlot() >= 0)
         {
