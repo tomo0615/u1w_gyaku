@@ -7,7 +7,7 @@ public class PlayerSummoner : MonoBehaviour
     private UnitStorage _unitStorage = default;
 
     [SerializeField]
-    private GameObject FuroOkePrefab = null;
+    private SummonEffect _summonEffect = default;
 
     [SerializeField]
     private float summonInterval = 0.1f;
@@ -16,7 +16,6 @@ public class PlayerSummoner : MonoBehaviour
 
     private List<BaseUnit> summonList = new List<BaseUnit>();
 
-    private List<GameObject> furoOkeList = new List<GameObject>();
 
     public void SummonSetting(Vector3 summonPosition, UnitType unitType)
     {
@@ -36,14 +35,7 @@ public class PlayerSummoner : MonoBehaviour
             summonList.Add(instanceUnit);
 
 
-
-            //桶召喚　TODO:Effectに変更
-            var furoOke 
-                = Instantiate(FuroOkePrefab,
-                summonPosition + Vector3.up,
-                Quaternion.identity) as GameObject;
-
-            furoOkeList.Add(furoOke);
+            _summonEffect.InstanceSummonEffect(summonPosition + Vector3.up);
 
             summonIntervalSave = 0f;
         }
@@ -56,12 +48,6 @@ public class PlayerSummoner : MonoBehaviour
             unit.gameObject.SetActive(true);
         }
 
-        foreach(GameObject furoOke in furoOkeList)
-        {
-            Destroy(furoOke);
-        }
-
-        furoOkeList.Clear();
         summonList.Clear();
     }
 }
