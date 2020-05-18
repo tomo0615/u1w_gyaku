@@ -81,6 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoint: 10
   moveSpeed: 10
+  attackRangeValue: 16
   currentState: 0
   _animator: {fileID: 3881169720089638310}
 --- !u!114 &3881169720924368264
@@ -98,7 +99,6 @@ MonoBehaviour:
   attackObject: {fileID: 7494897945837853383}
   attackPower: 4
   attackInterval: 1
-  attackRangeValue: 16
 --- !u!54 &3881169720924368267
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -302,14 +302,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6764290868303537853, guid: da66e1e2b2b142d40ac8b2500c7ff770,
         type: 3}
+      propertyPath: originTransform
+      value: 
+      objectReference: {fileID: 2131650532}
+    - target: {fileID: 6764290868303537853, guid: da66e1e2b2b142d40ac8b2500c7ff770,
+        type: 3}
       propertyPath: moveSpeed
       value: 30
       objectReference: {fileID: 0}
-    - target: {fileID: 6764290868303537853, guid: da66e1e2b2b142d40ac8b2500c7ff770,
-        type: 3}
-      propertyPath: shooterTransform
-      value: 
-      objectReference: {fileID: 2131650532}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da66e1e2b2b142d40ac8b2500c7ff770, type: 3}
 --- !u!4 &7494897945837853376 stripped

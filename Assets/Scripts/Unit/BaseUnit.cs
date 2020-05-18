@@ -17,6 +17,9 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
     private float moveSpeed = 10;
 
     [SerializeField]
+    private float attackRangeValue = 4.0f;
+
+    [SerializeField]
     private UnitActionState currentState = UnitActionState.Move;
 
     [SerializeField]
@@ -30,7 +33,7 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
 
         _unitAttacker = GetComponent<UnitAttacker>();
 
-        _targetSetter = new TargetSetter(transform);
+        _targetSetter = new TargetSetter(transform, attackRangeValue);
     }
 
     private void Start()
@@ -69,7 +72,7 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
     private void UpdateAnimation()
     {
         //距離でState変更
-        if (_unitAttacker.IsAttackToTarget(attackTarget.position))
+        if (_targetSetter.IsAttackToTarget())
         {
             currentState = UnitActionState.Attack;
         }

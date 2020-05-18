@@ -63,6 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoint: 20
   moveSpeed: 10
+  attackRangeValue: 6
   currentState: 0
   _animator: {fileID: 7055693801599153888}
 --- !u!114 &7623283157178220672
@@ -80,7 +81,6 @@ MonoBehaviour:
   attackObject: {fileID: 3254283864322659264}
   attackPower: 5
   attackInterval: 0.5
-  attackRangeValue: 6
 --- !u!54 &2946545150675038397
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -224,6 +224,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3254283864707958450, guid: d3a888b006c7b4047883ebc23b2384db,
+        type: 3}
+      propertyPath: originTransform
+      value: 
+      objectReference: {fileID: 3254283864322659267}
     - target: {fileID: 3254283864707958449, guid: d3a888b006c7b4047883ebc23b2384db,
         type: 3}
       propertyPath: m_LocalPosition.x
