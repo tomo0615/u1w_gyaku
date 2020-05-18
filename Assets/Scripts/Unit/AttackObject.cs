@@ -5,11 +5,19 @@ public class AttackObject : MonoBehaviour
 {
     private int attackPower;
 
+    [SerializeField]
+    private Transform originTransform = default;
+
     public virtual void ActiveAttackObject(int power)
     {
         attackPower = power;
 
         gameObject.SetActive(true);
+    }
+
+    public void SetOriginPosition()
+    {
+        transform.position = originTransform.position;
     }
 
     protected virtual void HitDamageableObject()

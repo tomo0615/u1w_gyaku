@@ -22,6 +22,8 @@ public class UnitAttacker : MonoBehaviour
 
         if (attackIntervalSave >= attackInterval)
         {
+            attackObject.SetOriginPosition();
+
             attackObject.ActiveAttackObject(attackPower);
 
             attackIntervalSave = 0f;

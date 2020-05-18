@@ -8,9 +8,6 @@ public class UnitBullet : AttackObject
 
     private Rigidbody _rigidbody;
 
-    [SerializeField]
-    private Transform shooterTransform = default;
-
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -27,7 +24,7 @@ public class UnitBullet : AttackObject
     {
         base.HitDamageableObject();
 
-        transform.position = shooterTransform.position;
+        SetOriginPosition();
     }
 
     private void SetVelocity()
