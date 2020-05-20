@@ -34,6 +34,12 @@ public class HPBar : MonoBehaviour
         slider.maxValue = hpValue;
         slider.value = hpValue;
     }
+    private IEnumerator HideHpbar()
+    {
+        yield return new WaitForSeconds(2f);
+
+        gameObject.SetActive(false);
+    }
 
     public void OnHPValueChange(int hpValue)
     {
@@ -44,16 +50,16 @@ public class HPBar : MonoBehaviour
 
         slider.value = hpValue;
 
+        ChangeHPBarColor();
+    }
+
+    private void ChangeHPBarColor()
+    {
         //徐々にMAXからminに色を変更していく
         float lerpValue = slider.value / slider.maxValue;
 
-        barFillImage.color = Color.Lerp(minimumColor,　maxColor, lerpValue);
-    }
+        var changedColor = Color.Lerp(minimumColor, maxColor, lerpValue);
 
-    private IEnumerator HideHpbar()
-    {
-        yield return new WaitForSeconds(2f);
-
-        gameObject.SetActive(false);
+        barFillImage.color = changedColor;
     }
 }
