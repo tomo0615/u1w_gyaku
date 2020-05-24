@@ -11,6 +11,9 @@ public class UnitManager : SingletonMonoBehaviour<UnitManager>
     [SerializeField]
     private UnitStorage _unitStorage = null;
 
+    [field: SerializeField]
+    public List<Transform> unitOkeList { get; private set; } = new List<Transform>();
+
     public void AddSummonedUnitList(BaseUnit unit)
     {
         summonedUnitList.Add(unit);

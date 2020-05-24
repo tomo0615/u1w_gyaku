@@ -120,6 +120,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &17890408 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 828513295265244611, guid: b906402fccb30a84bbb50366fbf6cdf9,
+    type: 3}
+  m_PrefabInstance: {fileID: 2100709989}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &164373016
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -616,6 +622,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3902936857199636168, guid: fc9ca2ab460cfc8498671b4925737011,
         type: 3}
+      propertyPath: <unitOkeList>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3902936857199636168, guid: fc9ca2ab460cfc8498671b4925737011,
+        type: 3}
       propertyPath: okeTransform
       value: 
       objectReference: {fileID: 1883197281}
@@ -650,6 +661,21 @@ PrefabInstance:
       propertyPath: _unitStorage
       value: 
       objectReference: {fileID: 164373017}
+    - target: {fileID: 3902936857199636168, guid: fc9ca2ab460cfc8498671b4925737011,
+        type: 3}
+      propertyPath: <unitOkeList>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 1883197281}
+    - target: {fileID: 3902936857199636168, guid: fc9ca2ab460cfc8498671b4925737011,
+        type: 3}
+      propertyPath: <unitOkeList>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 1585126792}
+    - target: {fileID: 3902936857199636168, guid: fc9ca2ab460cfc8498671b4925737011,
+        type: 3}
+      propertyPath: <unitOkeList>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 17890408}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc9ca2ab460cfc8498671b4925737011, type: 3}
 --- !u!4 &298249456 stripped
@@ -1430,6 +1456,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d3ec8dbf643cff4c88378fbeac53626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1585126792 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 828513295265244611, guid: b906402fccb30a84bbb50366fbf6cdf9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1888476917}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1680320135
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -37,7 +37,9 @@ public class PlayerController : MonoBehaviour
 
     public void UpdatePlayerAction()
     {
-        _drawArc.DrawLine(furoOke.transform.position, transform.position);//okeの座標を変える
+        var okeList = UnitManager.Instance.unitOkeList;
+
+        _drawArc.DrawLine(okeList[(int)_currentUnitType].position, transform.position);//okeの座標を変える
 
         _mousePosition
             = _playerRayCaster.GetPositionByRay(_playerInput.MouseDirection);
