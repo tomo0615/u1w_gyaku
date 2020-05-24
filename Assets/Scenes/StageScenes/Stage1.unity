@@ -774,6 +774,12 @@ SpriteRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 1328527082}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &624698307 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 828513295265244604, guid: b906402fccb30a84bbb50366fbf6cdf9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1883197280}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &811028553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1053,6 +1059,53 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1038731379}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1123094064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1123094065}
+  - component: {fileID: 1123094067}
+  m_Layer: 0
+  m_Name: DrawArc
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1123094065
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123094064}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.7, y: 0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1123094067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123094064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec9b28a958d1c8248895c66d1a442bab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lineMaterial: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  _lineCount: 150
+  _lineWidth: 1
+  _lineHight: 0.05
 --- !u!1 &1131937892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1343,6 +1396,16 @@ PrefabInstance:
       propertyPath: _pointer
       value: 
       objectReference: {fileID: 540754007}
+    - target: {fileID: 1249872875839922343, guid: 93a511cfc2b496449a2ce382f3388697,
+        type: 3}
+      propertyPath: _drawArc
+      value: 
+      objectReference: {fileID: 1123094067}
+    - target: {fileID: 1249872875839922343, guid: 93a511cfc2b496449a2ce382f3388697,
+        type: 3}
+      propertyPath: furoOke
+      value: 
+      objectReference: {fileID: 624698307}
     - target: {fileID: 1249872875839922342, guid: 93a511cfc2b496449a2ce382f3388697,
         type: 3}
       propertyPath: _unitStorage

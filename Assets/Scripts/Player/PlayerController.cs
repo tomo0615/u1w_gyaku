@@ -16,6 +16,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private SpriteRenderer _pointer = default;
 
+    [SerializeField]
+    private DrawArc _drawArc = default;
+
+    [SerializeField]
+    private GameObject furoOke = default;
+
     public void InitializePlayer()
     {
         Camera camera = Camera.main;
@@ -31,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
     public void UpdatePlayerAction()
     {
+        _drawArc.DrawLine(furoOke.transform.position, transform.position);//okeの座標を変える
 
         _mousePosition
             = _playerRayCaster.GetPositionByRay(_playerInput.MouseDirection);
