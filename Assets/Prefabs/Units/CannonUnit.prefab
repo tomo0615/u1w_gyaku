@@ -81,7 +81,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoint: 10
   moveSpeed: 10
-  attackRangeValue: 16
   currentState: 0
   _animator: {fileID: 3881169720089638310}
 --- !u!114 &3881169720924368264
@@ -99,6 +98,7 @@ MonoBehaviour:
   attackObject: {fileID: 7494897945837853383}
   attackPower: 4
   attackInterval: 1
+  _attackRange: 16
 --- !u!54 &3881169720924368267
 Rigidbody:
   m_ObjectHideFlags: 0

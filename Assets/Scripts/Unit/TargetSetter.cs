@@ -6,12 +6,9 @@ public class TargetSetter
 
     private Transform _transform;
 
-    private float _attackRange;
-
-    public TargetSetter(Transform transform, float attackRange)
+    public TargetSetter(Transform transform)
     {
         _transform = transform;
-        _attackRange = attackRange;
     }
 
     public Transform SetNearestTarget()
@@ -37,11 +34,5 @@ public class TargetSetter
         }
 
         return targetTransfom;
-    }
-
-    public bool IsAttackToTarget()
-    {
-        var distance = Vector3.Distance(_transform.position, targetTransfom.position);
-        return distance <= _attackRange;
     }
 }

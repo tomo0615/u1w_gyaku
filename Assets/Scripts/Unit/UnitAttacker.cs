@@ -13,6 +13,9 @@ public class UnitAttacker : MonoBehaviour
 
     private float attackIntervalSave = 0f;
 
+    [SerializeField]
+    private float _attackRange = 6f;
+
     public void AttackToTarget()
     {
         attackIntervalSave += Time.deltaTime;
@@ -25,5 +28,12 @@ public class UnitAttacker : MonoBehaviour
 
             attackIntervalSave = 0f;
         }
+    }
+
+    public bool IsAttackToTarget(Transform target)
+    {
+        var distance = Vector3.Distance(transform.position, target.position);
+
+        return distance <= _attackRange;
     }
 }
