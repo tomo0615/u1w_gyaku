@@ -8,8 +8,6 @@ public class PlayerController : MonoBehaviour
 
     private PlayerSummoner _playerSummoner;
 
-    private Vector3 _mousePosition;
-
     [SerializeField]
     private UnitType _currentUnitType = UnitType.Normal;
 
@@ -18,9 +16,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private DrawArc _drawArc = default;
-
-    [SerializeField]
-    private GameObject furoOke = default;
 
     public void InitializePlayer()
     {
@@ -39,12 +34,13 @@ public class PlayerController : MonoBehaviour
     {
         var okeList = UnitManager.Instance.unitOkeList;
 
-        _drawArc.DrawLine(okeList[(int)_currentUnitType].position, transform.position);//okeの座標を変える
+        //軌跡の表示
+        _drawArc.DrawLine(okeList[(int)_currentUnitType].position, transform.position);
 
-        _mousePosition
+        var mousePosition
             = _playerRayCaster.GetPositionByRay(_playerInput.MouseDirection);
 
-        transform.position = _mousePosition;
+        transform.position = mousePosition;
 
         //Unitの選択
         if (_playerInput.IsSelectSlot() >= 0)
@@ -55,7 +51,7 @@ public class PlayerController : MonoBehaviour
         //召喚
         if (_playerInput.IsSummonSetting)
         {
-            _playerSummoner.SummonSetting(_mousePosition, _currentUnitType);
+            _playerSummoner.SummonSetting(mousePosition, _currentUnitType);
         }
         else if (_playerInput.IsSummon)
         {
