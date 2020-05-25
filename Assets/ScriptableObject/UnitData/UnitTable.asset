@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561db61f5dd2c9a4ea409ecc56ff6d94, type: 3}
+  m_Name: UnitTable
+  m_EditorClassIdentifier: 
+  normalUnit: {fileID: 2946545150675038398, guid: 537c9018b0f5aeb4d85be219682520b8,
+    type: 3}
+  shieldUnit: {fileID: 3899770940625899736, guid: e411ed05026b25341ab90746032c3664,
+    type: 3}
+  cannonUnit: {fileID: 3881169720924368265, guid: 8073d827cdcfee84299c868381341003,
+    type: 3}
