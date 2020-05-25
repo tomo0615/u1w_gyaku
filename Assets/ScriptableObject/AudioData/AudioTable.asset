@@ -18,10 +18,10 @@ MonoBehaviour:
   buttonOk: {fileID: 0}
   buttonCancel: {fileID: 0}
   unitAttack: {fileID: 0}
-  unitDamage: {fileID: 0}
+  unitDamage: {fileID: 8300000, guid: f9517356afb533a41b9e7cb6f155031e, type: 3}
   unitDeath: {fileID: 0}
   enemyAttack: {fileID: 0}
-  enemyDamage: {fileID: 0}
-  enemyDestroy: {fileID: 0}
+  enemyDamage: {fileID: 8300000, guid: f9517356afb533a41b9e7cb6f155031e, type: 3}
+  enemyDestroy: {fileID: 8300000, guid: 9cb65eb2505fbf443ac876ba177374f9, type: 3}
   win: {fileID: 0}
   lose: {fileID: 0}
