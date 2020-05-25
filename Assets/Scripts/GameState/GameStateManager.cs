@@ -6,6 +6,9 @@ public class GameStateManager : StateMachine<GameState>
     [Inject]
     private readonly FadeSceneLoader _fadeSceneLoader = default;
 
+    [Inject]
+    private readonly AudioManager _audioManager = default;
+
     [SerializeField]
     private UnitStorage _unitStorage = default;
 
@@ -79,6 +82,7 @@ public class GameStateManager : StateMachine<GameState>
     #region SettingMethod
     private void OnSetUpSetting()
     {
+        _audioManager.PlayBGM(AudioType.GameBGM);
         //UnitSelectUIの表示
         _unitSelectView.ActiveUnitSelectUI(true);
     }
