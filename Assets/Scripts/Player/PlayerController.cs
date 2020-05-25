@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         //軌跡の表示
         _drawArc.DrawLine(okeList[(int)_currentUnitType].position, transform.position);
 
-        var mousePosition
+        Vector3 mousePosition
             = _playerRayCaster.GetPositionByRay(_playerInput.MouseDirection);
 
         transform.position = mousePosition;
@@ -63,11 +63,6 @@ public class PlayerController : MonoBehaviour
         {
             Transform targetPosition
                  = _playerRayCaster.GetRayHitObject(_playerInput.MouseDirection);
-
-            if (targetPosition == null)
-            {
-                return;
-            }
 
             UnitManager.Instance.SetTargetToAllUnit(targetPosition);
         }

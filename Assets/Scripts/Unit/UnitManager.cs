@@ -32,6 +32,8 @@ public class UnitManager : SingletonMonoBehaviour<UnitManager>
 
     public void SetTargetToAllUnit(Transform target)
     {
+        if(target == null) return;
+
         foreach(BaseUnit unit in summonedUnitList)
         {
             unit.SetTarget(target);
