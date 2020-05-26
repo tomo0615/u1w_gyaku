@@ -82,7 +82,7 @@ public class GameStateManager : StateMachine<GameState>
     #region SettingMethod
     private void OnSetUpSetting()
     {
-        _audioManager.PlayBGM(AudioType.GameBGM);
+        _audioManager.PlayBGM(BGMType.GameBGM);
         //UnitSelectUIの表示
         _unitSelectView.ActiveUnitSelectUI(true);
     }

@@ -1,9 +1,5 @@
-﻿public enum AudioType
+﻿public enum SEType
 {
-    TitleBGM,
-    GameBGM,
-    ResultBGM,
-
     ButtonOK,
     ButtonCancel,
 
