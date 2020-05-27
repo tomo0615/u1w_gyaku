@@ -2,12 +2,16 @@
 using UniRx;
 using UnityEngine.UI;
 using DG.Tweening;
+using Zenject;
 
 public class BaseButton : MonoBehaviour
 {
+    [Inject]
+    private AudioManager _audioManager = default;
+
     private Button _button;
 
-    public Button Button
+    protected Button Button
     {
         get
         {
@@ -28,7 +32,7 @@ public class BaseButton : MonoBehaviour
 
     private void Start()
     {
-        _button.OnClickAsObservable()
+        Button.OnClickAsObservable()
             .Subscribe(_ =>
             {
                 OnClicked();
@@ -40,15 +44,15 @@ public class BaseButton : MonoBehaviour
     {
         PlayClickedSound();
 
-        DoButtonClickedAnimation();
+        DoPunchAnimation();
     }
 
     private void PlayClickedSound()
     {
-        //Soundnagasu
+        _audioManager.PlaySE(SEType.ButtonOK);
     }
 
-    private void DoButtonClickedAnimation()
+    private void DoPunchAnimation()
     {
         _rectTransform.DOScale(Vector3.one * 1.1f, 0.1f)
             .OnComplete(() => _rectTransform.DOScale(Vector3.one, 0.1f));
