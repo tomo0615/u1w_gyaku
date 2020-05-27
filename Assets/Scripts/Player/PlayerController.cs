@@ -8,11 +8,10 @@ public class PlayerController : MonoBehaviour
 
     private PlayerSummoner _playerSummoner;
 
-    [SerializeField]
-    private UnitType _currentUnitType = UnitType.Normal;
+    private PlayerPointer _playerPointer;
 
     [SerializeField]
-    private SpriteRenderer _pointer = default;
+    private UnitType _currentUnitType = UnitType.Normal;
 
     [SerializeField]
     private DrawArc _drawArc = default;
@@ -27,7 +26,9 @@ public class PlayerController : MonoBehaviour
 
         _playerSummoner = GetComponent<PlayerSummoner>();
 
-        _pointer.enabled = true;
+        _playerPointer = GetComponent<PlayerPointer>();
+
+        _playerPointer.Initialize();
     }
 
     public void UpdatePlayerAction()
