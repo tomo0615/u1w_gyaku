@@ -1,8 +1,8 @@
 ﻿using TMPro;
 using UnityEngine;
 using System;
-using UnityEngine.UI;
 using UniRx;
+using UnityEngine.UI;
 
 public class UnitCountView : MonoBehaviour
 {
@@ -10,10 +10,10 @@ public class UnitCountView : MonoBehaviour
     private TextMeshProUGUI _unitCountText = default;
 
     [SerializeField]
-    private UnitCountButton _plusButton = default;
+    private Button _plusButton = default;
 
     [SerializeField]
-    private UnitCountButton _minusButton = default;
+    private Button _minusButton = default;
 
     private readonly Subject<bool> _onPlus = new Subject<bool>();
     public IObservable<bool> OnPlus() => _onPlus;
@@ -23,11 +23,11 @@ public class UnitCountView : MonoBehaviour
 
     public void Initialize()
     {
-        _plusButton.Button
+        _plusButton
             .OnClickAsObservable()
             .Subscribe(_ => _onPlus.OnNext(true));
 
-        _minusButton.Button
+        _minusButton
             .OnClickAsObservable()
             .Subscribe(_ => _onMinus.OnNext(false));
     }
