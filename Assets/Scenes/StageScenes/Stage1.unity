@@ -631,6 +631,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77d05fec1306ab54488d17538aed3dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &280131078 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1430615853, guid: 93a511cfc2b496449a2ce382f3388697,
+    type: 3}
+  m_PrefabInstance: {fileID: 1328527082}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &285237620 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3367603869485388144, guid: 1bd4284c596e3d145aa4073ff45fe99e,
@@ -1549,6 +1555,40 @@ PrefabInstance:
     - target: {fileID: 1430615853, guid: 93a511cfc2b496449a2ce382f3388697, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581833019059722120, guid: 93a511cfc2b496449a2ce382f3388697,
+        type: 3}
+      propertyPath: _pointerObject
+      value: 
+      objectReference: {fileID: 280131078}
+    - target: {fileID: 7581833019059722120, guid: 93a511cfc2b496449a2ce382f3388697,
+        type: 3}
+      propertyPath: _animationTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430615854, guid: 93a511cfc2b496449a2ce382f3388697, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430615854, guid: 93a511cfc2b496449a2ce382f3388697, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430615854, guid: 93a511cfc2b496449a2ce382f3388697, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430615854, guid: 93a511cfc2b496449a2ce382f3388697, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430615854, guid: 93a511cfc2b496449a2ce382f3388697, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0000005832798
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430615854, guid: 93a511cfc2b496449a2ce382f3388697, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93a511cfc2b496449a2ce382f3388697, type: 3}
