@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UniRx;
+using UniRx.Triggers;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +18,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private DrawArc _drawArc = default;
 
+    private bool isSummonable = true;
+
     public void InitializePlayer()
     {
         Camera camera = Camera.main;
@@ -29,6 +33,27 @@ public class PlayerController : MonoBehaviour
         _playerPointer = GetComponent<PlayerPointer>();
 
         _playerPointer.Initialize();
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var area = other.GetComponent<AttackRangeArea>();
+
+        if(area != null)
+        {
+            isSummonable = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        var area = other.GetComponent<AttackRangeArea>();
+
+        if (area != null)
+        {
+            isSummonable = true;
+        }
     }
 
     public void UpdatePlayerAction()
@@ -49,6 +74,8 @@ public class PlayerController : MonoBehaviour
             _currentUnitType = (UnitType)_playerInput.IsSelectSlot();
         }
 
+        if (isSummonable == false) return;
+        
         //召喚
         if (_playerInput.IsSummonSetting)
         {
