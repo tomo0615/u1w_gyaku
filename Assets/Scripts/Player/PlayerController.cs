@@ -35,7 +35,6 @@ public class PlayerController : MonoBehaviour
         _playerPointer.Initialize();
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
         var area = other.GetComponent<AttackRangeArea>();
@@ -74,8 +73,16 @@ public class PlayerController : MonoBehaviour
             _currentUnitType = (UnitType)_playerInput.IsSelectSlot();
         }
 
+        //Unitへ命令
+        if (_playerInput.IsAllAttack)
+        {
+            Transform targetPosition
+                 = _playerRayCaster.GetRayHitObject(_playerInput.MouseDirection);
+
+            UnitManager.Instance.SetTargetToAllUnit(targetPosition);
+        }
+
         if (isSummonable == false) return;
-        
         //召喚
         if (_playerInput.IsSummonSetting)
         {
@@ -84,15 +91,6 @@ public class PlayerController : MonoBehaviour
         else if (_playerInput.IsSummon)
         {
             _playerSummoner.SummonUnit();
-        }
-
-        //Unitへ命令
-        if (_playerInput.IsAllAttack)
-        {
-            Transform targetPosition
-                 = _playerRayCaster.GetRayHitObject(_playerInput.MouseDirection);
-
-            UnitManager.Instance.SetTargetToAllUnit(targetPosition);
         }
     }
 }
