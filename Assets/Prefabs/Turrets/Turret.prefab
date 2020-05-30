@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 409952230}
   - component: {fileID: 409952229}
   - component: {fileID: 409952228}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: BuildInfoCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,8 +331,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barFillImage: {fileID: 4762734050338622894}
-  maxColor: {r: 0, g: 1, b: 0.7294118, a: 1}
-  minimumColor: {r: 1, g: 0, b: 0.29065657, a: 1}
+  maxColor: {r: 0, g: 1, b: 0, a: 1}
+  minimumColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1001 &2119142047799036727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -344,6 +344,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HpBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877019809747672778, guid: c9cbf7f15952ee341a083f847a76d937,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6877019809747672777, guid: c9cbf7f15952ee341a083f847a76d937,
         type: 3}
@@ -465,6 +470,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 6877019810682129000, guid: c9cbf7f15952ee341a083f847a76d937,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6877019809747672776, guid: c9cbf7f15952ee341a083f847a76d937,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
@@ -479,6 +489,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Interactable
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877019808863242904, guid: c9cbf7f15952ee341a083f847a76d937,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877019810682129006, guid: c9cbf7f15952ee341a083f847a76d937,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877019808881215131, guid: c9cbf7f15952ee341a083f847a76d937,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9cbf7f15952ee341a083f847a76d937, type: 3}
