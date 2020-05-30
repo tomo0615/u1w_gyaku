@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using UniRx;
-using UniRx.Triggers;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,7 +10,6 @@ public class PlayerController : MonoBehaviour
 
     private PlayerPointer _playerPointer;
 
-    [SerializeField]
     private UnitType _currentUnitType = UnitType.Normal;
 
     [SerializeField]
@@ -35,7 +32,7 @@ public class PlayerController : MonoBehaviour
         _playerPointer.Initialize();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         var area = other.GetComponent<AttackRangeArea>();
 
@@ -83,6 +80,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (isSummonable == false) return;
+
         //召喚
         if (_playerInput.IsSummonSetting)
         {

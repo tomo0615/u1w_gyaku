@@ -23,6 +23,7 @@ public class PlayerRayCaster
             var lookPoint = hit.point;
             lookPoint.y = _transform.position.y;
 
+            //Debug.DrawRay(ray.origin, ray.direction * 1000, Color.red);
             return lookPoint;
         }
 
