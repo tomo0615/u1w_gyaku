@@ -230,8 +230,8 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1328527082}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &181242581
-BoxCollider:
+--- !u!135 &181242581
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -241,8 +241,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3, y: 3, z: 3}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 2
+  m_Center: {x: 0.13, y: 0, z: -0.6}
 --- !u!54 &181242582
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2153,6 +2153,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NormalFuroOke
       objectReference: {fileID: 0}
+    - target: {fileID: 828513295265244604, guid: b906402fccb30a84bbb50366fbf6cdf9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 828513295265244611, guid: b906402fccb30a84bbb50366fbf6cdf9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2262,6 +2267,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShieldFuroOke
+      objectReference: {fileID: 0}
+    - target: {fileID: 828513295265244604, guid: b906402fccb30a84bbb50366fbf6cdf9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 828513295265244611, guid: b906402fccb30a84bbb50366fbf6cdf9,
         type: 3}
@@ -2566,6 +2576,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CannonFuroOke
+      objectReference: {fileID: 0}
+    - target: {fileID: 828513295265244604, guid: b906402fccb30a84bbb50366fbf6cdf9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 828513295265244611, guid: b906402fccb30a84bbb50366fbf6cdf9,
         type: 3}
