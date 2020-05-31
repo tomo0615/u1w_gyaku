@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(UnitAttacker))]
@@ -24,6 +25,8 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
 
     private Transform attackTarget;
 
+    private NavMeshAgent _navMeshAgent;
+
     private void Awake()
     {
         _unitMover = new UnitMover(transform, GetComponent<Rigidbody>());
@@ -31,11 +34,14 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
         _unitAttacker = GetComponent<UnitAttacker>();
 
         _targetSetter = new TargetSetter(transform);
+
+        _navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     private void Start()
     {
         attackTarget = _targetSetter.SetNearestTarget();
+        _navMeshAgent.SetDestination(attackTarget.position);
     }
 
     private void Update()
@@ -43,6 +49,7 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
         if (attackTarget == null)
         {
             attackTarget = _targetSetter.SetNearestTarget();
+            _navMeshAgent.SetDestination(attackTarget.position);
             _unitMover.StopMove();
             return;
         }
@@ -52,7 +59,7 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
         //Action
         if (currentState == UnitActionState.Move)
         {
-            _unitMover.MoveToTartget(attackTarget, moveSpeed);
+            //_unitMover.MoveToTartget(attackTarget, moveSpeed);
         }
         else if(currentState == UnitActionState.Attack)
         {
