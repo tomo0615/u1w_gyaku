@@ -494,7 +494,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216904958}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.41937, y: -0.7988839, z: 31.900002}
+  m_LocalPosition: {x: -9.5, y: -0.7988839, z: 31.900002}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 1793972867}
@@ -3329,8 +3329,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 1197429797}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 4
-  m_Speed: 3.5
+  m_Radius: 3
+  m_Speed: 7
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

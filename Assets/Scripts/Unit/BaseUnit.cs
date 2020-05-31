@@ -38,21 +38,13 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
         _navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
-    private void Start()
-    {
-        attackTarget = _targetSetter.SetNearestTarget();
-        _navMeshAgent.SetDestination(attackTarget.position);
-    }
-
     private void Update()
     {
-        if (attackTarget == null)
+        if(attackTarget == null)
         {
             attackTarget = _targetSetter.SetNearestTarget();
-            _navMeshAgent.SetDestination(attackTarget.position);
-            _unitMover.StopMove();
-            return;
         }
+        _navMeshAgent.SetDestination(attackTarget.position);
 
         UpdateAnimation();
 
