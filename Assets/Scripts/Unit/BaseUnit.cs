@@ -23,7 +23,7 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
     [SerializeField]
     private Animator _animator = null;
 
-    private Transform attackTarget;
+    private Transform attackTarget = null;
 
     private NavMeshAgent _navMeshAgent;
 
@@ -38,17 +38,28 @@ public abstract class BaseUnit : MonoBehaviour, IAttackable
         _navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
-    private void Update()
+    private void Start()
     {
-        if(attackTarget == null)
+        if (attackTarget == null)
         {
             attackTarget = _targetSetter.SetNearestTarget();
         }
         _navMeshAgent.SetDestination(attackTarget.position);
+    }
 
+    private void Update()
+    {
+        
+        if(attackTarget == null)
+        {
+            attackTarget = _targetSetter.SetNearestTarget();
+            _navMeshAgent.SetDestination(attackTarget.position);
+        }
+        
         UpdateAnimation();
-
+        
         //Action
+
         if (currentState == UnitActionState.Move)
         {
             //_unitMover.MoveToTartget(attackTarget, moveSpeed);
