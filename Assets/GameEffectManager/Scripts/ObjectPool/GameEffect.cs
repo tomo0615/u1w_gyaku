@@ -9,21 +9,15 @@ public class GameEffect : MonoBehaviour
 
     private ParticleSystem effect { get; set; }
 
-    private ParticleSystem Effect
-    {
-        get
-        {
-            return effect ?? (effect = GetComponent<ParticleSystem>());
-        }
-    }
+    private ParticleSystem Effect => effect ? effect : (effect = GetComponent<ParticleSystem>());
 
-    public IObservable<Unit> PlayEffect(Vector3 position)
+    public IObservable<UniRx.Unit> PlayEffect(Vector3 position)
     {
         transform.position = position;
 
-        Effect.Play();
+        effect.Play();
 
-        return Observable
+        return (IObservable<UniRx.Unit>) Observable
             .Timer(TimeSpan.FromSeconds(finishTime))
             .ForEachAsync(_ => Effect.Stop());
     }
