@@ -1,4 +1,6 @@
-﻿public class CannonUnit : BaseUnit
+﻿using Unit;
+
+public class CannonUnit : BaseUnit
 {
 
 }

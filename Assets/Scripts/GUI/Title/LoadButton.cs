@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 using Zenject;
 
-public class LoadButton : BaseButton
+namespace GUI.Title
 {
-    [Inject]
-    private FadeSceneLoader _fadeSceneLoader = default;
-
-    [SerializeField]
-    private SceneName _jumpSceneName = default;
-
-    public override void OnClicked()
+    public class LoadButton : BaseButton
     {
-        base.OnClicked();
+        [Inject]
+        private FadeSceneLoader _fadeSceneLoader = default;
 
-        _fadeSceneLoader.JumpSceneLoad(_jumpSceneName);
+        [SerializeField]
+        private SceneName _jumpSceneName = default;
+
+        public override void OnClicked()
+        {
+            base.OnClicked();
+
+            _fadeSceneLoader.JumpSceneLoad(_jumpSceneName);
+        }
     }
 }

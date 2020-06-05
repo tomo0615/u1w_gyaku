@@ -1,35 +1,38 @@
 ﻿using System;
-using UniRx;
 using DG.Tweening;
+using UniRx;
 using UnityEngine;
 
-public class SummonObject : MonoBehaviour
+namespace Unit.SummonEffect
 {
-    [SerializeField]
-    private double _animationTime = 10;
-
-    public IObservable<Unit> PlayEffect(Vector3 position)
+    public class SummonObject : MonoBehaviour
     {
-        transform.position = position;
+        [SerializeField]
+        private double _animationTime = 10;
 
-        DoStartAnimation();
+        public IObservable<UniRx.Unit> PlayEffect(Vector3 position)
+        {
+            transform.position = position;
 
-        return Observable
-            .Timer(TimeSpan.FromSeconds(_animationTime))
-            .ForEachAsync(_ => DoFinishAnimation());
-    }
+            DoStartAnimation();
 
-    private void DoStartAnimation()
-    {
-        var position = transform.position;
+            return Observable
+                .Timer(TimeSpan.FromSeconds(_animationTime))
+                .ForEachAsync(_ => DoFinishAnimation());
+        }
 
-        transform.position -= Vector3.one;
+        private void DoStartAnimation()
+        {
+            var position = transform.position;
 
-        transform.DOMoveY(transform.position.y + 1, 0.25f);
-    }
+            transform.position -= Vector3.one;
 
-    private void DoFinishAnimation()
-    {
-        transform.DOMoveY(transform.position.y - 1, 0.25f);
+            transform.DOMoveY(transform.position.y + 1, 0.25f);
+        }
+
+        private void DoFinishAnimation()
+        {
+            transform.DOMoveY(transform.position.y - 1, 0.25f);
+        }
     }
 }

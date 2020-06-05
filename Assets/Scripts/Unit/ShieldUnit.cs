@@ -1,4 +1,6 @@
-﻿public class ShieldUnit : BaseUnit
+﻿using Unit;
+
+public class ShieldUnit : BaseUnit
 {
 
 }

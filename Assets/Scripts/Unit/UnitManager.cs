@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Unit;
 using UnityEngine;
 
 public class UnitManager : SingletonMonoBehaviour<UnitManager>
