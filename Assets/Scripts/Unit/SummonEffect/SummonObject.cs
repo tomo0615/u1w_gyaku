@@ -23,8 +23,6 @@ namespace Unit.SummonEffect
 
         private void DoStartAnimation()
         {
-            var position = transform.position;
-
             transform.position -= Vector3.one;
 
             transform.DOMoveY(transform.position.y + 1, 0.25f);
