@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unit;
+using UnityEngine;
 
 [CreateAssetMenu(menuName = "UnitTable", fileName = "UnitTable")]
 public class UnitTable : ScriptableObject

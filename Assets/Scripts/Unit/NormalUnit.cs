@@ -1,8 +1,9 @@
 ﻿
 
-using Unit;
-
-public class NormalUnit : BaseUnit
+namespace Unit
 {
+    public class NormalUnit : BaseUnit
+    {
 
+    }
 }

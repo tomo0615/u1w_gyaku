@@ -11,23 +11,22 @@ public class UnitAttacker : MonoBehaviour
     [SerializeField]
     private float attackInterval = 2f;
 
-    private float attackIntervalSave = 0f;
+    private float _attackIntervalSave = 0f;
 
     [SerializeField]
     private float _attackRange = 6f;
 
     public void AttackToTarget()
     {
-        attackIntervalSave += Time.deltaTime;
+        _attackIntervalSave += Time.deltaTime;
 
-        if (attackIntervalSave >= attackInterval)
-        {
-            attackObject.SetOriginPosition();
+        if (!(_attackIntervalSave >= attackInterval)) return;
+        
+        attackObject.SetOriginPosition();
 
-            attackObject.ActiveAttackObject(attackPower);
+        attackObject.ActiveAttackObject(attackPower);
 
-            attackIntervalSave = 0f;
-        }
+        _attackIntervalSave = 0f;
     }
 
     public bool IsAttackToTarget(Transform target)
