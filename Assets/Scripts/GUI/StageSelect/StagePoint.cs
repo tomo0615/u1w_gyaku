@@ -8,7 +8,7 @@ public class StagePoint : MonoBehaviour
     private SceneName _stageName = SceneName.Stage1;
 
     [Inject]
-    private readonly FadeSceneLoader _fadeSceneLoader = default;
+    private readonly FadeSceneLoader.FadeSceneLoader _fadeSceneLoader = default;
 
     private void Start()
     {

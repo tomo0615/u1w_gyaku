@@ -1,53 +1,58 @@
-﻿using UnityEngine;
+﻿using System;
 using DG.Tweening;
+using UnityEngine;
 using Zenject;
-using UniRx;
-using System;
+using FadeSceneLoader;
 
-public class ResultButton : MonoBehaviour
+namespace GUI.GameEnd
 {
-    [Inject]
-    private readonly FadeSceneLoader _fadeSceneLoader = default;
-
-    private RectTransform _rectTransform;
-
-    public Action OnClickedResultButtonListner = default;
-
-    public void InitializeResultButton()
+    public class ResultButton : MonoBehaviour
     {
-        _rectTransform = GetComponent<RectTransform>();
+        [Inject]
+        private readonly FadeSceneLoader.FadeSceneLoader _fadeSceneLoader = default;
 
-        gameObject.SetActive(false);
-    }
+        private RectTransform _rectTransform;
 
-    public void SetActiveButton()
-    {
-        _rectTransform.localScale /= 10;
+        public Action OnClickedResultButtonListner = default;
 
-        gameObject.SetActive(true);
+        public void InitializeResultButton()
+        {
+            _rectTransform = GetComponent<RectTransform>();
 
-        _rectTransform.DOScale(_rectTransform.localScale * 10, 1f);
+            gameObject.SetActive(false);
+        }
 
-    }
+        public void SetActiveButton()
+        {
+            var localScale = _rectTransform.localScale;
+            localScale /= 10;
+            _rectTransform.localScale = localScale;
 
-    public void OnRetry()
-    {
-        OnClickedResultButtonListner.Invoke();
+            gameObject.SetActive(true);
 
-        _fadeSceneLoader.CurrentSceneLoad();
-    }
+            _rectTransform.DOScale(localScale * 10, 1f);
 
-    public void OnNextStage()
-    {
-        OnClickedResultButtonListner.Invoke();
+        }
 
-        _fadeSceneLoader.NextSceneLoad();
-    }
+        public void OnRetry()
+        {
+            OnClickedResultButtonListner.Invoke();
 
-    public void OnReturnStageSelect()
-    {
-        OnClickedResultButtonListner.Invoke();
+            _fadeSceneLoader.CurrentSceneLoad();
+        }
 
-        _fadeSceneLoader.JumpSceneLoad(SceneName.StageSelect);
+        public void OnNextStage()
+        {
+            OnClickedResultButtonListner.Invoke();
+
+            _fadeSceneLoader.NextSceneLoad();
+        }
+
+        public void OnReturnStageSelect()
+        {
+            OnClickedResultButtonListner.Invoke();
+
+            _fadeSceneLoader.JumpSceneLoad(SceneName.StageSelect);
+        }
     }
 }

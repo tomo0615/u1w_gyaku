@@ -6,7 +6,7 @@ namespace GUI.Title
     public class LoadButton : BaseButton
     {
         [Inject]
-        private FadeSceneLoader _fadeSceneLoader = default;
+        private FadeSceneLoader.FadeSceneLoader _fadeSceneLoader = default;
 
         [SerializeField]
         private SceneName _jumpSceneName = default;

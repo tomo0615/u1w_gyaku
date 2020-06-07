@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using GUI.GameEnd;
+using UnityEngine;
 using Zenject;
 
 public class GameStateManager : StateMachine<GameState>
 {
     [Inject]
-    private readonly FadeSceneLoader _fadeSceneLoader = default;
+    private readonly FadeSceneLoader.FadeSceneLoader _fadeSceneLoader = default;
 
     [Inject]
     private readonly AudioManager _audioManager = default;

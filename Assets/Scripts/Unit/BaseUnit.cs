@@ -17,7 +17,7 @@ namespace Unit
         private int hitPoint = 1;
 
         [SerializeField]
-        private float moveSpeed = 10;
+        private float moveSpeed = 10;　//ToDo：Navimeshと同期
 
         [SerializeField]
         private UnitActionState currentState = UnitActionState.Move;
