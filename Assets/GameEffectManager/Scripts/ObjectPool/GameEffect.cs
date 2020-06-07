@@ -15,7 +15,7 @@ public class GameEffect : MonoBehaviour
     {
         transform.position = position;
 
-        effect.Play();
+        Effect.Play();
 
         return (IObservable<UniRx.Unit>) Observable
             .Timer(TimeSpan.FromSeconds(finishTime))
