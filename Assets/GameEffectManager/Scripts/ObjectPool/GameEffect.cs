@@ -17,7 +17,7 @@ public class GameEffect : MonoBehaviour
 
         Effect.Play();
 
-        return (IObservable<UniRx.Unit>) Observable
+        return  Observable
             .Timer(TimeSpan.FromSeconds(finishTime))
             .ForEachAsync(_ => Effect.Stop());
     }
