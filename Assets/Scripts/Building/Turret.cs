@@ -10,9 +10,9 @@ public class Turret :　BaseBuilding
     [SerializeField]
     private Transform turretTransform = default;
 
-    private AttackRangeArea attackRangeArea;
+    private AttackRangeArea _attackRangeArea;
 
-    private Vector3 targetDirection = Vector3.zero;
+    private Vector3 _targetDirection = Vector3.zero;
 
     private void Awake()
     {
@@ -20,27 +20,26 @@ public class Turret :　BaseBuilding
 
         _turretRotater = new TurretRotater(turretTransform);
 
-        attackRangeArea = GetComponentInChildren<AttackRangeArea>();
+        _attackRangeArea = GetComponentInChildren<AttackRangeArea>();
     }
 
     private void Update()
     {
         SetTargetDirection();
 
-        if (attackRangeArea.IsAttackable())
-        {
-            _turretRotater.LookTargtDirection(targetDirection);
+        if (!_attackRangeArea.IsAttackable()) return;
+        
+        _turretRotater.LookTargetDirection(_targetDirection);
 
-            _turretShooter.ShotBullet(targetDirection);
-        }
+        _turretShooter.ShotBullet(_targetDirection);
     }
 
     private void SetTargetDirection()
     {
-        Vector3 attackTargetPosition = attackRangeArea.GetCurrentTarget();
+        Vector3 attackTargetPosition = _attackRangeArea.GetCurrentTarget();
 
         attackTargetPosition.y = turretTransform.position.y;
 
-        targetDirection = attackTargetPosition - turretTransform.position;
+        _targetDirection = attackTargetPosition - turretTransform.position;
     }
 }

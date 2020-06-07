@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 
-public class TurretRotater
+namespace Building
 {
-    private Transform _transform;
-
-    public TurretRotater(Transform transform)
+    public class TurretRotater
     {
-        _transform = transform;
-    }
+        private Transform _transform;
 
-    public void LookTargtDirection(Vector3 targetDirection)
-    {
-        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+        public TurretRotater(Transform transform)
+        {
+            _transform = transform;
+        }
 
-        _transform.rotation = Quaternion.Slerp(_transform.rotation, targetRotation, 0.30f);
+        public void LookTargetDirection(Vector3 targetDirection)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+
+            _transform.rotation = Quaternion.Slerp(_transform.rotation, targetRotation, 0.30f);
+        }
     }
 }

@@ -1,33 +1,35 @@
 ﻿using UnityEngine;
 
-public class Bullet : MonoBehaviour
+namespace Building
 {
-    private Rigidbody _rigidbody;
-
-    private int bulletPower;
-
-    private void Awake()
+    public class Bullet : MonoBehaviour
     {
-        _rigidbody = GetComponent<Rigidbody>();
-    }
-    private void Start()
-    {
-        Destroy(gameObject, 10f);
-    }
+        private Rigidbody _rigidbody;
 
-    public void SetShotVelocity(Vector3 velocity, int power)
-    {
-        _rigidbody.velocity = velocity;
-        bulletPower = power;
-    }
+        private int _bulletPower;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        var attakable = other.GetComponent<IAttackable>();
-
-        if(attakable != null)
+        private void Awake()
         {
-            attakable.Attacked(bulletPower);
+            _rigidbody = GetComponent<Rigidbody>();
+        }
+        private void Start()
+        {
+            Destroy(gameObject, 10f);
+        }
+
+        public void SetShotVelocity(Vector3 velocity, int power)
+        {
+            _rigidbody.velocity = velocity;
+            _bulletPower = power;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            var attakable = other.GetComponent<IAttackable>();
+
+            if (attakable == null) return;
+            
+            attakable.Attacked(_bulletPower);
 
             Destroy(gameObject);
         }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Building;
+using UnityEngine;
 
 public class TurretShooter : MonoBehaviour
 {
@@ -17,22 +18,21 @@ public class TurretShooter : MonoBehaviour
     [SerializeField]
     private Transform shotTransform = default;
 
-    private float elapsedTimeValue = 0;
+    private float _elapsedTimeValue = 0;
 
     public void ShotBullet(Vector3 targetDirection)
     {
-        elapsedTimeValue += Time.deltaTime;
+        _elapsedTimeValue += Time.deltaTime;
 
-        if (elapsedTimeValue >= shotInterval)
-        {
-            Bullet bullet
-                = Instantiate(bulletPrefab,
+        if (!(_elapsedTimeValue >= shotInterval)) return;
+        
+        var bullet
+            = Instantiate(bulletPrefab,
                 shotTransform.position,
                 shotTransform.rotation);//varistorの弾が
 
-            bullet.SetShotVelocity(targetDirection.normalized * bulletSpeed, bulletPower);
+        bullet.SetShotVelocity(targetDirection.normalized * bulletSpeed, bulletPower);
 
-            elapsedTimeValue = 0;
-        }
+        _elapsedTimeValue = 0;
     }
 }

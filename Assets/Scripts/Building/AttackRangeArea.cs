@@ -1,40 +1,41 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class AttackRangeArea : MonoBehaviour
+namespace Building
 {
-    private List<GameObject> unitList = new List<GameObject>();
-
-    public bool IsAttackable()
+    public class AttackRangeArea : MonoBehaviour
     {
-        return unitList.Count > 0 && GetCurrentTarget() != Vector3.zero;
-    }
+        private readonly List<GameObject> unitList = new List<GameObject>();
 
-    public Vector3 GetCurrentTarget()
-    {
-        foreach(var unit in unitList)
+        public bool IsAttackable()
         {
-            if (unit.activeSelf)
+            return unitList.Count > 0 && GetCurrentTarget() != Vector3.zero;
+        }
+
+        public Vector3 GetCurrentTarget()
+        {
+            foreach (var unit in unitList.Where(unit => unit.activeSelf))
             {
-               return unit.transform.position;
+                return unit.transform.position;
+            }
+
+            return Vector3.zero;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            var attackable = other.GetComponent<IAttackable>();
+
+            if(attackable != null)
+            {
+                unitList.Add(other.gameObject);
             }
         }
 
-        return Vector3.zero;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        var attackable = other.GetComponent<IAttackable>();
-
-        if(attackable != null)
-        {
-            unitList.Add(other.gameObject);
+        private void OnTriggerExit(Collider other)
+        {       
+            unitList.Remove(other.gameObject);
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {       
-        unitList.Remove(other.gameObject);
     }
 }
