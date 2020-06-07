@@ -24,7 +24,7 @@ public class AttackObject : MonoBehaviour
     {
         gameObject.SetActive(false);
 
-        GameEffectManager.Instance.OnGenelateEffect(
+        GameEffectManager.Scripts.GameEffectManager.Instance.OnGenelateEffect(
             transform.position,
             EffectType.Attack);
     }

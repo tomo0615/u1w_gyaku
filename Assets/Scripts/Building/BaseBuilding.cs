@@ -1,29 +1,33 @@
 ﻿using UnityEngine;
+using  GameEffectManager;
 
-public class BaseBuilding : MonoBehaviour , IDamageable
+namespace Building
 {
-    [SerializeField]
-    private int hitPoint = 20;
-
-    [SerializeField]
-    private HPBar hpBar = default;
-
-    private void Start()
+    public class BaseBuilding : MonoBehaviour , IDamageable
     {
-        hpBar.SetMaxHPValue(hitPoint);
-    }
+        [SerializeField]
+        private int hitPoint = 20;
 
-    public void ApplyDamage(int damageValue)
-    {
-        hitPoint -= damageValue;
+        [SerializeField]
+        private HPBar hpBar = default;
 
-        hpBar.OnHPValueChange(hitPoint);
-
-        if (hitPoint <= 0)
+        private void Start()
         {
+            hpBar.SetMaxHPValue(hitPoint);
+        }
+
+        public void ApplyDamage(int damageValue)
+        {
+            hitPoint -= damageValue;
+
+            hpBar.OnHPValueChange(hitPoint);
+
+            if (hitPoint > 0) return;
+            
             StageManager.Instance.RemoveAtBuilding(this);
 
-            GameEffectManager.Instance.OnGenelateEffect
+            GameEffectManager.Scripts.
+                GameEffectManager.Instance.OnGenelateEffect
                 (transform.position,
                 EffectType.BuildingExplosion);
 

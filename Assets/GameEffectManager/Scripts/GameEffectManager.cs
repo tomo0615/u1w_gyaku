@@ -1,50 +1,53 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
 using UniRx;
 using UniRx.Triggers;
-using System.Collections.Generic;
+using UnityEngine;
 
-public class GameEffectManager : SingletonMonoBehaviour<GameEffectManager>
+namespace GameEffectManager.Scripts
 {
-    #region particle用
-    private Dictionary<EffectType ,EffectPool> _effectPool = new Dictionary<EffectType, EffectPool>();
-
-    [SerializeField, Header("EffectTableを設定後アタッチ")]
-    private EffectsTable _effectsTable = null;
-    #endregion
-
-    private Transform _myTransform;
-
-    private void Start()
+    public class GameEffectManager : SingletonMonoBehaviour<GameEffectManager>
     {
-        _myTransform = GetComponent<Transform>();
+        #region particle用
+        private readonly Dictionary<EffectType ,EffectPool> _effectPool = new Dictionary<EffectType, EffectPool>();
 
-        InitializeEffectList();
-    }
+        [SerializeField, Header("EffectTableを設定後アタッチ")]
+        private EffectsTable _effectsTable = null;
+        #endregion
 
-    private void InitializeEffectList()
-    {
-        //すべてのエフェクトをディクショナリに格納
-        for (int i = 0; i < _effectsTable.gameEffectList.Count; i++)
+        private Transform _myTransform;
+
+        private void Start()
         {
-            _effectPool.Add((EffectType)i, new EffectPool(_myTransform, _effectsTable.gameEffectList[i])); ;
+            _myTransform = GetComponent<Transform>();
+
+            InitializeEffectList();
         }
 
-        //オブジェクトが破棄されたときにプールを破棄できるようにする
-        foreach (var value in _effectPool.Values)
+        private void InitializeEffectList()
         {
-            this.OnDestroyAsObservable().Subscribe(_ => value.Dispose());
-        }
-    }
-    public void OnGenelateEffect(Vector3 position, EffectType type)
-    {
-        //poolから借りて終わったら返す
-        var gameObj = _effectPool[type].Rent();
-
-        gameObj.PlayEffect(position)
-            .Subscribe(_=>
+            //すべてのエフェクトをディクショナリに格納
+            for (int i = 0; i < _effectsTable.gameEffectList.Count; i++)
             {
-                _effectPool[type].Return(gameObj);
-            });
+                _effectPool.Add((EffectType)i, new EffectPool(_myTransform, _effectsTable.gameEffectList[i])); ;
+            }
+
+            //オブジェクトが破棄されたときにプールを破棄できるようにする
+            foreach (var value in _effectPool.Values)
+            {
+                this.OnDestroyAsObservable().Subscribe(_ => value.Dispose());
+            }
+        }
+        public void OnGenelateEffect(Vector3 position, EffectType type)
+        {
+            //poolから借りて終わったら返す
+            var gameObj = _effectPool[type].Rent();
+
+            gameObj.PlayEffect(position)
+                .Subscribe(_=>
+                {
+                    _effectPool[type].Return(gameObj);
+                });
+        }
     }
 }
 

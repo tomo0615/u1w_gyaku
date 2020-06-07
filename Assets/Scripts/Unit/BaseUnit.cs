@@ -104,7 +104,7 @@ namespace Unit
 
             if (hitPoint > 0) return;
         
-            GameEffectManager.Instance
+            GameEffectManager.Scripts.GameEffectManager.Instance
                 .OnGenelateEffect(transform.position, EffectType.UnitDead);
 
             UnitManager.Instance.RemoveUnitList(this);

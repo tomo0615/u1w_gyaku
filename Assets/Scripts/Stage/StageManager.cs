@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Building;
 
 public class StageManager : SingletonMonoBehaviour<StageManager>
 {

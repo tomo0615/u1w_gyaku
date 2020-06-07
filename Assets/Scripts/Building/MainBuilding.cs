@@ -1,4 +1,6 @@
-﻿public class MainBuilding : BaseBuilding
+﻿using Building;
+
+public class MainBuilding : BaseBuilding
 {
     
 }
