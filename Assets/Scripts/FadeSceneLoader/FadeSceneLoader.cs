@@ -1,85 +1,88 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
-using System;
 
-public class FadeSceneLoader : MonoBehaviour
+namespace FadeSceneLoader
 {
-    [SerializeField]
-    private Fade _fade = default;
-
-    [SerializeField]
-    private NowLoadingView _nowLoadingView = default;
-
-    [SerializeField]
-    private float fadeTime = 1f;
-
-    [SerializeField]
-    private float fadeInterval = 1f;
-
-    public bool IsFadeOutCompleted { get; private set; }
-        = false;
-
-    private ZenjectSceneLoader _zenjectSceneLoader;
-
-    [Inject]
-    private void Construct(ZenjectSceneLoader zenjectSceneLoader)
+    public class FadeSceneLoader : MonoBehaviour
     {
-        _zenjectSceneLoader = zenjectSceneLoader;
+        [SerializeField]
+        private Fade _fade = default;
 
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
+        [SerializeField]
+        private NowLoadingView _nowLoadingView = default;
 
-    private void OnSceneLoaded(Scene nextScene, LoadSceneMode mode)
-    {
-        DoFadeOut();
-    }
-    public void CurrentSceneLoad()
-    {
-        var currentScene = SceneManager.GetActiveScene().buildIndex;
-        var sceneName = ((SceneName)currentScene).ToString();
+        [SerializeField]
+        private float fadeTime = 1f;
 
-        DoFadeInSceneLoad(sceneName);
-    }
+        [SerializeField]
+        private float fadeInterval = 1f;
 
-    public void JumpSceneLoad(SceneName sceneName)
-    {
-        var scene = sceneName.ToString();
+        public bool IsFadeOutCompleted { get; private set; }
+            = false;
 
-        DoFadeInSceneLoad(scene);
-    }
+        private ZenjectSceneLoader _zenjectSceneLoader;
 
-    public void NextSceneLoad()
-    {
-        var currentSceneName = SceneManager.GetActiveScene().buildIndex;
-
-        var enumMax = Enum.GetValues(typeof(SceneName)).Length;
-        var nextIndex = (int)(currentSceneName + 1) % enumMax;
-
-        var nextSceneName = (SceneName)nextIndex;
-        var scene = nextSceneName.ToString();
-
-        DoFadeInSceneLoad(scene);
-    }
-
-    private void DoFadeInSceneLoad(string sceneName)
-    {
-        _fade.FadeIn(fadeTime, () =>
+        [Inject]
+        private void Construct(ZenjectSceneLoader zenjectSceneLoader)
         {
-            _zenjectSceneLoader.LoadScene(sceneName);
-        });
-    }
+            _zenjectSceneLoader = zenjectSceneLoader;
 
-    public void DoFadeOut()
-    {
-        IsFadeOutCompleted = false;
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
 
-        _nowLoadingView.DOAnimation(fadeInterval, () =>
+        private void OnSceneLoaded(Scene nextScene, LoadSceneMode mode)
         {
-            _fade.FadeOut(fadeTime, () =>
+            DoFadeOut();
+        }
+        public void CurrentSceneLoad()
+        {
+            var currentScene = SceneManager.GetActiveScene().buildIndex;
+            var sceneName = ((SceneName)currentScene).ToString();
+
+            DoFadeInSceneLoad(sceneName);
+        }
+
+        public void JumpSceneLoad(SceneName sceneName)
+        {
+            var scene = sceneName.ToString();
+
+            DoFadeInSceneLoad(scene);
+        }
+
+        public void NextSceneLoad()
+        {
+            var currentSceneName = SceneManager.GetActiveScene().buildIndex;
+
+            var enumMax = Enum.GetValues(typeof(SceneName)).Length;
+            var nextIndex = (int)(currentSceneName + 1) % enumMax;
+
+            var nextSceneName = (SceneName)nextIndex;
+            var scene = nextSceneName.ToString();
+
+            DoFadeInSceneLoad(scene);
+        }
+
+        private void DoFadeInSceneLoad(string sceneName)
+        {
+            _fade.FadeIn(fadeTime, () =>
             {
-                IsFadeOutCompleted = true;
+                _zenjectSceneLoader.LoadScene(sceneName);
             });
-        });
+        }
+
+        public void DoFadeOut()
+        {
+            IsFadeOutCompleted = false;
+
+            _nowLoadingView.DOAnimation(fadeInterval, () =>
+            {
+                _fade.FadeOut(fadeTime, () =>
+                {
+                    IsFadeOutCompleted = true;
+                });
+            });
+        }
     }
 }
