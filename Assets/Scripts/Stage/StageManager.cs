@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Linq;
 using Building;
+using GUI.GameEnd;
 
 public class StageManager : SingletonMonoBehaviour<StageManager>
 {

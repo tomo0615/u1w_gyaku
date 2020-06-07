@@ -1,66 +1,68 @@
 ﻿using UnityEngine;
-using System;
 
-public class GameEndPresenter : MonoBehaviour
+namespace GUI.GameEnd
 {
-    [SerializeField]
-    private GameClearViewer _gameClearViewer = default;
-
-    [SerializeField]
-    private GameOverViewer _gameOverViewer = default;
-
-    [SerializeField]
-    private ResultButton _resultButton = default;
-
-    [SerializeField]
-    private GameEndView _gameEndView = default;
-
-    public bool IsGameEnd { private set; get; } = false;
-
-    public bool IsClear { private set; get; } = false;
-
-    private void Awake()
+    public class GameEndPresenter : MonoBehaviour
     {
-        _gameClearViewer.InitializeGameEndViewer();
+        [SerializeField]
+        private GameClearViewer _gameClearViewer = default;
 
-        _gameOverViewer.InitializeGameEndViewer();
+        [SerializeField]
+        private GameOverViewer _gameOverViewer = default;
 
-        _resultButton.InitializeResultButton();
+        [SerializeField]
+        private ResultButton _resultButton = default;
 
-        _resultButton.OnClickedResultButtonListner = OnClickedResultButton;
-    }
-    private void Start()
-    {
-        _gameEndView.ActiveGameEndView(false);
-    }
+        [SerializeField]
+        private GameEndView _gameEndView = default;
 
-    public void OnGameEnd(bool isClear)
-    {
-        IsGameEnd = true;
+        public bool IsGameEnd { private set; get; } = false;
 
-        IsClear = isClear;
-    }
+        private bool IsClear { set; get; } = false;
 
-    public void OnResult()
-    {
-        _gameEndView.ActiveGameEndView(true);
-
-
-        if (IsClear)
+        private void Awake()
         {
-            _gameClearViewer.ViewGameClear();
+            _gameClearViewer.InitializeGameEndViewer();
+
+            _gameOverViewer.InitializeGameEndViewer();
+
+            _resultButton.InitializeResultButton();
+
+            _resultButton.OnClickedResultButtonListner = OnClickedResultButton;
         }
-        else
+        private void Start()
         {
-            _gameOverViewer.ViewGameOver();
+            _gameEndView.ActiveGameEndView(false);
         }
 
-        //resultButtonを表示
-        _resultButton.SetActiveButton();
-    }
+        public void OnGameEnd(bool isClear)
+        {
+            IsGameEnd = true;
 
-    public void OnClickedResultButton()
-    {
-        _gameEndView.ActiveGameEndView(false);
+            IsClear = isClear;
+        }
+
+        public void OnResult()
+        {
+            _gameEndView.ActiveGameEndView(true);
+
+
+            if (IsClear)
+            {
+                _gameClearViewer.ViewGameClear();
+            }
+            else
+            {
+                _gameOverViewer.ViewGameOver();
+            }
+
+            //resultButtonを表示
+            _resultButton.SetActiveButton();
+        }
+
+        public void OnClickedResultButton()
+        {
+            _gameEndView.ActiveGameEndView(false);
+        }
     }
 }
