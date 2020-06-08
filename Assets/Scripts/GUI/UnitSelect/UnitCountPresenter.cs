@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UniRx;
+using Unit;
 using UnityEngine.UI;
 
 public class UnitCountPresenter : MonoBehaviour
