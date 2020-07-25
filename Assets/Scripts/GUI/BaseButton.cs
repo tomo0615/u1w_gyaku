@@ -6,9 +6,6 @@ using Zenject;
 
 public class BaseButton : MonoBehaviour
 {
-    [Inject]
-    private AudioManager _audioManager = default;
-
     private Button _button;
 
     protected Button Button
@@ -42,14 +39,7 @@ public class BaseButton : MonoBehaviour
 
     public virtual void OnClicked()
     {
-        PlayClickedSound();
-
         DoPunchAnimation();
-    }
-
-    private void PlayClickedSound()
-    {
-        _audioManager.PlaySE(SEType.ButtonOK);
     }
 
     private void DoPunchAnimation()
