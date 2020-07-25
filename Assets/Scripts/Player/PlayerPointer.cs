@@ -21,6 +21,8 @@ public class PlayerPointer : MonoBehaviour
 
     private void DoPointerAnimation()
     {
+        // Sequence 使えば綺麗になりそう
+        // マジックナンバーは定数化したい
         _spriteTransform.DOScale(Vector3.one / 1.5f, _animationTime / 2)
             .OnComplete(() =>
             {

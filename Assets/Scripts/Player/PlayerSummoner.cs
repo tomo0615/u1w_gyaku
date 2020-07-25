@@ -24,6 +24,7 @@ public class PlayerSummoner : MonoBehaviour
 
         summonIntervalSave += Time.deltaTime;
 
+        // ネスト浅くしたい
         if (summonIntervalSave >= summonInterval)
         {
             BaseUnit unitPrefab = _unitStorage.GetUnitPrefab(unitType);

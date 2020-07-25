@@ -18,11 +18,13 @@ public class PlayerRayCaster
         Ray ray = _camera.ScreenPointToRay(mousePosition);
         RaycastHit hit;
 
+        // out var hit の方が好き
         if (Physics.Raycast(ray, out hit))
         {
             var lookPoint = hit.point;
             lookPoint.y = _transform.position.y;
 
+            // デッドコードは削除
             //Debug.DrawRay(ray.origin, ray.direction * 1000, Color.red);
             return lookPoint;
         }
@@ -35,6 +37,7 @@ public class PlayerRayCaster
         Ray ray = _camera.ScreenPointToRay(mousePosition);
         RaycastHit hit;
 
+        // 定数化したい
         int layerMask = 1 << LayerMask.NameToLayer("Building"); 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {

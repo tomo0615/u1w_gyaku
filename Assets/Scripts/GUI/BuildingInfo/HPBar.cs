@@ -11,9 +11,11 @@ public class HPBar : MonoBehaviour
     [SerializeField]
     private Image barFillImage = default;
 
+    // readonly の方が好き
     [SerializeField]
     private Color maxColor = Color.green;
 
+    // readonly の方が好き
     [SerializeField]
     private Color minimumColor = Color.red;
 
@@ -26,14 +28,18 @@ public class HPBar : MonoBehaviour
 
     private void Start()
     {
+        // ActivateHpBar(bool) 的な関数にしたい
         gameObject.SetActive(false);
     }
 
+    // InitializeHpValue の方が好き
     public void SetMaxHPValue(int hpValue)
     {
         slider.maxValue = hpValue;
         slider.value = hpValue;
     }
+    // HP か Hp は統一したい
+    // Bar か bar は統一したい
     private IEnumerator HideHpbar()
     {
         yield return new WaitForSeconds(2f);

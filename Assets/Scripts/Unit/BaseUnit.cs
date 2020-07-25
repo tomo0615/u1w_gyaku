@@ -40,6 +40,7 @@ namespace Unit
             _navMeshAgent = GetComponent<NavMeshAgent>();
         }
 
+        // 不要に感じる
         private void Start()
         {
             if (attackTarget == null)
@@ -62,6 +63,7 @@ namespace Unit
         
             //Action
 
+            // switch の方が好き
             if (currentState == UnitActionState.Move)
             {
                 //_unitMover.MoveToTartget(attackTarget, moveSpeed);

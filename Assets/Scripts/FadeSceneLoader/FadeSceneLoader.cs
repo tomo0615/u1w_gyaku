@@ -55,6 +55,7 @@ namespace FadeSceneLoader
         {
             var currentSceneName = SceneManager.GetActiveScene().buildIndex;
 
+            // 定数化したい
             var enumMax = Enum.GetValues(typeof(SceneName)).Length;
             var nextIndex = (int)(currentSceneName + 1) % enumMax;
 
@@ -72,12 +73,14 @@ namespace FadeSceneLoader
             });
         }
 
+        // private
         public void DoFadeOut()
         {
             IsFadeOutCompleted = false;
 
             _nowLoadingView.DOAnimation(fadeInterval, () =>
             {
+                // 関数化した方が可読性高
                 _fade.FadeOut(fadeTime, () =>
                 {
                     IsFadeOutCompleted = true;

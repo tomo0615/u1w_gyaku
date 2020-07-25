@@ -24,8 +24,10 @@ public class TurretShooter : MonoBehaviour
     {
         _elapsedTimeValue += Time.deltaTime;
 
+        // (_elapsedTimeValue < shotInterval) の方が可読性高
         if (!(_elapsedTimeValue >= shotInterval)) return;
         
+        // pool したい
         var bullet
             = Instantiate(bulletPrefab,
                 shotTransform.position,

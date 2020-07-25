@@ -2,6 +2,7 @@
 using UniRx;
 using UnityEngine;
 
+// pure class にしたい
 public class TotalUnitModel : MonoBehaviour
 {
     [SerializeField]

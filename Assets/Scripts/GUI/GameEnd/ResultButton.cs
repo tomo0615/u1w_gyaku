@@ -22,6 +22,7 @@ namespace GUI.GameEnd
             gameObject.SetActive(false);
         }
 
+        // マジックナンバーは定数化したい
         public void SetActiveButton()
         {
             var localScale = _rectTransform.localScale;

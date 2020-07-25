@@ -19,6 +19,7 @@ public class StartViewer : MonoBehaviour
 
     public void ViewStart()
     {
+        // もっと綺麗にまとめられそう
         Sequence sequence = DOTween.Sequence()
             .OnStart(() =>
             {

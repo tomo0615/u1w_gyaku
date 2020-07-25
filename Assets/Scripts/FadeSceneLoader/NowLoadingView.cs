@@ -5,6 +5,7 @@ using System;
 
 public class NowLoadingView : MonoBehaviour
 {
+    // const
     [SerializeField]
     private string loadingString = "Now Loading";
 
@@ -15,6 +16,7 @@ public class NowLoadingView : MonoBehaviour
         loadingText = GetComponent<TextMeshProUGUI>();
     }
 
+    // 返り値不要なら void 型に
     public Coroutine DOAnimation(float time, Action action)
     {
         StopAllCoroutines();
@@ -28,14 +30,17 @@ public class NowLoadingView : MonoBehaviour
 
         loadingText.text = loadingString;
 
+        // for にしたい -> (time / count) にできて可読性高
         while (count > 0)
         {
             loadingText.text += ".";
 
             count--;
+            // キャッシュしたい
             yield return new WaitForSeconds(time / 3);
         }
 
+        // チェック不要に思える
         if (action != null)
         {
             action();

@@ -26,8 +26,10 @@ public class UnitSelectView : MonoBehaviour
             _rectTransform.localScale = Vector3.zero;
 
             var overValue = scaleValue * 1.1f;
+            // 使用していないなら削除
             var overScale = new Vector3(overValue, overValue);
 
+            // Sequence 使えば綺麗になりそう
             _rectTransform.DOScale(overValue, animationTime)
                 .OnComplete(() =>
                 {

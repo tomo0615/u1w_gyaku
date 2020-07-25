@@ -27,6 +27,7 @@ public class Turret :　BaseBuilding
     {
         SetTargetDirection();
 
+        // ! か != false は統一した方が良い
         if (!_attackRangeArea.IsAttackable()) return;
         
         _turretRotater.LookTargetDirection(_targetDirection);
@@ -34,6 +35,7 @@ public class Turret :　BaseBuilding
         _turretShooter.ShotBullet(_targetDirection);
     }
 
+    // 返り値 vector の関数にする方が好き
     private void SetTargetDirection()
     {
         Vector3 attackTargetPosition = _attackRangeArea.GetCurrentTarget();

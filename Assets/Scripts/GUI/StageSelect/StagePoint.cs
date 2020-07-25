@@ -12,6 +12,7 @@ public class StagePoint : MonoBehaviour
 
     private void Start()
     {
+        // マジックナンバーは定数にしたい
         //浮遊アニメーション
         transform.DOShakeRotation(5, 7, 0).SetLoops(-1);
     }

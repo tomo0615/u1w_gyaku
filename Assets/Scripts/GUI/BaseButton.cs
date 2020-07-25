@@ -27,6 +27,7 @@ public class BaseButton : MonoBehaviour
 
     private void Awake()
     {
+        // _rectTransform = Button.image.rectTransform; でも取得できる
         _rectTransform = GetComponent<RectTransform>();
     }
 
@@ -54,6 +55,7 @@ public class BaseButton : MonoBehaviour
 
     private void DoPunchAnimation()
     {
+        // Sequence 使えば綺麗になりそう
         _rectTransform.DOScale(Vector3.one * 1.1f, 0.1f)
             .OnComplete(() => _rectTransform.DOScale(Vector3.one, 0.1f));
     }

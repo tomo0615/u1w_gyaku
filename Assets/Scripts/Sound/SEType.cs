@@ -9,7 +9,7 @@
 
     EnemyAttack,
     EnemyDamage,
-    EnemyDestory,
+    EnemyDestory, // Destroy
 
     Win,
     Lose

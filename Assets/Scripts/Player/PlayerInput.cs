@@ -10,6 +10,7 @@ public class PlayerInput
         selectSlot3 = KeyCode.E;
                                 
 
+    // MousePosition の方が好き
     public Vector3 MouseDirection => Input.mousePosition;
 
     public bool IsSummonSetting => Input.GetKey(summonKey);
@@ -17,6 +18,7 @@ public class PlayerInput
 
     public bool IsAllAttack => Input.GetKeyUp(allAttackKey);
 
+    // else ない方が好き
     public int IsSelectSlot()
     {
         if (Input.GetKeyUp(selectSlot1))

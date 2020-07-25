@@ -15,6 +15,7 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
 
     protected override void Awake()
     {
+        // Camera.main が null の場合の処理が欲しい
         _cameraController = new CameraController(Camera.main);
 
         AddToListBuildingTransform();

@@ -2,6 +2,7 @@
 
 public class TargetSetter
 {
+    // targetTransform
     private Transform targetTransfom;
 
     private Transform _transform;
@@ -11,6 +12,7 @@ public class TargetSetter
         _transform = transform;
     }
 
+    // StageManager で扱いたい
     public Transform SetNearestTarget()
     {
         float minDistance = 999f;
@@ -23,6 +25,7 @@ public class TargetSetter
         {
             if (target == null) continue;
 
+            // Vector3.SqrMagnitude() を使った方が良い
             float distance = Vector3.Distance(_transform.position, target.position);
 
             if (minDistance > distance)

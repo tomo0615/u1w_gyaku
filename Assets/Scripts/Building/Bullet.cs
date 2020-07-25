@@ -4,6 +4,7 @@ namespace Building
 {
     public class Bullet : MonoBehaviour
     {
+        // プールしないならメンバ変数にしなくて良いかも
         private Rigidbody _rigidbody;
 
         private int _bulletPower;
