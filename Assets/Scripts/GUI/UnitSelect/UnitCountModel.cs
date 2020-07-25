@@ -4,6 +4,7 @@ public class UnitCountModel
 {
     private int _unitCost;
 
+    // readonly にしたい
     private ReactiveProperty<int> _unitCount;
 
     public IReadOnlyReactiveProperty<int> UnitCounter
@@ -11,6 +12,7 @@ public class UnitCountModel
         get { return _unitCount; }
     }
 
+    // readonly にしたい
     private ReactiveProperty<int> _unitCostValue;
 
     public IReadOnlyReactiveProperty<int> UnitCostValue

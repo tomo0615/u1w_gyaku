@@ -18,6 +18,7 @@ public class SummonEffectPool : ObjectPool<SummonObject>
     {
         var obj = GameObject.Instantiate(_object);
 
+        // var obj = GameObject.Instantiate(_object, _transform, true); にすれば↓の処理消せる
         obj.transform.SetParent(_transform);
 
         return obj;

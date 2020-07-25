@@ -3,6 +3,7 @@ using  GameEffectManager;
 
 namespace Building
 {
+    // 抽象クラスにしたい
     public class BaseBuilding : MonoBehaviour , IDamageable
     {
         [SerializeField]

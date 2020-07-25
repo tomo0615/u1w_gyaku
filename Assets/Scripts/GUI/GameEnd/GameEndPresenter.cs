@@ -44,6 +44,7 @@ namespace GUI.GameEnd
 
         public void OnResult()
         {
+            // _gameClearViewer と _gameOverViewer は _gameEndView にまとめられそう
             _gameEndView.ActiveGameEndView(true);
 
 

@@ -25,6 +25,7 @@ public class SummonEffect : MonoBehaviour
 
     public void InstanceSummonEffect(Vector3 position)
     {
+        // 命名変えた方が良い
         var gameObj = _summonEffectPool.Rent();
 
         gameObj.PlayEffect(position)

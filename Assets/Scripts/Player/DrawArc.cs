@@ -58,6 +58,7 @@ public class DrawArc : MonoBehaviour
         _lineRenderers = new LineRenderer[_lineCount];
         for (int i = 0; i < _lineCount; i++)
         {
+            // Instantiate の方が良い
             GameObject newObject = new GameObject("LineRenderer_" + i);
             newObject.transform.SetParent(arcObjectsParent.transform);
             _lineRenderers[i] = newObject.AddComponent<LineRenderer>();

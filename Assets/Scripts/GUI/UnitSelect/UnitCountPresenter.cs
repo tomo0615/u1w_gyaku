@@ -40,6 +40,7 @@ public class UnitCountPresenter : MonoBehaviour
 
         //加算
         _unitCountView.OnPlus()
+            // データ使ってないので _ にしたい
             .Select(plusValue => _totalUnitModel.TotalCost.Value + unitCostValue)
             .Where(plusValue => _totalUnitModel.MaxTotalCost >= plusValue &&
                    _unitCountModel.IsUpdateUnitCount(_unitCountModel.UnitCounter.Value + 1))
@@ -53,6 +54,7 @@ public class UnitCountPresenter : MonoBehaviour
 
         //減算
         _unitCountView.OnMinus()
+            // データ使ってないので _ にしたい
             .Select(count => _unitCountModel.UnitCounter.Value - 1)
             .Where(count => _unitCountModel.IsUpdateUnitCount(count))
             .Subscribe(count =>

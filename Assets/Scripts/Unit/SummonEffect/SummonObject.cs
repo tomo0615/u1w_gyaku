@@ -25,11 +25,13 @@ namespace Unit.SummonEffect
         {
             transform.position -= Vector3.one;
 
+           // マジックナンバーは定数化したい
             transform.DOMoveY(transform.position.y + 1, 0.25f);
         }
 
         private void DoFinishAnimation()
         {
+            // マジックナンバーは定数化したい
             transform.DOMoveY(transform.position.y - 1, 0.25f);
         }
     }

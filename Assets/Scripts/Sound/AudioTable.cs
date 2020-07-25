@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "DataTable/AudioTable", fileName = "AudioTable")]
 public class AudioTable : ScriptableObject
 {
+    // getter で取得したい
     #region BGM
     public AudioClip titleBGM;
 

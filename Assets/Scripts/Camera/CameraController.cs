@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CameraController
 {
+    // readonly にしたい
     private Camera mainCamera;
 
     private bool isShaking = false;

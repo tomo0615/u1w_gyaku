@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     public void InitializePlayer()
     {
+        // Camera.main が null の場合の処理が欲しい
         Camera camera = Camera.main;
 
         _playerInput = new PlayerInput();

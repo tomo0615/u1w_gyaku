@@ -14,6 +14,7 @@ namespace Unit
 
         private Dictionary<UnitType, BaseUnit> _unitDictionary;
 
+        // 配列の方が好き
         private List<int> _hasUnitList; //UnitTypeの値とIndexが対応
 
         public bool IsFullHasUnitList { get; private set; } = false;
@@ -54,6 +55,7 @@ namespace Unit
 
         public bool IsGetableAllUnit()
         {
+            // true || true || true の方が可読性高
             return
                 !IsGetableUnit(UnitType.Normal) &&
                 !IsGetableUnit(UnitType.Cannon) &&

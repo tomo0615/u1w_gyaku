@@ -10,6 +10,7 @@ public class GameClearViewer : MonoBehaviour, IGameEndViewer
         gameClearText = GetComponent<TextMeshProUGUI>();
     }
 
+    // ActivateClearView(bool) 的な関数にしたい
     public void ViewGameClear()
     {
         gameClearText.enabled = true;

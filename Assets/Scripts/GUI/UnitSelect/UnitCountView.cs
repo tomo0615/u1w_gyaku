@@ -23,6 +23,7 @@ public class UnitCountView : MonoBehaviour
 
     public void Initialize()
     {
+        // AddTo つけた方が良い
         _plusButton
             .OnClickAsObservable()
             .Subscribe(_ => _onPlus.OnNext(true));

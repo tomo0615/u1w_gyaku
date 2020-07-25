@@ -9,6 +9,7 @@ public class GameOverViewer : MonoBehaviour, IGameEndViewer
         gameOverText = GetComponent<TextMeshProUGUI>();
     }
 
+    // ActivateClearView(bool) 的な関数にしたい
     public void ViewGameOver()
     {
         gameOverText.enabled = true;
