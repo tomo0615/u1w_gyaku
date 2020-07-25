@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 using DG.Tweening;
-using Zenject;
 
 [RequireComponent(typeof(Button))]
 [RequireComponent(typeof(RectTransform))]
@@ -14,7 +13,7 @@ public class ButtonAnimator : MonoBehaviour
         Punch,   
     }
 
-    private RectTransform _rectTransform
+    private RectTransform _rectTransform;
     [SerializeField] private ButtonAnimType clickedAnimType;
 
     private void Awake()
