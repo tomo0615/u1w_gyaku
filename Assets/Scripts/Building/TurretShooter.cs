@@ -24,12 +24,13 @@ public class TurretShooter : MonoBehaviour
     {
         _elapsedTimeValue += Time.deltaTime;
 
-        if (!(_elapsedTimeValue >= shotInterval)) return;
+
+        if (_elapsedTimeValue < shotInterval) return;
         
         var bullet
             = Instantiate(bulletPrefab,
                 shotTransform.position,
-                shotTransform.rotation);//varistorの弾が
+                shotTransform.rotation);
 
         bullet.SetShotVelocity(targetDirection.normalized * bulletSpeed, bulletPower);
 

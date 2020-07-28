@@ -11,9 +11,7 @@ public class Turret :　BaseBuilding
     private Transform turretTransform = default;
 
     private AttackRangeArea _attackRangeArea;
-
-    private Vector3 _targetDirection = Vector3.zero;
-
+    
     private void Awake()
     {
         _turretShooter = GetComponent<TurretShooter>();
@@ -25,21 +23,21 @@ public class Turret :　BaseBuilding
 
     private void Update()
     {
-        SetTargetDirection();
+        var target = SetTargetDirection();
 
         if (!_attackRangeArea.IsAttackable()) return;
         
-        _turretRotater.LookTargetDirection(_targetDirection);
+        _turretRotater.LookTargetDirection(target);
 
-        _turretShooter.ShotBullet(_targetDirection);
+        _turretShooter.ShotBullet(target);
     }
 
-    private void SetTargetDirection()
+    private Vector3 SetTargetDirection()
     {
-        Vector3 attackTargetPosition = _attackRangeArea.GetCurrentTarget();
+        var attackTargetPosition = _attackRangeArea.GetCurrentTarget();
 
         attackTargetPosition.y = turretTransform.position.y;
 
-        _targetDirection = attackTargetPosition - turretTransform.position;
+        return attackTargetPosition - turretTransform.position;
     }
 }
