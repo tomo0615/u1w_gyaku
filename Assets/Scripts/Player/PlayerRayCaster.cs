@@ -15,28 +15,24 @@ public class PlayerRayCaster
     //Rayの当たった場所を取得
     public Vector3 GetPositionByRay(Vector3 mousePosition)
     {
-        Ray ray = _camera.ScreenPointToRay(mousePosition);
-        RaycastHit hit;
+        var ray = _camera.ScreenPointToRay(mousePosition);
 
-        if (Physics.Raycast(ray, out hit))
-        {
-            var lookPoint = hit.point;
-            lookPoint.y = _transform.position.y;
+        if (!Physics.Raycast(ray, out var hit)) return _transform.position; //Plane外をクリックしても変化がないように
+        
+        var lookPoint = hit.point;
+        lookPoint.y = _transform.position.y;
 
-            //Debug.DrawRay(ray.origin, ray.direction * 1000, Color.red);
-            return lookPoint;
-        }
-
-        return _transform.position;//Plane外をクリックしても変化がないように
+        //Debug.DrawRay(ray.origin, ray.direction * 1000, Color.red);
+        return lookPoint;
     }
 
     public Transform GetRayHitObject(Vector3 mousePosition)
     {
-        Ray ray = _camera.ScreenPointToRay(mousePosition);
-        RaycastHit hit;
+        var ray = _camera.ScreenPointToRay(mousePosition);
 
-        int layerMask = 1 << LayerMask.NameToLayer("Building"); 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+        var layerMask = 1 << LayerMask.NameToLayer("Building"); 
+        
+        if (Physics.Raycast(ray, out var hit, Mathf.Infinity, layerMask))
         {
             return hit.transform;
         }
