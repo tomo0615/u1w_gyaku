@@ -20,11 +20,9 @@ public class PlayerController : MonoBehaviour
 
     public void InitializePlayer()
     {
-        Camera camera = Camera.main;
-
         _playerInput = new PlayerInput();
 
-        _playerRayCaster = new PlayerRayCaster(camera, transform);
+        _playerRayCaster = new PlayerRayCaster(Camera.main, transform);
 
         _playerSummoner = GetComponent<PlayerSummoner>();
 
@@ -66,15 +64,15 @@ public class PlayerController : MonoBehaviour
         transform.position = mousePosition;
 
         //Unitの選択
-        if (_playerInput.IsSelectSlot() >= 0)
+        if (_playerInput.IsSelectSlot())
         {
-            _currentUnitType = (UnitType)_playerInput.IsSelectSlot();
+            _currentUnitType = _playerInput.GetSelectSlot();
         }
 
         //Unitへ命令
         if (_playerInput.IsAllAttack)
         {
-            Transform targetPosition
+            var targetPosition
                  = _playerRayCaster.GetRayHitObject(_playerInput.MouseDirection);
 
             UnitManager.Instance.SetTargetToAllUnit(targetPosition);

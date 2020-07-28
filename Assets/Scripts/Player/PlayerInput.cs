@@ -17,21 +17,26 @@ public class PlayerInput
 
     public bool IsAllAttack => Input.GetKeyUp(allAttackKey);
 
-    public int IsSelectSlot()
+    public UnitType GetSelectSlot()
     {
         if (Input.GetKeyUp(selectSlot1))
         {
-            return 0;
+            return UnitType.Normal;
         }
         else if (Input.GetKeyUp(selectSlot2))
         {
-            return 1;
+            return UnitType.Shield;
         }
         else if (Input.GetKeyUp(selectSlot3))
         {
-            return 2;
+            return UnitType.Shield;
         }
 
-        return -1;
+        return UnitType.Normal;
+    }
+
+    public bool IsSelectSlot()
+    {
+        return GetSelectSlot() > 0;
     }
 }
