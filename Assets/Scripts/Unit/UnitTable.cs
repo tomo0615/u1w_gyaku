@@ -4,9 +4,14 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "UnitTable", fileName = "UnitTable")]
 public class UnitTable : ScriptableObject
 {
-    public NormalUnit normalUnit;
+    [SerializeField] private NormalUnit normalUnit;
+    public NormalUnit NormalUnit => normalUnit;
 
-    public ShieldUnit shieldUnit;
+    [SerializeField] private ShieldUnit shieldUnit;
+    
+    public ShieldUnit ShieldUnit => shieldUnit;
 
-    public CannonUnit cannonUnit;
+    [SerializeField] private CannonUnit cannonUnit;
+    
+    public CannonUnit CannonUnit => cannonUnit;
 }

@@ -22,9 +22,9 @@ namespace Unit
         {
             _unitDictionary = new Dictionary<UnitType, BaseUnit>
             {
-                {UnitType.Normal, unitTable.normalUnit},
-                {UnitType.Shield, unitTable.shieldUnit},
-                {UnitType.Cannon, unitTable.cannonUnit}
+                {UnitType.Normal, unitTable.NormalUnit},
+                {UnitType.Shield, unitTable.ShieldUnit},
+                {UnitType.Cannon, unitTable.CannonUnit}
             };
 
             _hasUnitList = new int[_unitDictionary.Count].ToList();
