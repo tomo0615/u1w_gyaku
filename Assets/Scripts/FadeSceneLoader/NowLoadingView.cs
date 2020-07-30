@@ -35,7 +35,7 @@ public class NowLoadingView : MonoBehaviour
             _loadingText.text += "."; //nowloading...の点を作成
 
             count--;
-            yield return new WaitForSeconds(time / count);
+            yield return new WaitForSeconds(time / 3);
         }
 
         if (action == null) yield break;

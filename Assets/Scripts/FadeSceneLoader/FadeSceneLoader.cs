@@ -34,8 +34,9 @@ namespace FadeSceneLoader
 
         private void OnSceneLoaded(Scene nextScene, LoadSceneMode mode)
         {
-            DoFadeOut();
+            DoLoadingFadeOut();
         }
+        
         public void CurrentSceneLoad()
         {
             var currentScene = SceneManager.GetActiveScene().buildIndex;
@@ -72,16 +73,18 @@ namespace FadeSceneLoader
             });
         }
 
-        public void DoFadeOut()
+        public void DoLoadingFadeOut()
         {
             IsFadeOutCompleted = false;
 
-            nowLoadingView.DOAnimation(fadeInterval, () =>
+            nowLoadingView.DOAnimation(fadeInterval, DoFadeOut);
+        }
+
+        private void DoFadeOut()
+        {
+            fade.FadeOut(fadeTime, () =>
             {
-                fade.FadeOut(fadeTime, () =>
-                {
-                    IsFadeOutCompleted = true;
-                });
+                IsFadeOutCompleted = true;
             });
         }
     }
