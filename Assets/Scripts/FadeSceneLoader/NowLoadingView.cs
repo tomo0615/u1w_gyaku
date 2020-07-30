@@ -8,11 +8,13 @@ public class NowLoadingView : MonoBehaviour
     [SerializeField]
     private string loadingString = "Now Loading";
 
-    private TextMeshProUGUI loadingText;
+    private TextMeshProUGUI _loadingText;
 
+    [SerializeField] private float fadeCount = 1;
+        
     private void Awake()
     {
-        loadingText = GetComponent<TextMeshProUGUI>();
+        _loadingText = GetComponent<TextMeshProUGUI>();
     }
 
     public Coroutine DOAnimation(float time, Action action)
@@ -24,22 +26,21 @@ public class NowLoadingView : MonoBehaviour
     //デザイン決定後変更
     private IEnumerator AnimationCoroutine(float time, Action action)
     {
-        int count = 3;
+        var count = 3;
 
-        loadingText.text = loadingString;
+        _loadingText.text = loadingString;
 
         while (count > 0)
         {
-            loadingText.text += ".";
+            _loadingText.text += "."; //nowloading...の点を作成
 
             count--;
-            yield return new WaitForSeconds(time / 3);
+            yield return new WaitForSeconds(time / count);
         }
 
-        if (action != null)
-        {
-            action();
-            loadingText.text = "";
-        }
+        if (action == null) yield break;
+        
+        action();
+        _loadingText.text = "";
     }
 }

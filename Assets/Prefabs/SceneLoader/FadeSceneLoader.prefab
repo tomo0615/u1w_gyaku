@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingString: Now Loading
+  fadeCount: 1
 --- !u!222 &665559433058756005
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -361,10 +362,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47aa38a4b872bf944b149b9184eb5c38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fade: {fileID: 665559433539616350}
-  _nowLoadingView: {fileID: 665559433058756003}
+  fade: {fileID: 665559433539616350}
+  nowLoadingView: {fileID: 665559433058756003}
   fadeTime: 0.5
-  fadeInterval: 2
+  fadeInterval: 0.5
 --- !u!114 &665559433838024682
 MonoBehaviour:
   m_ObjectHideFlags: 0

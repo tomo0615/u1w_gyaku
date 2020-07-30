@@ -6,12 +6,12 @@ using Zenject;
 namespace FadeSceneLoader
 {
     public class FadeSceneLoader : MonoBehaviour
-    {
+    { 
         [SerializeField]
-        private Fade _fade = default;
+        private Fade fade = default;
 
         [SerializeField]
-        private NowLoadingView _nowLoadingView = default;
+        private NowLoadingView nowLoadingView = default;
 
         [SerializeField]
         private float fadeTime = 1f;
@@ -66,7 +66,7 @@ namespace FadeSceneLoader
 
         private void DoFadeInSceneLoad(string sceneName)
         {
-            _fade.FadeIn(fadeTime, () =>
+            fade.FadeIn(fadeTime, () =>
             {
                 _zenjectSceneLoader.LoadScene(sceneName);
             });
@@ -76,9 +76,9 @@ namespace FadeSceneLoader
         {
             IsFadeOutCompleted = false;
 
-            _nowLoadingView.DOAnimation(fadeInterval, () =>
+            nowLoadingView.DOAnimation(fadeInterval, () =>
             {
-                _fade.FadeOut(fadeTime, () =>
+                fade.FadeOut(fadeTime, () =>
                 {
                     IsFadeOutCompleted = true;
                 });
