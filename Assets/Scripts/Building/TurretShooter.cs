@@ -23,8 +23,7 @@ public class TurretShooter : MonoBehaviour
     public void ShotBullet(Vector3 targetDirection)
     {
         _elapsedTimeValue += Time.deltaTime;
-
-
+        
         if (_elapsedTimeValue < shotInterval) return;
         
         var bullet

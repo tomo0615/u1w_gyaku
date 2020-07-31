@@ -11,6 +11,8 @@ public class NowLoadingView : MonoBehaviour
     private TextMeshProUGUI _loadingText;
 
     [SerializeField] private float fadeCount = 1;
+    
+    private const int AnimationCount = 3;
         
     private void Awake()
     {
@@ -26,8 +28,8 @@ public class NowLoadingView : MonoBehaviour
     //デザイン決定後変更
     private IEnumerator AnimationCoroutine(float time, Action action)
     {
-        var count = 3;
-
+        var count = AnimationCount;
+        
         _loadingText.text = loadingString;
 
         while (count > 0)
@@ -35,7 +37,7 @@ public class NowLoadingView : MonoBehaviour
             _loadingText.text += "."; //nowloading...の点を作成
 
             count--;
-            yield return new WaitForSeconds(time / 3);
+            yield return new WaitForSeconds(time / AnimationCount);
         }
 
         if (action == null) yield break;

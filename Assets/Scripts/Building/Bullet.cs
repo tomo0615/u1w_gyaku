@@ -8,13 +8,15 @@ namespace Building
 
         private int _bulletPower;
 
+        private const float LifeTime = 5f;
+
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
         }
         private void Start()
         {
-            Destroy(gameObject, 10f);
+            Destroy(gameObject, LifeTime);
         }
 
         public void SetShotVelocity(Vector3 velocity, int power)
@@ -25,11 +27,11 @@ namespace Building
 
         private void OnTriggerEnter(Collider other)
         {
-            var attakable = other.GetComponent<IAttackable>();
+            var attackable = other.GetComponent<IAttackable>();
 
-            if (attakable == null) return;
+            if (attackable == null) return;
             
-            attakable.Attacked(_bulletPower);
+            attackable.Attacked(_bulletPower);
 
             Destroy(gameObject);
         }

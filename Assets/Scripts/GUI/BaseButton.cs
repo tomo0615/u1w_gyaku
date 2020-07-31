@@ -11,6 +11,9 @@ public class BaseButton : MonoBehaviour
 
     private Button _button;
 
+    private const float ButtonAnimationTime = 0.1f;
+    private const float ScaleUpValue = 1.1f;
+    
     protected Button Button
     {
         get
@@ -55,7 +58,7 @@ public class BaseButton : MonoBehaviour
     private void DoPunchAnimation()
     {
         DOTween.Sequence()
-            .Append(_rectTransform.DOScale(Vector3.one * 1.1f, 0.1f))
-            .Append(_rectTransform.DOScale(Vector3.one, 0.1f));
+            .Append(_rectTransform.DOScale(Vector3.one * ScaleUpValue, ButtonAnimationTime))
+            .Append(_rectTransform.DOScale(Vector3.one, ButtonAnimationTime));
     }
 }

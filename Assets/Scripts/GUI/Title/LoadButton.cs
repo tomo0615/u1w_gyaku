@@ -9,13 +9,13 @@ namespace GUI.Title
         private FadeSceneLoader.FadeSceneLoader _fadeSceneLoader = default;
 
         [SerializeField]
-        private SceneName _jumpSceneName = default;
+        private SceneName jumpSceneName = default;
 
         public override void OnClicked()
         {
             base.OnClicked();
 
-            _fadeSceneLoader.JumpSceneLoad(_jumpSceneName);
+            _fadeSceneLoader.JumpSceneLoad(jumpSceneName);
         }
     }
 }
