@@ -4,17 +4,19 @@ public class DrawArc : MonoBehaviour
 {
     private LineRenderer[] _lineRenderers;
 
+    [SerializeField] private GameObject arcLine;
+    
     [SerializeField]
-    private Material _lineMaterial = default;
+    private Material lineMaterial = default;
+
+     [SerializeField]
+    private int lineCount = 60;
+    
+    [SerializeField]
+    private float lineWidth = 1;
 
     [SerializeField]
-    private int _lineCount = 60;
-
-    [SerializeField]
-    private float _lineWidth = 1;
-
-    [SerializeField]
-    private float _lineHight = 2f;
+    private float lineHight = 0.15f;
 
     private Vector3 _startVector = Vector3.zero;
 
@@ -28,9 +30,9 @@ public class DrawArc : MonoBehaviour
         Vector3 lineVector = end - start;
         _startVector = start;
 
-        lineVector /= _lineCount;//放物線の細かさを決定
+        lineVector /= lineCount;//放物線の細かさを決定
 
-        for(int i = 0; i < _lineCount; i++)
+        for(int i = 0; i < lineCount; i++)
         {
             var nextVector = _startVector + lineVector;
 
@@ -42,8 +44,8 @@ public class DrawArc : MonoBehaviour
 
     private void SetLineRendererPosition(int index, Vector3 start, Vector3 end)
     {
-        start = new Vector3(start.x, start.y * _lineHight * index, start.z);
-        end = new Vector3(end.x, end.y * _lineHight * index, end.z);
+        start = new Vector3(start.x, start.y * lineHight * index, start.z);
+        end = new Vector3(end.x, end.y * lineHight * index, end.z);
 
         _lineRenderers[index].SetPosition(0, start);
         _lineRenderers[index].SetPosition(1, end);
@@ -53,27 +55,33 @@ public class DrawArc : MonoBehaviour
     private void CreateLineRendererObjects()
     {
         // 親オブジェクトを作り、LineRendererを持つ子オブジェクトを作る
-        GameObject arcObjectsParent = new GameObject("ArcObject");
+        var arcObjectsParent = new GameObject("ArcObject");
 
-        _lineRenderers = new LineRenderer[_lineCount];
-        for (int i = 0; i < _lineCount; i++)
+        _lineRenderers = new LineRenderer[lineCount];
+        for (var i = 0; i < lineCount; i++)
         {
-            GameObject newObject = new GameObject("LineRenderer_" + i);
-            newObject.transform.SetParent(arcObjectsParent.transform);
-            _lineRenderers[i] = newObject.AddComponent<LineRenderer>();
-
-            // 光源関連を使用しない
-            _lineRenderers[i].receiveShadows = false;
-            _lineRenderers[i].reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
-            _lineRenderers[i].lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
-            _lineRenderers[i].shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-
-            // 線の幅とマテリアル
-            _lineRenderers[i].material = _lineMaterial;
-            _lineRenderers[i].startWidth = _lineWidth;
-            _lineRenderers[i].endWidth = _lineWidth;
-            _lineRenderers[i].numCapVertices = 5;
-            _lineRenderers[i].enabled = false;
+            var line = Instantiate(arcLine, transform.position, Quaternion.identity);
+            line.transform.parent = arcObjectsParent.transform;
+            
+            _lineRenderers[i] = line.GetComponent<LineRenderer>();
+            
+            InitializeLineRenderer(_lineRenderers[i]);
         }
+    }
+    
+    private void InitializeLineRenderer(LineRenderer lineRenderer)
+    {
+        // 光源関連を使用しない
+        lineRenderer.receiveShadows = false;
+        lineRenderer.reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
+        lineRenderer.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
+        lineRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+
+        // 線の幅とマテリアル
+        lineRenderer.material = lineMaterial;
+        lineRenderer.startWidth = lineWidth;
+        lineRenderer.endWidth = lineWidth;
+        lineRenderer.numCapVertices = 5;
+        lineRenderer.enabled = false;
     }
 }
