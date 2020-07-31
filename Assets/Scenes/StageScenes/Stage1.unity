@@ -945,6 +945,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1329756509}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &232700121 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4738749193690501052, guid: 2ebd288c507df4475bc8b5872e6445c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4738749193869981541}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec9b28a958d1c8248895c66d1a442bab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &232893089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9633,6 +9645,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5808266426254090536, guid: 2ebd288c507df4475bc8b5872e6445c0,
+        type: 3}
+      propertyPath: drawArc
+      value: 
+      objectReference: {fileID: 232700121}
     - target: {fileID: 5808266426254090537, guid: 2ebd288c507df4475bc8b5872e6445c0,
         type: 3}
       propertyPath: _unitStorage
@@ -9643,31 +9660,5 @@ PrefabInstance:
       propertyPath: _summonEffect
       value: 
       objectReference: {fileID: 1699404806}
-    - target: {fileID: 4738749193690501052, guid: 2ebd288c507df4475bc8b5872e6445c0,
-        type: 3}
-      propertyPath: lineMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 0a0cdb78c3b47df40a1b5ec9603d2d1b, type: 2}
-    - target: {fileID: 4738749193690501052, guid: 2ebd288c507df4475bc8b5872e6445c0,
-        type: 3}
-      propertyPath: arcLine
-      value: 
-      objectReference: {fileID: 9144062423156831009, guid: ed8e431d1315c4d1ebf6811f50b73290,
-        type: 3}
-    - target: {fileID: 4738749193690501052, guid: 2ebd288c507df4475bc8b5872e6445c0,
-        type: 3}
-      propertyPath: lineHight
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4738749193690501052, guid: 2ebd288c507df4475bc8b5872e6445c0,
-        type: 3}
-      propertyPath: lineWidth
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4738749193690501052, guid: 2ebd288c507df4475bc8b5872e6445c0,
-        type: 3}
-      propertyPath: lineCount
-      value: 60
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ebd288c507df4475bc8b5872e6445c0, type: 3}

@@ -14,9 +14,9 @@ public class PlayerController : MonoBehaviour
     private UnitType _currentUnitType = UnitType.Normal;
 
     [SerializeField]
-    private DrawArc _drawArc = default;
+    private DrawArc drawArc = default;
 
-    private bool isSummonable = true;
+    private bool _isSummonable = true;
 
     public void InitializePlayer()
     {
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
         if(area != null)
         {
-            isSummonable = false;
+            _isSummonable = false;
         }
     }
 
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
 
         if (area != null)
         {
-            isSummonable = true;
+            _isSummonable = true;
         }
     }
 
@@ -56,9 +56,9 @@ public class PlayerController : MonoBehaviour
         var okeList = UnitManager.Instance.unitOkeList;
 
         //軌跡の表示
-        _drawArc.DrawLine(okeList[(int)_currentUnitType].position, transform.position);
+        drawArc.DrawLine(okeList[(int)_currentUnitType].position, transform.position);
 
-        Vector3 mousePosition
+        var mousePosition
             = _playerRayCaster.GetPositionByRay(_playerInput.MouseDirection);
 
         transform.position = mousePosition;
@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
         //Unitの選択
         if (_playerInput.IsSelectSlot())
         {
-            _currentUnitType = _playerInput.GetSelectSlot();
+            _currentUnitType = (UnitType)_playerInput.GetSelectSlot();
         }
 
         //Unitへ命令
@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
             UnitManager.Instance.SetTargetToAllUnit(targetPosition);
         }
 
-        if (isSummonable == false) return;
+        if (_isSummonable == false) return;
 
         //召喚
         if (_playerInput.IsSummonSetting)
