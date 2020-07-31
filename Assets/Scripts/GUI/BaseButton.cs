@@ -54,13 +54,8 @@ public class BaseButton : MonoBehaviour
 
     private void DoPunchAnimation()
     {
-        _rectTransform.DOScale(Vector3.one * 1.1f, 0.1f)
-            .OnComplete(() => _rectTransform.DOScale(Vector3.one, 0.1f));
-
-        // DOTween.Sequence()あとで
-        //     .Append(_rectTransform.DOScale(Vector3.one * 1.1f, 0.1f))
-        //     .Append(_rectTransform.DOScale(Vector3.one, 0.1f));
-
-        
+        DOTween.Sequence()
+            .Append(_rectTransform.DOScale(Vector3.one * 1.1f, 0.1f))
+            .Append(_rectTransform.DOScale(Vector3.one, 0.1f));
     }
 }
