@@ -56,5 +56,11 @@ public class BaseButton : MonoBehaviour
     {
         _rectTransform.DOScale(Vector3.one * 1.1f, 0.1f)
             .OnComplete(() => _rectTransform.DOScale(Vector3.one, 0.1f));
+
+        // DOTween.Sequence()あとで
+        //     .Append(_rectTransform.DOScale(Vector3.one * 1.1f, 0.1f))
+        //     .Append(_rectTransform.DOScale(Vector3.one, 0.1f));
+
+        
     }
 }
